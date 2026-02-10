@@ -1,0 +1,2293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PeoplePeople — Brand Guidelines</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  /* ============================================
+     VARIABLES
+     ============================================ */
+  :root {
+    --black: #1A1A1A;
+    --black-soft: #2C2926;
+    --charcoal: #4A4540;
+    --grey-dark: #6B655D;
+    --grey: #999590;
+    --grey-light: #B8B2A6;
+    --sand: #D4CFC4;
+    --cream: #EDE9E0;
+    --warm-white: #F7F5F0;
+    --white: #FFFFFF;
+
+    --yellow: #F2D548;
+    --yellow-dark: #D4B83E;
+    --yellow-light: #FBF3D5;
+    --terracotta: #C4654A;
+    --terracotta-light: #F0DED8;
+    --green: #7A9B6D;
+    --green-light: #E8F0E4;
+    --amber: #C49B4A;
+    --amber-light: #F5EDD8;
+
+    --font: 'Albert Sans', 'Helvetica Neue', 'Helvetica', -apple-system, sans-serif;
+
+    --space-xs: 8px;
+    --space-sm: 16px;
+    --space-md: 32px;
+    --space-lg: 64px;
+    --space-xl: 96px;
+    --space-xxl: 140px;
+
+    --max-width: 1320px;
+    --gutter: 24px;
+  }
+
+  /* ============================================
+     RESET & BASE
+     ============================================ */
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    font-family: var(--font);
+    font-weight: 400;
+    color: var(--black);
+    background: var(--white);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  img { max-width: 100%; display: block; }
+  a { color: inherit; text-decoration: none; }
+
+  ::selection {
+    background: var(--yellow);
+    color: var(--black);
+  }
+
+  /* ============================================
+     NAV
+     ============================================ */
+  .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 40px;
+    background: var(--black);
+    transition: all 0.3s ease;
+  }
+
+  .nav.scrolled {
+    padding: 14px 40px;
+    box-shadow: 0 1px 0 rgba(255,255,255,0.06);
+  }
+
+  .nav-brand {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--yellow);
+    letter-spacing: 0.02em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 12px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: color 0.2s ease;
+  }
+
+  .nav-links a:hover,
+  .nav-links a.active {
+    color: var(--yellow);
+  }
+
+  /* ============================================
+     SECTION INDICATOR
+     ============================================ */
+  .section-indicator {
+    position: fixed;
+    right: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 90;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .indicator-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--sand);
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .indicator-dot.active {
+    background: var(--yellow);
+    transform: scale(1.5);
+  }
+
+  /* ============================================
+     LAYOUT HELPERS
+     ============================================ */
+  .container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+  }
+
+  .section {
+    padding: var(--space-xxl) 0;
+    position: relative;
+  }
+
+  .section-dark {
+    background: var(--black);
+    color: var(--white);
+  }
+
+  .section-cream {
+    background: var(--cream);
+  }
+
+  .section-warm {
+    background: var(--warm-white);
+  }
+
+  .section-yellow {
+    background: var(--yellow);
+    color: var(--black);
+  }
+
+  .section-number {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--grey);
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .section-dark .section-number { color: rgba(255,255,255,0.35); }
+  .section-yellow .section-number { color: rgba(26,26,26,0.4); }
+
+  .section-title {
+    font-size: clamp(36px, 5vw, 64px);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    margin-bottom: var(--space-md);
+  }
+
+  .section-subtitle {
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--grey-dark);
+    max-width: 560px;
+    line-height: 1.65;
+  }
+
+  .section-dark .section-subtitle { color: rgba(255,255,255,0.55); }
+
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-lg);
+  }
+
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: var(--space-md);
+  }
+
+  .grid-4 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: var(--space-md);
+  }
+
+  .rule {
+    border: none;
+    height: 1px;
+    background: var(--sand);
+    margin: var(--space-lg) 0;
+  }
+
+  .section-dark .rule { background: rgba(255,255,255,0.1); }
+
+  /* ============================================
+     DO / DON'T
+     ============================================ */
+  .do-dont {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-md);
+  }
+
+  .do-card, .dont-card {
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .do-card .dd-preview, .dont-card .dd-preview {
+    padding: var(--space-lg) var(--space-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px;
+  }
+
+  .do-card .dd-preview { background: var(--warm-white); }
+  .dont-card .dd-preview { background: var(--warm-white); }
+  .section-dark .do-card .dd-preview { background: rgba(255,255,255,0.05); }
+  .section-dark .dont-card .dd-preview { background: rgba(255,255,255,0.05); }
+
+  .dd-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 20px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+
+  .do-card .dd-label {
+    background: var(--green);
+    color: var(--white);
+  }
+
+  .dont-card .dd-label {
+    background: var(--terracotta);
+    color: var(--white);
+  }
+
+  .dd-check {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  /* ============================================
+     0. HERO
+     ============================================ */
+  .hero {
+    height: 100vh;
+    min-height: 700px;
+    background: var(--black);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg-text {
+    position: absolute;
+    font-size: clamp(120px, 22vw, 320px);
+    font-weight: 900;
+    color: rgba(242, 213, 72, 0.04);
+    letter-spacing: -0.04em;
+    white-space: nowrap;
+    user-select: none;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .hero-content {
+    text-align: center;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-eyebrow {
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 32px;
+  }
+
+  .hero-title {
+    font-size: clamp(48px, 10vw, 140px);
+    font-weight: 900;
+    color: var(--white);
+    letter-spacing: -0.04em;
+    line-height: 0.92;
+    margin-bottom: 24px;
+  }
+
+  .hero-title span {
+    color: var(--yellow);
+  }
+
+  .hero-divider {
+    width: 48px;
+    height: 3px;
+    background: var(--yellow);
+    margin: 32px auto;
+  }
+
+  .hero-sub {
+    font-size: 16px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 0.04em;
+  }
+
+  .hero-version {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 12px;
+    color: rgba(255,255,255,0.25);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 40px;
+    right: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+  }
+
+  .hero-scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--yellow), transparent);
+  }
+
+  /* ============================================
+     1. LOGO
+     ============================================ */
+  .logo-display {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-xl) var(--space-lg);
+    border-radius: 12px;
+    min-height: 280px;
+  }
+
+  .logo-display-dark { background: var(--black); }
+  .logo-display-light { background: var(--warm-white); }
+  .logo-display-yellow { background: var(--yellow); }
+
+  .logo-text {
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+
+  .logo-text-lg { font-size: 56px; }
+  .logo-text-md { font-size: 36px; }
+  .logo-text-sm { font-size: 24px; }
+
+  .logo-mark {
+    width: 64px;
+    height: 64px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 28px;
+    letter-spacing: -0.02em;
+  }
+
+  .clearspace-demo {
+    position: relative;
+    display: inline-block;
+    padding: 48px;
+  }
+
+  .clearspace-border {
+    position: absolute;
+    inset: 0;
+    border: 1px dashed var(--yellow);
+    border-radius: 4px;
+  }
+
+  .clearspace-label {
+    position: absolute;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--yellow);
+    letter-spacing: 0.02em;
+  }
+
+  .clearspace-label-top {
+    top: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .clearspace-label-right {
+    right: 6px;
+    top: 50%;
+    transform: translateY(-50%) rotate(90deg);
+  }
+
+  .min-size-grid {
+    display: flex;
+    align-items: flex-end;
+    gap: var(--space-lg);
+    flex-wrap: wrap;
+  }
+
+  .min-size-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .min-size-label {
+    font-size: 12px;
+    color: var(--grey);
+  }
+
+  .spec-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--grey-dark);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .section-dark .spec-label { color: rgba(255,255,255,0.4); }
+
+  /* ============================================
+     2. COLOR
+     ============================================ */
+  .color-swatch-large {
+    border-radius: 12px;
+    padding: var(--space-md);
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  .color-swatch-name {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  .color-swatch-hex {
+    font-size: 13px;
+    font-weight: 400;
+    opacity: 0.7;
+  }
+
+  .color-swatch-rgb {
+    font-size: 12px;
+    font-weight: 400;
+    opacity: 0.5;
+    margin-top: 2px;
+  }
+
+  .color-swatch-small {
+    border-radius: 8px;
+    padding: 20px 16px;
+    min-height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  .color-swatch-small .color-swatch-name {
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  .color-swatch-small .color-swatch-hex {
+    font-size: 11px;
+  }
+
+  .color-ratio {
+    display: flex;
+    border-radius: 12px;
+    overflow: hidden;
+    height: 80px;
+  }
+
+  .color-ratio-segment {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  /* ============================================
+     3. TYPOGRAPHY
+     ============================================ */
+  .type-specimen {
+    font-family: var(--font);
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+
+  .type-specimen-giant {
+    font-size: clamp(80px, 12vw, 180px);
+    font-weight: 800;
+  }
+
+  .type-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .type-table tr {
+    border-bottom: 1px solid var(--sand);
+  }
+
+  .section-dark .type-table tr {
+    border-bottom-color: rgba(255,255,255,0.08);
+  }
+
+  .type-table td {
+    padding: 20px 0;
+    vertical-align: baseline;
+  }
+
+  .type-table .type-label {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--grey);
+    width: 120px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .section-dark .type-table .type-label { color: rgba(255,255,255,0.35); }
+
+  .type-table .type-spec {
+    font-size: 12px;
+    color: var(--grey);
+    width: 160px;
+    text-align: right;
+  }
+
+  .section-dark .type-table .type-spec { color: rgba(255,255,255,0.3); }
+
+  .type-weight-row {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-md);
+    padding: 16px 0;
+    border-bottom: 1px solid var(--sand);
+  }
+
+  .section-dark .type-weight-row { border-bottom-color: rgba(255,255,255,0.08); }
+
+  .type-weight-name {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--grey);
+    width: 100px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    flex-shrink: 0;
+  }
+
+  .section-dark .type-weight-name { color: rgba(255,255,255,0.35); }
+
+  .type-weight-sample {
+    font-size: 32px;
+    letter-spacing: -0.02em;
+    flex: 1;
+  }
+
+  .type-weight-value {
+    font-size: 12px;
+    color: var(--grey);
+    flex-shrink: 0;
+  }
+
+  .section-dark .type-weight-value { color: rgba(255,255,255,0.3); }
+
+  /* ============================================
+     4. TONE OF VOICE
+     ============================================ */
+  .voice-trait {
+    padding: var(--space-md);
+    border-radius: 12px;
+    background: var(--warm-white);
+  }
+
+  .voice-trait-title {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+  }
+
+  .voice-trait-desc {
+    font-size: 15px;
+    color: var(--grey-dark);
+    line-height: 1.6;
+  }
+
+  .voice-example {
+    padding: var(--space-md);
+    border-radius: 12px;
+    border-left: 4px solid var(--yellow);
+    background: var(--warm-white);
+  }
+
+  .voice-example-label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--grey);
+    margin-bottom: 12px;
+  }
+
+  .voice-example-text {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: -0.01em;
+  }
+
+  .voice-principle {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    padding: 24px 0;
+    border-bottom: 1px solid var(--sand);
+  }
+
+  .voice-principle:last-child { border-bottom: none; }
+
+  .voice-principle-number {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--yellow);
+    letter-spacing: -0.02em;
+    flex-shrink: 0;
+    line-height: 1;
+    width: 48px;
+  }
+
+  .voice-principle-title {
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  .voice-principle-desc {
+    font-size: 14px;
+    color: var(--grey-dark);
+    line-height: 1.6;
+  }
+
+  /* ============================================
+     5. LAYOUT & GRID
+     ============================================ */
+  .grid-demo {
+    display: grid;
+    gap: 8px;
+    padding: var(--space-md);
+    border-radius: 12px;
+    background: var(--warm-white);
+  }
+
+  .grid-demo-12 { grid-template-columns: repeat(12, 1fr); }
+
+  .grid-col {
+    background: var(--yellow);
+    opacity: 0.35;
+    border-radius: 4px;
+    min-height: 120px;
+  }
+
+  .grid-col.active { opacity: 1; }
+
+  .spacing-token {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .spacing-token:last-child { border-bottom: none; }
+
+  .spacing-bar {
+    height: 12px;
+    background: var(--yellow);
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+
+  .spacing-name {
+    font-size: 13px;
+    font-weight: 600;
+    width: 60px;
+    flex-shrink: 0;
+  }
+
+  .spacing-value {
+    font-size: 12px;
+    color: rgba(255,255,255,0.4);
+  }
+
+  /* ============================================
+     6. PHOTOGRAPHY
+     ============================================ */
+  .photo-card {
+    border-radius: 12px;
+    overflow: hidden;
+    aspect-ratio: 4 / 5;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+  }
+
+  .photo-placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .photo-card-label {
+    position: relative;
+    z-index: 2;
+    padding: 16px 20px;
+    width: 100%;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .treatment-demo {
+    border-radius: 12px;
+    padding: var(--space-md);
+    min-height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  /* ============================================
+     7. ICONOGRAPHY
+     ============================================ */
+  .icon-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1px;
+    background: var(--sand);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .section-dark .icon-grid { background: rgba(255,255,255,0.08); }
+
+  .icon-cell {
+    background: var(--white);
+    padding: var(--space-md);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .section-dark .icon-cell { background: var(--black); }
+
+  .icon-cell svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .icon-cell-label {
+    font-size: 11px;
+    color: var(--grey);
+    letter-spacing: 0.02em;
+  }
+
+  .section-dark .icon-cell-label { color: rgba(255,255,255,0.4); }
+
+  .icon-spec {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 0;
+  }
+
+  .icon-spec-swatch {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .icon-spec-text {
+    font-size: 14px;
+    color: var(--grey-dark);
+    line-height: 1.5;
+  }
+
+  .section-dark .icon-spec-text { color: rgba(255,255,255,0.55); }
+
+  .icon-spec-title {
+    font-weight: 600;
+    color: var(--black);
+    margin-bottom: 2px;
+  }
+
+  .section-dark .icon-spec-title { color: var(--white); }
+
+  /* ============================================
+     8. CO-BRANDING
+     ============================================ */
+  .lockup-demo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    padding: var(--space-lg) var(--space-md);
+    border-radius: 12px;
+    min-height: 160px;
+  }
+
+  .lockup-divider {
+    width: 1px;
+    height: 40px;
+    background: var(--sand);
+  }
+
+  .section-dark .lockup-divider { background: rgba(255,255,255,0.2); }
+
+  .lockup-partner {
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--grey);
+  }
+
+  .section-dark .lockup-partner { color: rgba(255,255,255,0.4); }
+
+  .hierarchy-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .hierarchy-bar:last-child { border-bottom: none; }
+
+  .hierarchy-fill {
+    height: 8px;
+    border-radius: 4px;
+    background: var(--yellow);
+  }
+
+  .hierarchy-label {
+    font-size: 13px;
+    font-weight: 500;
+    flex-shrink: 0;
+    width: 140px;
+  }
+
+  .hierarchy-note {
+    font-size: 12px;
+    color: rgba(255,255,255,0.35);
+  }
+
+  /* ============================================
+     9. APPLICATIONS
+     ============================================ */
+  .app-mockup {
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .app-mockup-content {
+    padding: var(--space-lg);
+    min-height: 320px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .mockup-social {
+    background: var(--black);
+    color: var(--white);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .mockup-social-header {
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .mockup-social-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--yellow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--black);
+  }
+
+  .mockup-social-name {
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  .mockup-social-handle {
+    font-size: 12px;
+    color: rgba(255,255,255,0.4);
+  }
+
+  .mockup-social-body {
+    padding: var(--space-md);
+  }
+
+  .mockup-social-text {
+    font-size: 15px;
+    line-height: 1.55;
+    margin-bottom: 16px;
+  }
+
+  .mockup-social-image {
+    width: 100%;
+    height: 200px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+
+  .mockup-card {
+    background: var(--black);
+    color: var(--white);
+    border-radius: 12px;
+    padding: var(--space-md);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 220px;
+    aspect-ratio: 3.5 / 2;
+  }
+
+  .mockup-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .mockup-card-logo {
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--yellow);
+    letter-spacing: -0.02em;
+  }
+
+  .mockup-card-mark {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: var(--yellow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--black);
+  }
+
+  .mockup-card-bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .mockup-card-name {
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  .mockup-card-title {
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+  }
+
+  .mockup-card-url {
+    font-size: 11px;
+    color: var(--yellow);
+    margin-top: 4px;
+  }
+
+  .mockup-signage {
+    background: var(--black);
+    color: var(--white);
+    border-radius: 16px;
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .mockup-signage-text {
+    font-size: clamp(48px, 8vw, 96px);
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    text-align: center;
+    z-index: 2;
+    position: relative;
+  }
+
+  .mockup-signage-text span { color: var(--yellow); }
+
+  .mockup-signage-bg {
+    position: absolute;
+    font-size: 200px;
+    font-weight: 900;
+    color: rgba(255,255,255,0.02);
+    letter-spacing: -0.04em;
+    white-space: nowrap;
+  }
+
+  /* ============================================
+     RESPONSIVE
+     ============================================ */
+  @media (max-width: 1024px) {
+    .grid-2 { grid-template-columns: 1fr; gap: var(--space-md); }
+    .grid-4 { grid-template-columns: 1fr 1fr; }
+    .do-dont { grid-template-columns: 1fr; }
+    .section-indicator { display: none; }
+    .icon-grid { grid-template-columns: repeat(3, 1fr); }
+    .type-weight-sample { font-size: 24px; }
+    .nav-links { display: none; }
+  }
+
+  @media (max-width: 640px) {
+    :root { --gutter: 16px; }
+    .section { padding: var(--space-xl) 0; }
+    .grid-3 { grid-template-columns: 1fr; }
+    .grid-4 { grid-template-columns: 1fr; }
+    .nav { padding: 16px 20px; }
+    .icon-grid { grid-template-columns: repeat(3, 1fr); }
+    .min-size-grid { gap: var(--space-md); }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="nav-brand">PeoplePeople</div>
+  <ul class="nav-links">
+    <li><a href="#logo">Logo</a></li>
+    <li><a href="#color">Color</a></li>
+    <li><a href="#typography">Type</a></li>
+    <li><a href="#voice">Voice</a></li>
+    <li><a href="#layout">Layout</a></li>
+    <li><a href="#photography">Photo</a></li>
+    <li><a href="#iconography">Icons</a></li>
+    <li><a href="#cobranding">Co-Brand</a></li>
+    <li><a href="#applications">Applications</a></li>
+  </ul>
+</nav>
+
+<!-- SECTION INDICATOR -->
+<div class="section-indicator" id="sectionIndicator">
+  <div class="indicator-dot active" data-section="hero"></div>
+  <div class="indicator-dot" data-section="logo"></div>
+  <div class="indicator-dot" data-section="color"></div>
+  <div class="indicator-dot" data-section="typography"></div>
+  <div class="indicator-dot" data-section="voice"></div>
+  <div class="indicator-dot" data-section="layout"></div>
+  <div class="indicator-dot" data-section="photography"></div>
+  <div class="indicator-dot" data-section="iconography"></div>
+  <div class="indicator-dot" data-section="cobranding"></div>
+  <div class="indicator-dot" data-section="applications"></div>
+</div>
+
+<!-- ============================================
+     HERO
+     ============================================ -->
+<section class="hero" id="hero">
+  <div class="hero-bg-text">PeoplePeople</div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Brand Guidelines</p>
+    <h1 class="hero-title">People<span>People</span></h1>
+    <div class="hero-divider"></div>
+    <p class="hero-sub">Plans made simple. Community made real.</p>
+  </div>
+  <div class="hero-version">Version 1.0 &mdash; February 2026</div>
+  <div class="hero-scroll">
+    Scroll
+    <div class="hero-scroll-line"></div>
+  </div>
+</section>
+
+<!-- ============================================
+     01. LOGO
+     ============================================ -->
+<section class="section" id="logo">
+  <div class="container">
+    <span class="section-number">01</span>
+    <h2 class="section-title">Logo</h2>
+    <p class="section-subtitle">The PeoplePeople wordmark is our primary brand identifier. It uses Albert Sans in Extra Bold weight with tight tracking. The name is always written as one word: PeoplePeople.</p>
+
+    <hr class="rule">
+
+    <!-- Primary Variations -->
+    <p class="spec-label">Primary Variations</p>
+    <div style="margin-bottom: var(--space-md);"></div>
+
+    <div class="grid-3" style="margin-bottom: var(--space-lg);">
+      <div class="logo-display logo-display-dark">
+        <span class="logo-text logo-text-lg" style="color: var(--yellow);">PeoplePeople</span>
+      </div>
+      <div class="logo-display logo-display-light">
+        <span class="logo-text logo-text-lg" style="color: var(--black);">PeoplePeople</span>
+      </div>
+      <div class="logo-display logo-display-yellow">
+        <span class="logo-text logo-text-lg" style="color: var(--black);">PeoplePeople</span>
+      </div>
+    </div>
+
+    <div class="grid-3" style="margin-bottom: var(--space-lg);">
+      <div style="text-align: center;">
+        <p class="spec-label">On Dark</p>
+        <p style="font-size: 13px; color: var(--grey);">Yellow wordmark on black. Primary usage.</p>
+      </div>
+      <div style="text-align: center;">
+        <p class="spec-label">On Light</p>
+        <p style="font-size: 13px; color: var(--grey);">Black wordmark on light backgrounds.</p>
+      </div>
+      <div style="text-align: center;">
+        <p class="spec-label">On Brand</p>
+        <p style="font-size: 13px; color: var(--grey);">Black wordmark on yellow.</p>
+      </div>
+    </div>
+
+    <hr class="rule">
+
+    <!-- App Icon / Mark -->
+    <p class="spec-label">App Icon / Brandmark</p>
+    <div style="margin-bottom: var(--space-md);"></div>
+
+    <div style="display: flex; gap: var(--space-md); margin-bottom: var(--space-lg); flex-wrap: wrap;">
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 12px;">
+        <div class="logo-mark" style="background: var(--yellow); color: var(--black);">Pp</div>
+        <span style="font-size: 12px; color: var(--grey);">Primary</span>
+      </div>
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 12px;">
+        <div class="logo-mark" style="background: var(--black); color: var(--yellow);">Pp</div>
+        <span style="font-size: 12px; color: var(--grey);">Inverted</span>
+      </div>
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 12px;">
+        <div class="logo-mark" style="background: var(--white); color: var(--black); border: 1px solid var(--sand);">Pp</div>
+        <span style="font-size: 12px; color: var(--grey);">Light</span>
+      </div>
+    </div>
+
+    <hr class="rule">
+
+    <!-- Clear Space -->
+    <p class="spec-label">Clear Space</p>
+    <div style="margin-bottom: var(--space-sm);"></div>
+    <p style="font-size: 14px; color: var(--grey-dark); margin-bottom: var(--space-md); max-width: 480px;">
+      Maintain a minimum clear space around the logo equal to the height of the letter "P" in the wordmark. No other elements should intrude into this zone.
+    </p>
+
+    <div style="display: flex; justify-content: center; margin-bottom: var(--space-lg);">
+      <div class="clearspace-demo">
+        <div class="clearspace-border"></div>
+        <div class="clearspace-label clearspace-label-top">P-height</div>
+        <div class="clearspace-label clearspace-label-right">P-height</div>
+        <span class="logo-text logo-text-md" style="color: var(--black);">PeoplePeople</span>
+      </div>
+    </div>
+
+    <hr class="rule">
+
+    <!-- Minimum Size -->
+    <p class="spec-label">Minimum Size</p>
+    <div style="margin-bottom: var(--space-sm);"></div>
+    <p style="font-size: 14px; color: var(--grey-dark); margin-bottom: var(--space-md); max-width: 480px;">
+      Do not display the wordmark below these minimum sizes to ensure legibility.
+    </p>
+
+    <div class="min-size-grid" style="margin-bottom: var(--space-lg);">
+      <div class="min-size-item">
+        <span style="font-weight: 800; font-size: 24px; letter-spacing: -0.03em;">PeoplePeople</span>
+        <span class="min-size-label">Print: 24px</span>
+      </div>
+      <div class="min-size-item">
+        <span style="font-weight: 800; font-size: 16px; letter-spacing: -0.02em;">PeoplePeople</span>
+        <span class="min-size-label">Digital: 16px</span>
+      </div>
+      <div class="min-size-item">
+        <div class="logo-mark" style="width: 32px; height: 32px; font-size: 14px; border-radius: 8px; background: var(--yellow); color: var(--black);">Pp</div>
+        <span class="min-size-label">Mark: 32px</span>
+      </div>
+    </div>
+
+    <hr class="rule">
+
+    <!-- Do / Don't -->
+    <p class="spec-label">Logo Misuse</p>
+    <div style="margin-bottom: var(--space-md);"></div>
+
+    <div class="do-dont" style="margin-bottom: var(--space-md);">
+      <div class="do-card">
+        <div class="dd-preview">
+          <span class="logo-text" style="font-size: 32px; color: var(--black);">PeoplePeople</span>
+        </div>
+        <div class="dd-label"><div class="dd-check">&#10003;</div> Use the logo as provided</div>
+      </div>
+      <div class="dont-card">
+        <div class="dd-preview">
+          <span class="logo-text" style="font-size: 32px; color: var(--black); letter-spacing: 0.15em;">PeoplePeople</span>
+        </div>
+        <div class="dd-label"><div class="dd-check">&#10005;</div> Don't add extra letter spacing</div>
+      </div>
+    </div>
+
+    <div class="do-dont" style="margin-bottom: var(--space-md);">
+      <div class="do-card">
+        <div class="dd-preview">
+          <span class="logo-text" style="font-size: 32px; color: var(--yellow); background: var(--black); padding: 20px 32px; border-radius: 8px;">PeoplePeople</span>
+        </div>
+        <div class="dd-label"><div class="dd-check">&#10003;</div> Use approved color combinations</div>
+      </div>
+      <div class="dont-card">
+        <div class="dd-preview">
+          <span class="logo-text" style="font-size: 32px; color: #FF6B9D;">PeoplePeople</span>
+        </div>
+        <div class="dd-label"><div class="dd-check">&#10005;</div> Don't use unapproved colors</div>
+      </div>
+    </div>
+
+    <div class="do-dont">
+      <div class="do-card">
+        <div class="dd-preview">
+          <span class="logo-text" style="font-size: 32px; color: var(--black);">PeoplePeople</span>
+        </div>
+        <div class="dd-label"><div class="dd-check">&#10003;</div> Always write as one word, camelCase</div>
+      </div>
+      <div class="dont-card">
+        <div class="dd-preview">
+          <span class="logo-text" style="font-size: 32px; color: var(--black);">People People</span>
+        </div>
+        <div class="dd-label"><div class="dd-check">&#10005;</div> Don't separate into two words</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     02. COLOR
+     ============================================ -->
+<section class="section section-dark" id="color">
+  <div class="container">
+    <span class="section-number">02</span>
+    <h2 class="section-title">Color Palette</h2>
+    <p class="section-subtitle">Our palette is warm, grounded, and confident. Brand Yellow is our primary accent — used sparingly for maximum impact. The neutral range provides warmth without coldness.</p>
+
+    <hr class="rule">
+
+    <p class="spec-label">Primary</p>
+    <div style="margin-bottom: var(--space-md);"></div>
+
+    <div class="grid-2" style="margin-bottom: var(--space-lg);">
+      <div class="color-swatch-large" style="background: var(--yellow); color: var(--black);">
+        <div class="color-swatch-name">Brand Yellow</div>
+        <div class="color-swatch-hex">#F2D548</div>
+        <div class="color-swatch-rgb">RGB 242, 213, 72</div>
+      </div>
+      <div class="color-swatch-large" style="background: var(--black); color: var(--white); border: 1px solid rgba(255,255,255,0.08);">
+        <div class="color-swatch-name">Brand Black</div>
+        <div class="color-swatch-hex">#1A1A1A</div>
+        <div class="color-swatch-rgb">RGB 26, 26, 26</div>
+      </div>
+    </div>
+
+    <hr class="rule">
+
+    <p class="spec-label">Neutrals</p>
+    <div style="margin-bottom: var(--space-md);"></div>
+
+    <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-bottom: var(--space-lg);">
+      <div class="color-swatch-small" style="background: var(--black-soft); color: var(--white);">
+        <div class="color-swatch-name">Charcoal</div>
+        <div class="color-swatch-hex">#2C2926</div>
+      </div>
+      <div class="color-swatch-small" style="background: var(--grey-dark); color: var(--white);">
+        <div class="color-swatch-name">Grey Dark</div>
+        <div class="color-swatch-hex">#6B655D</div>
+      </div>
+      <div class="color-swatch-small" style="background: var(--sand); color: var(--black);">
+        <div class="color-swatch-name">Sand</div>
+        <div class="color-swatch-hex">#D4CFC4</div>
+      </div>
+      <div class="color-swatch-small" style="background: var(--cream); color: var(--black);">
+        <div class="color-swatch-name">Cream</div>
+        <div class="color-swatch-hex">#EDE9E0</div>
+      </div>
+      <div class="color-swatch-small" style="background: var(--warm-white); color: var(--black);">
+        <div class="color-swatch-name">Warm White</div>
+        <div class="color-swatch-hex">#F7F5F0</div>
+      </div>
+    </div>
+
+    <hr class="rule">
+
+    <p class="spec-label">Semantic / UI</p>
+    <div style="margin-bottom: var(--space-md);"></div>
+
+    <div class="grid-4" style="margin-bottom: var(--space-lg);">
+      <div class="color-swatch-small" style="background: var(--terracotta); color: var(--white);">
+        <div class="color-swatch-name">Terracotta</div>
+        <div class="color-swatch-hex">#C4654A</div>
+      </div>
+      <div class="color-swatch-small" style="background: var(--green); color: var(--white);">
+        <div class="color-swatch-name">Green</div>
+        <div class="color-swatch-hex">#7A9B6D</div>
+      </div>
+      <div class="color-swatch-small" style="background: var(--amber); color: var(--white);">
+        <div class="color-swatch-name">Amber</div>
+        <div class="color-swatch-hex">#C49B4A</div>
+      </div>
+      <div class="color-swatch-small" style="background: var(--yellow-light); color: var(--black);">
+        <div class="color-swatch-name">Yellow Light</div>
+        <div class="color-swatch-hex">#FBF3D5</div>
+      </div>
+    </div>
+
+    <hr class="rule">
+
+    <p class="spec-label">Color Ratios</p>
+    <div style="margin-bottom: var(--space-sm);"></div>
+    <p style="font-size: 14px; color: rgba(255,255,255,0.45); margin-bottom: var(--space-md); max-width: 480px;">
+      Brand Yellow should be used sparingly — primarily for CTAs, navigation highlights, and accent moments. The neutral palette carries the majority of the visual weight.
+    </p>
+
+    <div class="color-ratio" style="margin-bottom: 12px;">
+      <div class="color-ratio-segment" style="flex: 5; background: var(--warm-white); color: var(--black);">50%</div>
+      <div class="color-ratio-segment" style="flex: 3; background: var(--black); color: var(--white);">30%</div>
+      <div class="color-ratio-segment" style="flex: 1.5; background: var(--sand); color: var(--black);">15%</div>
+      <div class="color-ratio-segment" style="flex: 0.5; background: var(--yellow); color: var(--black);">5%</div>
+    </div>
+    <p style="font-size: 12px; color: rgba(255,255,255,0.3);">Warm White 50% &middot; Black 30% &middot; Sand 15% &middot; Yellow 5%</p>
+
+    <hr class="rule">
+
+    <p class="spec-label">Color Usage</p>
+    <div style="margin-bottom: var(--space-md);"></div>
+
+    <div class="do-dont">
+      <div class="do-card">
+        <div class="dd-preview" style="flex-direction: column; gap: 8px;">
+          <div style="background: var(--yellow); color: var(--black); padding: 14px 28px; border-radius: 8px; font-weight: 600; font-size: 14px;">Create a Plan</div>
+          <span style="font-size: 12px; color: var(--grey);">Yellow for primary actions</span>
+        </div>
+        <div class="dd-label"><div class="dd-check">&#10003;</div> Use yellow for CTAs and key actions</div>
+      </div>
+      <div class="dont-card">
+        <div class="dd-preview" style="background: var(--yellow);">
+          <div style="padding: 24px; text-align: center; font-size: 14px;">
+            <p style="font-weight: 600; margin-bottom: 8px; color: var(--black);">Large blocks of yellow</p>
+            <p style="font-size: 12px; color: rgba(26,26,26,0.6);">overwhelm the design</p>
+          </div>
+        </div>
+        <div class="dd-label"><div class="dd-check">&#10005;</div> Don't use yellow for large background areas</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     03. TYPOGRAPHY
+     ============================================ -->
+<section class="section" id="typography">
+  <div class="container">
+    <span class="section-number">03</span>
+    <h2 class="section-title">Typography</h2>
+    <p class="section-subtitle">Albert Sans is our sole typeface. A geometric sans-serif in the Helvetica lineage — clean, legible, and approachable. It says trustworthy, not pretentious.</p>
+
+    <hr class="rule">
+
+    <div class="type-specimen type-specimen-giant" style="margin-bottom: var(--space-lg); color: var(--black);">
+      Aa
+    </div>
+
+    <div style="display: flex; align-items: baseline; gap: var(--space-md); margin-bottom: var(--space-lg); flex-wrap: wrap;">
+      <span style="font-size: 13px; font-weight: 600; color: var(--grey-dark); text-transform: uppercase; letter-spacing: 0.04em;">Albert Sans</span>
+      <span style="font-size: 13px; color: var(--grey);">Geometric Sans-Serif &middot; Google Fonts &middot; Open Source</span>
+    </div>
+
+    <div style="font-size: 20px; color: var(--grey-dark); letter-spacing: 0.1em; margin-bottom: var(--space-lg);">
+      ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>
+      abcdefghijklmnopqrstuvwxyz<br>
+      0123456789 !@#$%&amp;*()
+    </div>
+
+    <hr class="rule">
+
+    <!-- Weight Scale -->
+    <p class="spec-label">Weight Scale</p>
+    <div style="margin-bottom: var(--space-md);"></div>
+
+    <div style="margin-bottom: var(--space-lg);">
+      <div class="type-weight-row">
+        <span class="type-weight-name">Light</span>
+        <span class="type-weight-sample" style="font-weight: 300;">PeoplePeople makes plans simple.</span>
+        <span class="type-weight-value">300</span>
+      </div>
+      <div class="type-weight-row">
+        <span class="type-weight-name">Regular</span>
+        <span class="type-weight-sample" style="font-weight: 400;">PeoplePeople makes plans simple.</span>
+        <span class="type-weight-value">400</span>
+      </div>
+      <div class="type-weight-row">
+        <span class="type-weight-name">Medium</span>
+        <span class="type-weight-sample" style="font-weight: 500;">PeoplePeople makes plans simple.</span>
+        <span class="type-weight-value">500</span>
+      </div>
+      <div class="type-weight-row">
+        <span class="type-weight-name">Semi Bold</span>
+        <span class="type-weight-sample" style="font-weight: 600;">PeoplePeople makes plans simple.</span>
+        <span class="type-weight-value">600</span>
+      </div>
+      <div class="type-weight-row">
+        <span class="type-weight-name">Bold</span>
+        <span class="type-weight-sample" style="font-weight: 700;">PeoplePeople makes plans simple.</span>
+        <span class="type-weight-value">700</span>
+      </div>
+      <div class="type-weight-row" style="border-bottom: none;">
+        <span class="type-weight-name">Extra Bold</span>
+        <span class="type-weight-sample" style="font-weight: 800;">PeoplePeople makes plans simple.</span>
+        <span class="type-weight-value">800</span>
+      </div>
+    </div>
+
+    <hr class="rule">
+
+    <!-- Type Hierarchy -->
+    <p class="spec-label">Hierarchy</p>
+    <div style="margin-bottom: var(--space-md);"></div>
+
+    <table class="type-table" style="margin-bottom: var(--space-lg);">
+      <tr>
+        <td class="type-label">H1</td>
+        <td style="font-size: 40px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.1;">Plans made simple</td>
+        <td class="type-spec">40px / Bold</td>
+      </tr>
+      <tr>
+        <td class="type-label">H2</td>
+        <td style="font-size: 32px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.15;">Plans made simple</td>
+        <td class="type-spec">32px / Bold</td>
+      </tr>
+      <tr>
+        <td class="type-label">H3</td>
+        <td style="font-size: 24px; font-weight: 600; letter-spacing: -0.01em; line-height: 1.2;">Plans made simple</td>
+        <td class="type-spec">24px / SemiBold</td>
+      </tr>
+      <tr>
+        <td class="type-label">H4</td>
+        <td style="font-size: 18px; font-weight: 600; line-height: 1.3;">Plans made simple</td>
+        <td class="type-spec">18px / SemiBold</td>
+      </tr>
+      <tr>
+        <td class="type-label">Body</td>
+        <td style="font-size: 16px; font-weight: 400; line-height: 1.6;">Plans made simple. Community made real. PeoplePeople helps you coordinate with the people who matter most.</td>
+        <td class="type-spec">16px / Regular</td>
+      </tr>
+      <tr>
+        <td class="type-label">Caption</td>
+        <td style="font-size: 13px; font-weight: 500; color: var(--grey-dark);">Plans made simple. Community made real.</td>
+        <td class="type-spec">13px / Medium</td>
+      </tr>
+      <tr>
+        <td class="type-label">Overline</td>
+        <td style="font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; color: var(--grey);">Quick Plan</td>
+        <td class="type-spec">12px / SemiBold / Caps</td>
+      </tr>
+    </table>
+
+    <hr class="rule">
+
+    <!-- Type Do/Don't -->
+    <p class="spec-label">Typesetting Rules</p>
+    <div style="margin-bottom: var(--space-md);"></div>
+
+    <div class="do-dont" style="margin-bottom: var(--space-md);">
+      <div class="do-card">
+        <div class="dd-preview" style="flex-direction: column; text-align: left; align-items: flex-start; padding: 32px;">
+          <span style="font-size: 28px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 8px;">Dinner at the Parlour</span>
+          <span style="font-size: 14px; color: var(--grey-dark);">Clear weight contrast between heading and body text.</span>
+        </div>
+        <div class="dd-label"><div class="dd-check">&#10003;</div> Use weight for hierarchy</div>
+      </div>
+      <div class="dont-card">
+        <div class="dd-preview" style="flex-direction: column; text-align: left; align-items: flex-start; padding: 32px;">
+          <span style="font-size: 28px; font-weight: 400; margin-bottom: 8px;">Dinner at the Parlour</span>
+          <span style="font-size: 14px; color: var(--grey-dark); font-weight: 400;">Everything at the same weight is hard to scan.</span>
+        </div>
+        <div class="dd-label"><div class="dd-check">&#10005;</div> Don't use uniform weight</div>
+      </div>
+    </div>
+
+    <div class="do-dont">
+      <div class="do-card">
+        <div class="dd-preview" style="flex-direction: column; text-align: left; align-items: flex-start; padding: 32px;">
+          <span style="font-size: 15px; line-height: 1.65; color: var(--charcoal);">Come hungry. We have a reservation for 8 and the tasting menu is worth it. Dress code is whatever makes you feel great.</span>
+        </div>
+        <div class="dd-label"><div class="dd-check">&#10003;</div> Generous line height for body text (1.5–1.7)</div>
+      </div>
+      <div class="dont-card">
+        <div class="dd-preview" style="flex-direction: column; text-align: left; align-items: flex-start; padding: 32px;">
+          <span style="font-size: 15px; line-height: 1.1; color: var(--charcoal);">Come hungry. We have a reservation for 8 and the tasting menu is worth it. Dress code is whatever makes you feel great.</span>
+        </div>
+        <div class="dd-label"><div class="dd-check">&#10005;</div> Don't use tight line height for reading text</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     04. TONE OF VOICE
+     ============================================ -->
+<section class="section section-cream" id="voice">
+  <div class="container">
+    <span class="section-number">04</span>
+    <h2 class="section-title">Tone of Voice</h2>
+    <p class="section-subtitle">PeoplePeople speaks like a reliable friend who happens to have good taste. Warm but not cheesy. Helpful but not overbearing. Direct but never cold.</p>
+
+    <hr class="rule" style="background: var(--sand);">
+
+    <p class="spec-label">Brand Personality</p>
+    <div style="margin-bottom: var(--space-md);"></div>
+
+    <div class="grid-3" style="margin-bottom: var(--space-lg);">
+      <div class="voice-trait">
+        <div class="voice-trait-title">Trustworthy</div>
+        <div class="voice-trait-desc">We're the friend who always follows through. Clear, honest, no surprises. People count on us to make coordination effortless.</div>
+      </div>
+      <div class="voice-trait">
+        <div class="voice-trait-title">Down-to-earth</div>
+        <div class="voice-trait-desc">No jargon, no hype. We talk like humans, not a marketing team. Simple words, short sentences, real warmth.</div>
+      </div>
+      <div class="voice-trait">
+        <div class="voice-trait-title">Encouraging</div>
+        <div class="voice-trait-desc">We nudge people toward connection without being pushy. Every interaction should feel like a gentle "go for it."</div>
+      </div>
+    </div>
+
+    <hr class="rule" style="background: var(--sand);">
+
+    <p class="spec-label">Writing Principles</p>
+    <div style="margin-bottom: var(--space-md);"></div>
+
+    <div style="margin-bottom: var(--space-lg);">
+      <div class="voice-principle">
+        <div class="voice-principle-number">1</div>
+        <div>
+          <div class="voice-principle-title">Lead with action</div>
+          <div class="voice-principle-desc">Start with what the user can do, not what we offer. "Create a plan" beats "Plan creation is available."</div>
+        </div>
+      </div>
+      <div class="voice-principle">
+        <div class="voice-principle-number">2</div>
+        <div>
+          <div class="voice-principle-title">Keep it short</div>
+          <div class="voice-principle-desc">If it can be said in 5 words, don't use 15. Every word earns its place. Cut adverbs, cut qualifiers, cut fluff.</div>
+        </div>
+      </div>
+      <div class="voice-principle">
+        <div class="voice-principle-number">3</div>
+        <div>
+          <div class="voice-principle-title">Be human first</div>
+          <div class="voice-principle-desc">Write how you'd text a friend. Contractions are fine. Fragments are fine. Personality is welcome — ego is not.</div>
+        </div>
+      </div>
+      <div class="voice-principle">
+        <div class="voice-principle-number">4</div>
+        <div>
+          <div class="voice-principle-title">Celebrate the people</div>
+          <div class="voice-principle-desc">The app is the tool, not the hero. Spotlight connections, plans, and moments — not features.</div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="rule" style="background: var(--sand);">
+
+    <p class="spec-label">Example Copy</p>
+    <div style="margin-bottom: var(--space-md);"></div>
+
+    <div style="display: flex; flex-direction: column; gap: 16px; margin-bottom: var(--space-md);">
+      <div class="voice-example">
+        <div class="voice-example-label">Empty State — No Plans</div>
+        <div class="voice-example-text">Nothing on the books yet. Start something — your people are waiting.</div>
+      </div>
+      <div class="voice-example">
+        <div class="voice-example-label">Push Notification — Quick Plan</div>
+        <div class="voice-example-text">Maya's grabbing coffee in 30 min. You in?</div>
+      </div>
+      <div class="voice-example">
+        <div class="voice-example-label">RSVP Confirmation</div>
+        <div class="voice-example-text">You're in. See you Saturday at The Parlour.</div>
+      </div>
+      <div class="voice-example">
+        <div class="voice-example-label">Connection Request</div>
+        <div class="voice-example-text">James wants to connect. People you both know: Sofia, Raj.</div>
+      </div>
+    </div>
+
+    <div class="do-dont">
+      <div class="do-card">
+        <div class="dd-preview" style="flex-direction: column; align-items: flex-start; padding: 32px; gap: 6px;">
+          <span style="font-size: 16px; font-weight: 600;">"You're in."</span>
+          <span style="font-size: 16px; font-weight: 600;">"Coffee in 20?"</span>
+          <span style="font-size: 16px; font-weight: 600;">"3 people are down."</span>
+        </div>
+        <div class="dd-label"><div class="dd-check">&#10003;</div> Short, warm, direct</div>
+      </div>
+      <div class="dont-card">
+        <div class="dd-preview" style="flex-direction: column; align-items: flex-start; padding: 32px; gap: 6px;">
+          <span style="font-size: 16px; font-weight: 600;">"Your RSVP has been successfully recorded!"</span>
+          <span style="font-size: 16px; font-weight: 600;">"Would you like to explore our curated plans?"</span>
+          <span style="font-size: 16px; font-weight: 600;">"Maximize your social experience!"</span>
+        </div>
+        <div class="dd-label"><div class="dd-check">&#10005;</div> Corporate, verbose, salesy</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     05. LAYOUT & GRID
+     ============================================ -->
+<section class="section section-dark" id="layout">
+  <div class="container">
+    <span class="section-number">05</span>
+    <h2 class="section-title">Layout &amp; Grid</h2>
+    <p class="section-subtitle">Layouts are built on a 12-column grid with consistent margins and generous spacing. Whitespace is a design element — use it deliberately.</p>
+
+    <hr class="rule">
+
+    <p class="spec-label">12-Column Grid</p>
+    <div style="margin-bottom: var(--space-md);"></div>
+
+    <div class="grid-demo grid-demo-12" style="margin-bottom: 12px;">
+      <div class="grid-col active"></div>
+      <div class="grid-col active"></div>
+      <div class="grid-col active"></div>
+      <div class="grid-col active"></div>
+      <div class="grid-col active"></div>
+      <div class="grid-col active"></div>
+      <div class="grid-col active"></div>
+      <div class="grid-col active"></div>
+      <div class="grid-col active"></div>
+      <div class="grid-col active"></div>
+      <div class="grid-col active"></div>
+      <div class="grid-col active"></div>
+    </div>
+    <p style="font-size: 12px; color: rgba(255,255,255,0.3); margin-bottom: var(--space-lg);">
+      24px gutter &middot; 24px outer margins (mobile: 16px) &middot; Max width: 1320px
+    </p>
+
+    <p class="spec-label">Common Layouts</p>
+    <div style="margin-bottom: var(--space-md);"></div>
+
+    <div style="display: flex; flex-direction: column; gap: 16px; margin-bottom: var(--space-lg);">
+      <div class="grid-demo grid-demo-12">
+        <div class="grid-col active" style="grid-column: span 6; min-height: 80px;"></div>
+        <div class="grid-col active" style="grid-column: span 6; min-height: 80px;"></div>
+      </div>
+      <p style="font-size: 12px; color: rgba(255,255,255,0.3);">6 + 6 — Equal split, used for do/don't comparisons, side-by-side content</p>
+
+      <div class="grid-demo grid-demo-12">
+        <div class="grid-col active" style="grid-column: span 4; min-height: 80px;"></div>
+        <div class="grid-col active" style="grid-column: span 8; min-height: 80px;"></div>
+      </div>
+      <p style="font-size: 12px; color: rgba(255,255,255,0.3);">4 + 8 — Sidebar / content, used for navigation + detail views</p>
+
+      <div class="grid-demo grid-demo-12">
+        <div class="grid-col active" style="grid-column: span 4; min-height: 80px;"></div>
+        <div class="grid-col active" style="grid-column: span 4; min-height: 80px;"></div>
+        <div class="grid-col active" style="grid-column: span 4; min-height: 80px;"></div>
+      </div>
+      <p style="font-size: 12px; color: rgba(255,255,255,0.3);">4 + 4 + 4 — Card grid, used for features, traits, options</p>
+    </div>
+
+    <hr class="rule">
+
+    <p class="spec-label">Spacing Scale</p>
+    <div style="margin-bottom: var(--space-md);"></div>
+
+    <div style="margin-bottom: var(--space-lg);">
+      <div class="spacing-token">
+        <span class="spacing-name">XS</span>
+        <div class="spacing-bar" style="width: 8px;"></div>
+        <span class="spacing-value">8px — Between tightly related elements</span>
+      </div>
+      <div class="spacing-token">
+        <span class="spacing-name">SM</span>
+        <div class="spacing-bar" style="width: 16px;"></div>
+        <span class="spacing-value">16px — Between related elements</span>
+      </div>
+      <div class="spacing-token">
+        <span class="spacing-name">MD</span>
+        <div class="spacing-bar" style="width: 32px;"></div>
+        <span class="spacing-value">32px — Between sections within a group</span>
+      </div>
+      <div class="spacing-token">
+        <span class="spacing-name">LG</span>
+        <div class="spacing-bar" style="width: 64px;"></div>
+        <span class="spacing-value">64px — Between major groups</span>
+      </div>
+      <div class="spacing-token">
+        <span class="spacing-name">XL</span>
+        <div class="spacing-bar" style="width: 96px;"></div>
+        <span class="spacing-value">96px — Between page sections (mobile)</span>
+      </div>
+      <div class="spacing-token" style="border-bottom: none;">
+        <span class="spacing-name">XXL</span>
+        <div class="spacing-bar" style="width: 140px;"></div>
+        <span class="spacing-value">140px — Between page sections (desktop)</span>
+      </div>
+    </div>
+
+    <hr class="rule">
+
+    <p class="spec-label">Corner Radius</p>
+    <div style="margin-bottom: var(--space-md);"></div>
+
+    <div style="display: flex; gap: var(--space-md); flex-wrap: wrap;">
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+        <div style="width: 64px; height: 64px; border-radius: 4px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12);"></div>
+        <span style="font-size: 12px; color: rgba(255,255,255,0.4);">4px — Chips, tags</span>
+      </div>
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+        <div style="width: 64px; height: 64px; border-radius: 8px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12);"></div>
+        <span style="font-size: 12px; color: rgba(255,255,255,0.4);">8px — Buttons, inputs</span>
+      </div>
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+        <div style="width: 64px; height: 64px; border-radius: 12px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12);"></div>
+        <span style="font-size: 12px; color: rgba(255,255,255,0.4);">12px — Cards</span>
+      </div>
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+        <div style="width: 64px; height: 64px; border-radius: 16px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12);"></div>
+        <span style="font-size: 12px; color: rgba(255,255,255,0.4);">16px — Modals, sheets</span>
+      </div>
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+        <div style="width: 64px; height: 64px; border-radius: 32px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12);"></div>
+        <span style="font-size: 12px; color: rgba(255,255,255,0.4);">Full — Pills, avatars</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     06. PHOTOGRAPHY
+     ============================================ -->
+<section class="section" id="photography">
+  <div class="container">
+    <span class="section-number">06</span>
+    <h2 class="section-title">Photography</h2>
+    <p class="section-subtitle">Photography should feel candid, warm, and real. Real moments with real people — never staged or stock-feeling. Natural light preferred.</p>
+
+    <hr class="rule">
+
+    <p class="spec-label">Categories</p>
+    <div style="margin-bottom: var(--space-md);"></div>
+
+    <div class="grid-4" style="margin-bottom: var(--space-lg);">
+      <div class="photo-card" style="background: var(--cream);">
+        <div class="photo-placeholder" style="color: var(--grey-light);">People Together</div>
+        <div class="photo-card-label" style="background: rgba(26,26,26,0.85); color: var(--white);">Social Moments</div>
+      </div>
+      <div class="photo-card" style="background: var(--sand);">
+        <div class="photo-placeholder" style="color: var(--grey);">Food & Drinks</div>
+        <div class="photo-card-label" style="background: rgba(26,26,26,0.85); color: var(--white);">Dining</div>
+      </div>
+      <div class="photo-card" style="background: var(--cream);">
+        <div class="photo-placeholder" style="color: var(--grey-light);">Interiors</div>
+        <div class="photo-card-label" style="background: rgba(26,26,26,0.85); color: var(--white);">Places</div>
+      </div>
+      <div class="photo-card" style="background: var(--sand);">
+        <div class="photo-placeholder" style="color: var(--grey);">Outdoors</div>
+        <div class="photo-card-label" style="background: rgba(26,26,26,0.85); color: var(--white);">Activities</div>
+      </div>
+    </div>
+
+    <hr class="rule">
+
+    <p class="spec-label">Treatment Guidelines</p>
+    <div style="margin-bottom: var(--space-md);"></div>
+
+    <div class="grid-3" style="margin-bottom: var(--space-lg);">
+      <div>
+        <div class="treatment-demo" style="background: var(--warm-white); color: var(--grey); border-radius: 12px; margin-bottom: 12px;">Natural Light<br>Warm Tones</div>
+        <p style="font-size: 13px; font-weight: 600; margin-bottom: 4px;">Warm & Natural</p>
+        <p style="font-size: 13px; color: var(--grey-dark);">Slight warmth in white balance. No heavy filters. Colors should feel true to life but inviting.</p>
+      </div>
+      <div>
+        <div class="treatment-demo" style="background: var(--cream); color: var(--grey); border-radius: 12px; margin-bottom: 12px;">Shallow Focus<br>Subject Priority</div>
+        <p style="font-size: 13px; font-weight: 600; margin-bottom: 4px;">Depth & Focus</p>
+        <p style="font-size: 13px; color: var(--grey-dark);">Use shallow depth of field to direct attention. Backgrounds should be contextual but not competing.</p>
+      </div>
+      <div>
+        <div class="treatment-demo" style="background: var(--warm-white); color: var(--grey); border-radius: 12px; margin-bottom: 12px;">Candid Moments<br>Not Posed</div>
+        <p style="font-size: 13px; font-weight: 600; margin-bottom: 4px;">Authentic & Candid</p>
+        <p style="font-size: 13px; color: var(--grey-dark);">Capture mid-conversation, mid-laugh, mid-meal. The best photos feel like you happened to catch the moment.</p>
+      </div>
+    </div>
+
+    <div class="do-dont">
+      <div class="do-card">
+        <div class="dd-preview" style="background: var(--cream); color: var(--grey); font-size: 14px; font-weight: 500;">
+          Candid, warm-lit, genuine<br>moments between people
+        </div>
+        <div class="dd-label"><div class="dd-check">&#10003;</div> Natural, unposed, warm light</div>
+      </div>
+      <div class="dont-card">
+        <div class="dd-preview" style="background: var(--cream); color: var(--grey); font-size: 14px; font-weight: 500;">
+          Staged group shots, stock<br>photos, heavy filters
+        </div>
+        <div class="dd-label"><div class="dd-check">&#10005;</div> Don't use stock photos or heavy editing</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     07. ICONOGRAPHY
+     ============================================ -->
+<section class="section section-dark" id="iconography">
+  <div class="container">
+    <span class="section-number">07</span>
+    <h2 class="section-title">Iconography</h2>
+    <p class="section-subtitle">Icons are outlined, not filled. 1.5px stroke weight at 24px size. Simple, geometric, and instantly readable. They assist — they don't decorate.</p>
+
+    <hr class="rule">
+
+    <p class="spec-label">Core Icon Set</p>
+    <div style="margin-bottom: var(--space-md);"></div>
+
+    <div class="icon-grid" style="margin-bottom: var(--space-lg);">
+      <div class="icon-cell">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg>
+        <span class="icon-cell-label">Plans</span>
+      </div>
+      <div class="icon-cell">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="9" r="4"/><circle cx="17" cy="9" r="4"/><path d="M2 21c0-3.5 3.5-6 7-6s7 2.5 7 6"/></svg>
+        <span class="icon-cell-label">People</span>
+      </div>
+      <div class="icon-cell">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2a7 7 0 017 7c0 5-7 13-7 13S5 14 5 9a7 7 0 017-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+        <span class="icon-cell-label">Location</span>
+      </div>
+      <div class="icon-cell">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        <span class="icon-cell-label">Chat</span>
+      </div>
+      <div class="icon-cell">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9z"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
+        <span class="icon-cell-label">Alerts</span>
+      </div>
+      <div class="icon-cell">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 01-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+        <span class="icon-cell-label">Settings</span>
+      </div>
+      <div class="icon-cell">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        <span class="icon-cell-label">Time</span>
+      </div>
+      <div class="icon-cell">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        <span class="icon-cell-label">Search</span>
+      </div>
+      <div class="icon-cell">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/></svg>
+        <span class="icon-cell-label">Share</span>
+      </div>
+      <div class="icon-cell">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg>
+        <span class="icon-cell-label">Add</span>
+      </div>
+      <div class="icon-cell">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2M12 11a4 4 0 100-8 4 4 0 000 8z"/></svg>
+        <span class="icon-cell-label">Profile</span>
+      </div>
+      <div class="icon-cell">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 000-7.78z"/></svg>
+        <span class="icon-cell-label">Favorite</span>
+      </div>
+    </div>
+
+    <hr class="rule">
+
+    <p class="spec-label">Specifications</p>
+    <div style="margin-bottom: var(--space-md);"></div>
+
+    <div style="display: flex; flex-direction: column; gap: 8px; margin-bottom: var(--space-lg);">
+      <div class="icon-spec">
+        <div class="icon-spec-swatch" style="background: rgba(255,255,255,0.06);">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+        </div>
+        <div class="icon-spec-text">
+          <div class="icon-spec-title">24 &times; 24px</div>
+          Default icon size. Used in navigation, inline with text, and action buttons.
+        </div>
+      </div>
+      <div class="icon-spec">
+        <div class="icon-spec-swatch" style="background: rgba(255,255,255,0.06);">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="4" y1="12" x2="20" y2="12"/></svg>
+        </div>
+        <div class="icon-spec-text">
+          <div class="icon-spec-title">1.5px stroke</div>
+          Consistent stroke weight across all icons. Thin enough to feel refined, thick enough to stay legible at small sizes.
+        </div>
+      </div>
+      <div class="icon-spec">
+        <div class="icon-spec-swatch" style="background: rgba(255,255,255,0.06);">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/></svg>
+        </div>
+        <div class="icon-spec-text">
+          <div class="icon-spec-title">Rounded caps and joins</div>
+          All strokes use round line caps and round line joins for a softer, friendlier feel.
+        </div>
+      </div>
+    </div>
+
+    <div class="do-dont">
+      <div class="do-card">
+        <div class="dd-preview" style="gap: 24px;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><path d="M12 2a7 7 0 017 7c0 5-7 13-7 13S5 14 5 9a7 7 0 017-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg>
+        </div>
+        <div class="dd-label"><div class="dd-check">&#10003;</div> Outline style, consistent 1.5px stroke</div>
+      </div>
+      <div class="dont-card">
+        <div class="dd-preview" style="gap: 24px;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><rect x="3" y="4" width="18" height="16" rx="2"/></svg>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M12 2a7 7 0 017 7c0 5-7 13-7 13S5 14 5 9a7 7 0 017-7z"/></svg>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><circle cx="12" cy="12" r="10"/></svg>
+        </div>
+        <div class="dd-label"><div class="dd-check">&#10005;</div> Don't use filled icons or mixed styles</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     08. CO-BRANDING
+     ============================================ -->
+<section class="section" id="cobranding">
+  <div class="container">
+    <span class="section-number">08</span>
+    <h2 class="section-title">Co-Branding</h2>
+    <p class="section-subtitle">When PeoplePeople appears alongside partner brands, maintain clear hierarchy. Our wordmark comes first (or has equal weight) and always retains proper clear space.</p>
+
+    <hr class="rule">
+
+    <p class="spec-label">Lockup Examples</p>
+    <div style="margin-bottom: var(--space-md);"></div>
+
+    <div class="grid-2" style="margin-bottom: var(--space-lg);">
+      <div class="lockup-demo" style="background: var(--warm-white);">
+        <span class="logo-text logo-text-md" style="color: var(--black);">PeoplePeople</span>
+        <div class="lockup-divider"></div>
+        <span class="lockup-partner">Partner</span>
+      </div>
+      <div class="lockup-demo" style="background: var(--black);">
+        <span class="logo-text logo-text-md" style="color: var(--yellow);">PeoplePeople</span>
+        <div class="lockup-divider"></div>
+        <span class="lockup-partner">Partner</span>
+      </div>
+    </div>
+
+    <hr class="rule">
+
+    <p class="spec-label">Hierarchy Rules</p>
+    <div style="margin-bottom: var(--space-md);"></div>
+
+    <div style="max-width: 600px; margin-bottom: var(--space-lg);">
+      <div class="voice-principle">
+        <div class="voice-principle-number" style="color: var(--black);">1</div>
+        <div>
+          <div class="voice-principle-title">PeoplePeople leads</div>
+          <div class="voice-principle-desc">In co-branded materials where PeoplePeople is the primary platform, our logo appears first (left or top).</div>
+        </div>
+      </div>
+      <div class="voice-principle">
+        <div class="voice-principle-number" style="color: var(--black);">2</div>
+        <div>
+          <div class="voice-principle-title">Divider required</div>
+          <div class="voice-principle-desc">A vertical rule or generous space separates the two brands. Never let logos touch or overlap.</div>
+        </div>
+      </div>
+      <div class="voice-principle">
+        <div class="voice-principle-number" style="color: var(--black);">3</div>
+        <div>
+          <div class="voice-principle-title">Size balance</div>
+          <div class="voice-principle-desc">Partner logos should be optically balanced with ours — not necessarily the same pixel size, but equal visual weight.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="do-dont">
+      <div class="do-card">
+        <div class="dd-preview" style="gap: 20px;">
+          <span class="logo-text" style="font-size: 24px; color: var(--black);">PeoplePeople</span>
+          <div style="width: 1px; height: 28px; background: var(--sand);"></div>
+          <span style="font-size: 18px; color: var(--grey);">Partner</span>
+        </div>
+        <div class="dd-label"><div class="dd-check">&#10003;</div> Clear separation with divider</div>
+      </div>
+      <div class="dont-card">
+        <div class="dd-preview">
+          <span class="logo-text" style="font-size: 20px; color: var(--black);">PeoplePeople</span>
+          <span style="font-size: 26px; font-weight: 800; color: var(--black); margin-left: 4px;">Partner</span>
+        </div>
+        <div class="dd-label"><div class="dd-check">&#10005;</div> Don't merge logos without separation</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     09. APPLICATIONS
+     ============================================ -->
+<section class="section section-dark" id="applications">
+  <div class="container">
+    <span class="section-number">09</span>
+    <h2 class="section-title">Applications</h2>
+    <p class="section-subtitle">The brand in context. These examples show how PeoplePeople's visual identity works across touchpoints — from screens to print to physical spaces.</p>
+
+    <hr class="rule">
+
+    <p class="spec-label">Social Media</p>
+    <div style="margin-bottom: var(--space-md);"></div>
+
+    <div class="grid-2" style="margin-bottom: var(--space-lg);">
+      <div class="mockup-social">
+        <div class="mockup-social-header">
+          <div class="mockup-social-avatar">Pp</div>
+          <div>
+            <div class="mockup-social-name">PeoplePeople</div>
+            <div class="mockup-social-handle">@peoplepeople</div>
+          </div>
+        </div>
+        <div class="mockup-social-body">
+          <div class="mockup-social-text">Plans are better when they're simple. New Quick Plans — create a plan in 10 seconds, send it to your people. No forms, no friction. Just "coffee in 30?"</div>
+          <div class="mockup-social-image" style="background: var(--yellow); color: var(--black);">
+            <div style="text-align: center;">
+              <div style="font-size: 28px; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 4px;">Quick Plans</div>
+              <div style="font-size: 13px; font-weight: 500;">10 seconds. That's it.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mockup-social">
+        <div class="mockup-social-header">
+          <div class="mockup-social-avatar">Pp</div>
+          <div>
+            <div class="mockup-social-name">PeoplePeople</div>
+            <div class="mockup-social-handle">@peoplepeople</div>
+          </div>
+        </div>
+        <div class="mockup-social-body">
+          <div class="mockup-social-text">Your city. Your people. Your places. Build a personal culture map with reviews from people you actually trust.</div>
+          <div class="mockup-social-image" style="background: var(--black); border: 1px solid rgba(255,255,255,0.08); color: var(--white);">
+            <div style="text-align: center;">
+              <div style="font-size: 13px; font-weight: 500; color: var(--yellow); margin-bottom: 8px;">Introducing</div>
+              <div style="font-size: 28px; font-weight: 800; letter-spacing: -0.03em;">Places</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="rule">
+
+    <p class="spec-label">Business Card</p>
+    <div style="margin-bottom: var(--space-md);"></div>
+
+    <div class="grid-2" style="margin-bottom: var(--space-lg);">
+      <div class="mockup-card">
+        <div class="mockup-card-top">
+          <div class="mockup-card-logo">PeoplePeople</div>
+          <div class="mockup-card-mark">Pp</div>
+        </div>
+        <div class="mockup-card-bottom">
+          <div class="mockup-card-name">Maya Chen</div>
+          <div class="mockup-card-title">Co-Founder</div>
+          <div class="mockup-card-url">peoplepeople.app</div>
+        </div>
+      </div>
+
+      <div class="mockup-card" style="background: var(--yellow); color: var(--black);">
+        <div class="mockup-card-top">
+          <div class="mockup-card-logo" style="color: var(--black);">PeoplePeople</div>
+          <div class="mockup-card-mark" style="background: var(--black); color: var(--yellow);">Pp</div>
+        </div>
+        <div class="mockup-card-bottom">
+          <div class="mockup-card-name" style="color: var(--black);">Maya Chen</div>
+          <div class="mockup-card-title" style="color: rgba(26,26,26,0.5);">Co-Founder</div>
+          <div class="mockup-card-url" style="color: var(--black);">peoplepeople.app</div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="rule">
+
+    <p class="spec-label">Signage</p>
+    <div style="margin-bottom: var(--space-md);"></div>
+
+    <div class="mockup-signage" style="margin-bottom: var(--space-lg);">
+      <div class="mockup-signage-bg">PeoplePeople</div>
+      <div class="mockup-signage-text">People<span>People</span></div>
+    </div>
+
+    <hr class="rule">
+
+    <p class="spec-label">App Icon</p>
+    <div style="margin-bottom: var(--space-md);"></div>
+
+    <div style="display: flex; gap: var(--space-md); flex-wrap: wrap;">
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 12px;">
+        <div style="width: 120px; height: 120px; border-radius: 28px; background: var(--yellow); display: flex; align-items: center; justify-content: center; font-size: 48px; font-weight: 800; color: var(--black); letter-spacing: -0.02em;">Pp</div>
+        <span style="font-size: 12px; color: rgba(255,255,255,0.4);">iOS / Android</span>
+      </div>
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 12px;">
+        <div style="width: 120px; height: 120px; border-radius: 28px; background: var(--black); display: flex; align-items: center; justify-content: center; font-size: 48px; font-weight: 800; color: var(--yellow); letter-spacing: -0.02em; border: 1px solid rgba(255,255,255,0.08);">Pp</div>
+        <span style="font-size: 12px; color: rgba(255,255,255,0.4);">Alternate Dark</span>
+      </div>
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 12px;">
+        <div style="width: 120px; height: 120px; border-radius: 60px; background: var(--yellow); display: flex; align-items: center; justify-content: center; font-size: 48px; font-weight: 800; color: var(--black); letter-spacing: -0.02em;">Pp</div>
+        <span style="font-size: 12px; color: rgba(255,255,255,0.4);">Web Favicon</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background: var(--yellow); padding: 80px 0; text-align: center;">
+  <div class="container">
+    <div style="font-size: clamp(36px, 6vw, 72px); font-weight: 900; letter-spacing: -0.04em; color: var(--black); margin-bottom: 16px;">PeoplePeople</div>
+    <div style="font-size: 15px; color: rgba(26,26,26,0.5); margin-bottom: 4px;">Brand Guidelines v1.0</div>
+    <div style="font-size: 13px; color: rgba(26,26,26,0.35);">February 2026 &middot; For internal and partner use</div>
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script>
+  // Nav scroll effect
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  // Section indicator
+  const sections = document.querySelectorAll('.section, .hero');
+  const dots = document.querySelectorAll('.indicator-dot');
+  const navLinks = document.querySelectorAll('.nav-links a');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        dots.forEach(dot => dot.classList.toggle('active', dot.dataset.section === id));
+        navLinks.forEach(link => link.classList.toggle('active', link.getAttribute('href') === '#' + id));
+      }
+    });
+  }, { threshold: 0.3 });
+
+  sections.forEach(section => observer.observe(section));
+
+  // Dot click navigation
+  dots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      const target = document.getElementById(dot.dataset.section);
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+</script>
+
+</body>
+</html>

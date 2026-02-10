@@ -1,0 +1,2434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PeoplePeople — Screen Prototypes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --warm-white: #F7F5F0;
+    --cream: #EDE9E0;
+    --sand: #D4CFC4;
+    --stone: #B8B2A6;
+    --charcoal: #2C2926;
+    --charcoal-light: #4A4540;
+    --charcoal-muted: #6B655D;
+    --accent: #C4654A;
+    --accent-hover: #B85A40;
+    --accent-light: #F0DED8;
+    --brand-yellow: #F2D548;
+    --brand-yellow-hover: #E5C83E;
+    --brand-yellow-light: #FBF3D5;
+    --brand-black: #1A1A1A;
+    --tag-green: #7A9B6D;
+    --tag-green-light: #E8F0E4;
+    --tag-amber: #C49B4A;
+    --tag-amber-light: #F5EDD8;
+    --tag-rose: #C4654A;
+    --tag-rose-light: #F0DED8;
+
+    --font-main: 'Albert Sans', 'Helvetica Neue', 'Helvetica', -apple-system, sans-serif;
+
+    --phone-width: 390px;
+    --phone-height: 844px;
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 16px;
+    --radius-full: 999px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #E8E4DC;
+    font-family: var(--font-main);
+    color: var(--charcoal);
+    -webkit-font-smoothing: antialiased;
+    font-weight: 400;
+  }
+
+  /* ---- Page Layout ---- */
+  .page-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 40px;
+  }
+
+  .page-title {
+    font-family: var(--font-main);
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+    color: var(--charcoal);
+  }
+
+  .page-subtitle {
+    font-family: var(--font-main);
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--charcoal-muted);
+    letter-spacing: 0.01em;
+    margin-bottom: 60px;
+  }
+
+  /* ---- Screen Section ---- */
+  .screen-section {
+    margin-bottom: 100px;
+  }
+
+  .screen-header {
+    margin-bottom: 32px;
+  }
+
+  .screen-label {
+    font-family: var(--font-main);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+
+  .screen-name {
+    font-family: var(--font-main);
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--charcoal);
+    margin-bottom: 8px;
+  }
+
+  .screen-desc {
+    font-size: 15px;
+    color: var(--charcoal-muted);
+    line-height: 1.5;
+    max-width: 500px;
+  }
+
+  /* ---- Phone Frame ---- */
+  .phone-row {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+
+  .phone-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .phone-state-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--charcoal-muted);
+  }
+
+  .phone-frame {
+    width: var(--phone-width);
+    height: var(--phone-height);
+    background: var(--warm-white);
+    border-radius: 40px;
+    overflow: hidden;
+    box-shadow:
+      0 1px 2px rgba(44,41,38,0.04),
+      0 4px 16px rgba(44,41,38,0.08),
+      0 24px 60px rgba(44,41,38,0.12);
+    position: relative;
+  }
+
+  .phone-frame-scroll {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .phone-frame-scroll::-webkit-scrollbar { display: none; }
+
+  /* ---- Status Bar ---- */
+  .status-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 28px 10px;
+    font-size: 15px;
+    font-weight: 600;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--brand-black);
+    color: var(--brand-yellow);
+  }
+
+  .status-bar-dark {
+    background: var(--brand-black);
+    color: var(--brand-yellow);
+  }
+
+  .status-icons {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+  }
+
+  .status-icons svg { width: 16px; height: 16px; }
+
+  /* ---- Shared Components ---- */
+  .avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--sand);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-main);
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--charcoal);
+    flex-shrink: 0;
+  }
+
+  .avatar-sm {
+    width: 28px;
+    height: 28px;
+    font-size: 12px;
+  }
+
+  .avatar-lg {
+    width: 48px;
+    height: 48px;
+    font-size: 20px;
+  }
+
+  .avatar-stack {
+    display: flex;
+  }
+
+  .avatar-stack .avatar {
+    margin-left: -8px;
+    border: 2px solid var(--warm-white);
+  }
+
+  .avatar-stack .avatar:first-child { margin-left: 0; }
+
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 14px;
+    border-radius: var(--radius-full);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    border: 1px solid var(--sand);
+    background: transparent;
+    color: var(--charcoal-muted);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+  }
+
+  .chip.active {
+    background: var(--brand-black);
+    color: var(--brand-yellow);
+    border-color: var(--brand-black);
+  }
+
+  .chip-accent.active {
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
+  }
+
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 10px;
+    border-radius: var(--radius-full);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .tag-green { background: var(--tag-green-light); color: var(--tag-green); }
+  .tag-amber { background: var(--tag-amber-light); color: var(--tag-amber); }
+  .tag-rose { background: var(--tag-rose-light); color: var(--tag-rose); }
+
+  .dots {
+    display: inline-flex;
+    gap: 4px;
+    align-items: center;
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--sand);
+  }
+
+  .dot.filled { background: var(--charcoal); }
+
+  .divider {
+    height: 1px;
+    background: var(--cream);
+    margin: 0;
+  }
+
+  .small-caps {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--charcoal-muted);
+  }
+
+  /* ==========================================
+     SCREEN 1: PUBLIC INVITE PAGE
+     ========================================== */
+
+  .invite-page {
+    background: var(--warm-white);
+    min-height: 100%;
+  }
+
+  .invite-cover {
+    width: 100%;
+    height: 240px;
+    background:
+      linear-gradient(180deg, rgba(44,41,38,0.1) 0%, rgba(44,41,38,0) 40%, rgba(44,41,38,0.5) 100%),
+      url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="390" height="240"><rect fill="%23B8B2A6" width="390" height="240"/><text x="195" y="130" text-anchor="middle" font-family="serif" font-size="60" fill="%23D4CFC4" opacity="0.5">evening</text></svg>');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+
+  .invite-cover-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 24px 28px;
+  }
+
+  .invite-date-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    background: rgba(247,245,240,0.92);
+    backdrop-filter: blur(8px);
+    border-radius: var(--radius-full);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--charcoal);
+  }
+
+  .invite-content {
+    padding: 32px 28px 40px;
+  }
+
+  .invite-title {
+    font-family: var(--font-main);
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--charcoal);
+    margin-bottom: 20px;
+  }
+
+  .invite-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+
+  .invite-meta-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 15px;
+    color: var(--charcoal-light);
+  }
+
+  .invite-meta-icon {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--charcoal-muted);
+    flex-shrink: 0;
+  }
+
+  .invite-description {
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--charcoal-light);
+    margin-bottom: 32px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--cream);
+  }
+
+  .invite-host {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+
+  .invite-host-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--charcoal-muted);
+  }
+
+  .invite-host-name {
+    font-family: var(--font-main);
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--charcoal);
+  }
+
+  .invite-guests {
+    margin-bottom: 36px;
+  }
+
+  .invite-guests-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+  }
+
+  .invite-guests-count {
+    font-size: 13px;
+    color: var(--charcoal-muted);
+  }
+
+  .invite-guest-list {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .invite-guest {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .invite-guest-name {
+    font-size: 12px;
+    color: var(--charcoal-muted);
+  }
+
+  .invite-guest-status {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--tag-green);
+  }
+
+  .invite-rsvp-btn {
+    width: 100%;
+    padding: 18px;
+    background: var(--brand-yellow);
+    color: var(--brand-black);
+    border: none;
+    border-radius: var(--radius-md);
+    font-family: var(--font-main);
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-bottom: 12px;
+  }
+
+  .invite-rsvp-btn:hover { background: var(--brand-yellow-hover); }
+
+  .invite-powered {
+    text-align: center;
+    font-size: 12px;
+    color: var(--stone);
+    margin-top: 24px;
+    letter-spacing: 0.04em;
+  }
+
+  .invite-powered span {
+    font-family: var(--font-main);
+    font-weight: 600;
+    color: var(--charcoal);
+  }
+
+  /* RSVP State */
+  .rsvp-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+
+  .rsvp-option {
+    width: 100%;
+    padding: 16px;
+    background: transparent;
+    border: 1.5px solid var(--sand);
+    border-radius: var(--radius-md);
+    font-family: var(--font-main);
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--charcoal);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+    letter-spacing: 0.02em;
+  }
+
+  .rsvp-option:hover {
+    border-color: var(--charcoal);
+    background: var(--cream);
+  }
+
+  .rsvp-option.selected {
+    border-color: var(--brand-yellow);
+    background: var(--brand-yellow);
+    color: var(--brand-black);
+    font-weight: 600;
+  }
+
+  /* ==========================================
+     SCREEN 2: QUICK PLAN CREATION
+     ========================================== */
+
+  .quick-plan-sheet {
+    background: var(--warm-white);
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sheet-handle {
+    width: 36px;
+    height: 4px;
+    background: var(--sand);
+    border-radius: 2px;
+    margin: 12px auto 0;
+  }
+
+  .sheet-header {
+    padding: 20px 28px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .sheet-title {
+    font-family: var(--font-main);
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  .sheet-close {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--cream);
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--charcoal-muted);
+    font-size: 16px;
+  }
+
+  .sheet-body {
+    padding: 28px 28px 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .field-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .field-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--charcoal-muted);
+  }
+
+  .field-input {
+    font-family: var(--font-main);
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--charcoal);
+    border: none;
+    background: transparent;
+    outline: none;
+    padding: 12px 0;
+    border-bottom: 1.5px solid var(--cream);
+    width: 100%;
+  }
+
+  .field-input::placeholder {
+    color: var(--sand);
+  }
+
+  .field-input-sm {
+    font-family: var(--font-main);
+    font-size: 15px;
+    font-weight: 400;
+    padding: 14px 16px;
+    border: 1px solid var(--cream);
+    border-radius: var(--radius-md);
+    background: var(--warm-white);
+    color: var(--charcoal);
+    outline: none;
+    width: 100%;
+  }
+
+  .field-input-sm::placeholder { color: var(--stone); }
+
+  .place-field {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 16px;
+    border: 1px solid var(--cream);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+  }
+
+  .place-field-icon {
+    color: var(--stone);
+    flex-shrink: 0;
+  }
+
+  .place-field-text {
+    font-size: 15px;
+    color: var(--stone);
+  }
+
+  .place-field-filled .place-field-text { color: var(--charcoal); }
+
+  .time-chips {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    padding-bottom: 4px;
+  }
+
+  .time-chips::-webkit-scrollbar { display: none; }
+
+  .time-chip {
+    padding: 10px 18px;
+    border-radius: var(--radius-full);
+    font-size: 14px;
+    font-weight: 500;
+    border: 1.5px solid var(--sand);
+    background: transparent;
+    color: var(--charcoal-muted);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+  }
+
+  .time-chip.active {
+    background: var(--brand-black);
+    color: var(--brand-yellow);
+    border-color: var(--brand-black);
+  }
+
+  .distribution-toggle {
+    display: flex;
+    border-radius: var(--radius-md);
+    border: 1.5px solid var(--cream);
+    overflow: hidden;
+  }
+
+  .distribution-option {
+    flex: 1;
+    padding: 14px;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: var(--charcoal-muted);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .distribution-option.active {
+    background: var(--brand-black);
+    color: var(--brand-yellow);
+  }
+
+  .sheet-footer {
+    padding: 20px 28px 40px;
+    margin-top: auto;
+  }
+
+  .send-btn {
+    width: 100%;
+    padding: 18px;
+    background: var(--brand-yellow);
+    color: var(--brand-black);
+    border: none;
+    border-radius: var(--radius-md);
+    font-family: var(--font-main);
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .send-btn:hover { background: var(--brand-yellow-hover); }
+
+  /* ==========================================
+     SCREEN 3: QUICK PLAN CARD
+     ========================================== */
+
+  .feed-screen {
+    background: var(--warm-white);
+    min-height: 100%;
+  }
+
+  .feed-header {
+    padding: 8px 28px 16px;
+    position: sticky;
+    top: 46px;
+    background: var(--warm-white);
+    z-index: 5;
+  }
+
+  .feed-title {
+    font-family: var(--font-main);
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin-bottom: 16px;
+  }
+
+  .feed-filters {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .feed-filters::-webkit-scrollbar { display: none; }
+
+  .feed-body {
+    padding: 0 28px 40px;
+  }
+
+  .feed-section-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+    margin-top: 8px;
+  }
+
+  .quick-card {
+    background: var(--warm-white);
+    border: 1.5px solid var(--cream);
+    border-radius: var(--radius-lg);
+    padding: 20px;
+    margin-bottom: 16px;
+    position: relative;
+  }
+
+  .quick-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+  }
+
+  .quick-card-type {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--brand-black);
+    background: var(--brand-yellow);
+    padding: 3px 8px;
+    border-radius: var(--radius-sm);
+  }
+
+  .quick-card-timer {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--charcoal-muted);
+  }
+
+  .timer-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--brand-yellow);
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  .quick-card-title {
+    font-family: var(--font-main);
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.25;
+    margin-bottom: 12px;
+    color: var(--charcoal);
+  }
+
+  .quick-card-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 18px;
+  }
+
+  .quick-card-meta-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: var(--charcoal-muted);
+  }
+
+  .quick-card-meta-icon {
+    width: 16px;
+    height: 16px;
+    color: var(--stone);
+    flex-shrink: 0;
+  }
+
+  .quick-card-organizer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 18px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--cream);
+  }
+
+  .quick-card-organizer-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--charcoal);
+  }
+
+  .quick-card-organizer-label {
+    font-size: 12px;
+    color: var(--charcoal-muted);
+  }
+
+  .quick-card-actions {
+    display: flex;
+    gap: 10px;
+  }
+
+  .quick-card-btn {
+    flex: 1;
+    padding: 14px;
+    border-radius: var(--radius-md);
+    font-family: var(--font-main);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+    border: none;
+  }
+
+  .quick-card-btn-primary {
+    background: var(--brand-yellow);
+    color: var(--brand-black);
+    font-weight: 600;
+  }
+
+  .quick-card-btn-primary:hover { background: var(--brand-yellow-hover); }
+
+  .quick-card-btn-secondary {
+    background: transparent;
+    border: 1.5px solid var(--sand);
+    color: var(--charcoal-muted);
+  }
+
+  .quick-card-btn-secondary:hover {
+    border-color: var(--charcoal-muted);
+    color: var(--charcoal);
+  }
+
+  /* Regular plan card for contrast */
+  .plan-card {
+    border-bottom: 1px solid var(--cream);
+    padding: 20px 0;
+  }
+
+  .plan-card:last-child { border-bottom: none; }
+
+  .plan-card-date {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--charcoal-muted);
+    margin-bottom: 6px;
+  }
+
+  .plan-card-title {
+    font-family: var(--font-main);
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--charcoal);
+    margin-bottom: 6px;
+    line-height: 1.25;
+  }
+
+  .plan-card-location {
+    font-size: 14px;
+    color: var(--charcoal-muted);
+    margin-bottom: 10px;
+  }
+
+  .plan-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .plan-card-attendees {
+    font-size: 13px;
+    color: var(--stone);
+  }
+
+  /* ==========================================
+     SCREEN 4: PLACES LIST
+     ========================================== */
+
+  .places-screen {
+    background: var(--warm-white);
+    min-height: 100%;
+  }
+
+  .places-header {
+    padding: 8px 28px 0;
+    position: sticky;
+    top: 46px;
+    background: var(--warm-white);
+    z-index: 5;
+  }
+
+  .places-title {
+    font-family: var(--font-main);
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin-bottom: 18px;
+  }
+
+  .places-tabs {
+    display: flex;
+    gap: 0;
+    border-bottom: 1px solid var(--cream);
+    margin-bottom: 0;
+  }
+
+  .places-tab {
+    padding: 10px 0;
+    margin-right: 24px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--stone);
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+  }
+
+  .places-tab.active {
+    color: var(--charcoal);
+    border-bottom-color: var(--charcoal);
+  }
+
+  .places-categories {
+    display: flex;
+    gap: 8px;
+    padding: 16px 28px;
+    overflow-x: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .places-categories::-webkit-scrollbar { display: none; }
+
+  .places-body {
+    padding: 0 28px 40px;
+  }
+
+  .places-city-header {
+    font-family: var(--font-main);
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--charcoal);
+    margin-bottom: 4px;
+    margin-top: 8px;
+  }
+
+  .places-neighborhood-header {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--charcoal-muted);
+    margin-bottom: 16px;
+    margin-top: 6px;
+  }
+
+  .place-entry {
+    padding: 18px 0;
+    border-bottom: 1px solid var(--cream);
+  }
+
+  .place-entry:last-child { border-bottom: none; }
+
+  .place-entry-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 6px;
+  }
+
+  .place-entry-name {
+    font-family: var(--font-main);
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--charcoal);
+    line-height: 1.25;
+  }
+
+  .place-entry-category {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--stone);
+    margin-bottom: 8px;
+  }
+
+  .place-entry-details {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+  }
+
+  .place-entry-note {
+    font-size: 14px;
+    color: var(--charcoal-muted);
+    line-height: 1.5;
+  }
+
+  .place-entry-connections {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+    font-size: 12px;
+    color: var(--stone);
+  }
+
+  /* ==========================================
+     SCREEN 5: PLACE DETAIL
+     ========================================== */
+
+  .detail-screen {
+    background: var(--warm-white);
+    min-height: 100%;
+  }
+
+  .detail-nav {
+    padding: 8px 28px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 46px;
+    background: var(--warm-white);
+    z-index: 5;
+  }
+
+  .detail-back {
+    font-size: 14px;
+    color: var(--charcoal);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background: none;
+    border: none;
+    font-family: var(--font-main);
+  }
+
+  .detail-action {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--accent);
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-family: var(--font-main);
+    letter-spacing: 0.02em;
+  }
+
+  .detail-map {
+    width: 100%;
+    height: 180px;
+    background:
+      linear-gradient(135deg, var(--cream) 0%, var(--sand) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--stone);
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .detail-content {
+    padding: 28px 28px 40px;
+  }
+
+  .detail-category {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+
+  .detail-name {
+    font-family: var(--font-main);
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--charcoal);
+    margin-bottom: 10px;
+  }
+
+  .detail-address {
+    font-size: 15px;
+    color: var(--charcoal-muted);
+    margin-bottom: 28px;
+    line-height: 1.4;
+  }
+
+  .detail-section {
+    margin-bottom: 32px;
+  }
+
+  .detail-section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+  }
+
+  .detail-section-title {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--charcoal-muted);
+  }
+
+  .detail-section-action {
+    font-size: 13px;
+    color: var(--accent);
+    cursor: pointer;
+    font-weight: 500;
+  }
+
+  .your-entry {
+    background: var(--cream);
+    border-radius: var(--radius-lg);
+    padding: 20px;
+  }
+
+  .your-entry-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 12px;
+  }
+
+  .your-entry-note {
+    font-size: 15px;
+    color: var(--charcoal-light);
+    line-height: 1.5;
+  }
+
+  .connection-entry {
+    padding: 18px 0;
+    border-bottom: 1px solid var(--cream);
+  }
+
+  .connection-entry:last-child { border-bottom: none; }
+
+  .connection-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+
+  .connection-info {
+    flex: 1;
+  }
+
+  .connection-name {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--charcoal);
+  }
+
+  .connection-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 3px;
+  }
+
+  .connection-note {
+    font-size: 14px;
+    color: var(--charcoal-muted);
+    line-height: 1.5;
+    margin-bottom: 12px;
+    padding-left: 48px;
+  }
+
+  .connection-comment {
+    margin-left: 48px;
+    padding: 12px 16px;
+    background: var(--cream);
+    border-radius: var(--radius-md);
+    margin-bottom: 8px;
+  }
+
+  .connection-comment-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+
+  .connection-comment-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--charcoal);
+  }
+
+  .connection-comment-time {
+    font-size: 11px;
+    color: var(--stone);
+  }
+
+  .connection-comment-text {
+    font-size: 14px;
+    color: var(--charcoal-light);
+    line-height: 1.4;
+  }
+
+  .add-comment {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: 48px;
+    margin-top: 8px;
+  }
+
+  .add-comment-input {
+    flex: 1;
+    padding: 10px 14px;
+    border: 1px solid var(--cream);
+    border-radius: var(--radius-full);
+    font-size: 13px;
+    font-family: var(--font-main);
+    background: var(--warm-white);
+    color: var(--charcoal);
+    outline: none;
+  }
+
+  .add-comment-input::placeholder { color: var(--stone); }
+
+  .detail-use-btn {
+    width: 100%;
+    padding: 18px;
+    background: var(--brand-yellow);
+    color: var(--brand-black);
+    border: none;
+    border-radius: var(--radius-md);
+    font-family: var(--font-main);
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-top: 8px;
+  }
+
+  .detail-use-btn:hover { background: var(--brand-yellow-hover); }
+
+  /* ---- Tab Bar (shared) ---- */
+  .tab-bar {
+    position: sticky;
+    bottom: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px 0 28px;
+    background: var(--brand-black);
+    border-top: none;
+    z-index: 10;
+  }
+
+  .tab-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: rgba(242,213,72,0.45);
+    cursor: pointer;
+  }
+
+  .tab-item.active { color: var(--brand-yellow); }
+
+  .tab-icon {
+    width: 22px;
+    height: 22px;
+  }
+
+  .tab-badge {
+    position: relative;
+  }
+
+  .tab-badge::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    right: -4px;
+    width: 8px;
+    height: 8px;
+    background: var(--brand-yellow);
+    border-radius: 50%;
+    border: 2px solid var(--brand-black);
+  }
+
+  /* ---- Screen Divider ---- */
+  .screen-divider {
+    height: 1px;
+    background: var(--sand);
+    margin: 80px 0;
+    opacity: 0.5;
+  }
+</style>
+</head>
+<body>
+
+<div class="page-container">
+  <h1 class="page-title">PeoplePeople</h1>
+  <p class="page-subtitle">Screen Prototypes &mdash; February 2026</p>
+
+  <!-- ============================================
+       SCREEN 1: PUBLIC INVITE PAGE
+       ============================================ -->
+  <div class="screen-section">
+    <div class="screen-header">
+      <div class="screen-label">Screen 01</div>
+      <h2 class="screen-name">Public Invite Page</h2>
+      <p class="screen-desc">The shareable invite link opens this server-rendered page. First impression for non-users — optimized for link previews and one-tap RSVP.</p>
+    </div>
+
+    <div class="phone-row">
+      <!-- Default State -->
+      <div class="phone-wrapper">
+        <div class="phone-state-label">Default</div>
+        <div class="phone-frame">
+          <div class="phone-frame-scroll">
+            <div class="invite-page">
+              <div class="status-bar status-bar-dark">
+                <span>9:41</span>
+                <div class="status-icons">
+                  <svg viewBox="0 0 16 16" fill="currentColor"><path d="M1 10h2v4H1zm4-3h2v7H5zm4-3h2v10H9zm4-3h2v13h-2z"/></svg>
+                  <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 2a6 6 0 016 6h-2a4 4 0 00-8 0H2a6 6 0 016-6zm0 4a2 2 0 012 2H6a2 2 0 012-2z"/></svg>
+                  <svg viewBox="0 0 16 16" fill="currentColor"><path d="M2 5h12v6H2zm-1 0a1 1 0 011-1h12a1 1 0 011 1v6a1 1 0 01-1 1H2a1 1 0 01-1-1V5zm14 2h1v2h-1V7z"/></svg>
+                </div>
+              </div>
+
+              <div class="invite-cover">
+                <div class="invite-cover-overlay">
+                  <div class="invite-date-badge">
+                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="12" height="11" rx="1.5"/><path d="M2 6.5h12M5.5 1.5v3M10.5 1.5v3"/></svg>
+                    Sat, Feb 15
+                  </div>
+                </div>
+              </div>
+
+              <div class="invite-content">
+                <h1 class="invite-title">Dinner at<br>the Parlour</h1>
+
+                <div class="invite-meta">
+                  <div class="invite-meta-row">
+                    <div class="invite-meta-icon">
+                      <svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 4.5V8l2.5 1.5"/></svg>
+                    </div>
+                    Saturday, February 15 &middot; 7:30 PM
+                  </div>
+                  <div class="invite-meta-row">
+                    <div class="invite-meta-icon">
+                      <svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 1.5a4.5 4.5 0 014.5 4.5c0 3.5-4.5 8.5-4.5 8.5S3.5 9.5 3.5 6A4.5 4.5 0 018 1.5z"/><circle cx="8" cy="6" r="1.5"/></svg>
+                    </div>
+                    The Parlour, 241 Smith St, Brooklyn
+                  </div>
+                </div>
+
+                <p class="invite-description">An evening of good food and even better company. We have a reservation for 8 — come hungry. Dress code is whatever makes you feel great.</p>
+
+                <div class="invite-host">
+                  <div class="avatar avatar-lg" style="background: var(--cream);">M</div>
+                  <div>
+                    <div class="invite-host-label">Hosted by</div>
+                    <div class="invite-host-name">Maya Chen</div>
+                  </div>
+                </div>
+
+                <div class="invite-guests">
+                  <div class="invite-guests-header">
+                    <span class="small-caps">Going</span>
+                    <span class="invite-guests-count">4 of 8</span>
+                  </div>
+                  <div class="invite-guest-list">
+                    <div class="invite-guest">
+                      <div class="avatar" style="background: #D4CFC4;">J</div>
+                      <span class="invite-guest-name">James</span>
+                    </div>
+                    <div class="invite-guest">
+                      <div class="avatar" style="background: #C4B5A5;">S</div>
+                      <span class="invite-guest-name">Sofia</span>
+                    </div>
+                    <div class="invite-guest">
+                      <div class="avatar" style="background: #B8ADA0;">R</div>
+                      <span class="invite-guest-name">Raj</span>
+                    </div>
+                    <div class="invite-guest">
+                      <div class="avatar" style="background: #CCC5B8;">L</div>
+                      <span class="invite-guest-name">Lena</span>
+                    </div>
+                  </div>
+                </div>
+
+                <button class="invite-rsvp-btn">RSVP</button>
+
+                <p class="invite-powered">on <span>PeoplePeople</span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RSVP State -->
+      <div class="phone-wrapper">
+        <div class="phone-state-label">RSVP Open</div>
+        <div class="phone-frame">
+          <div class="phone-frame-scroll">
+            <div class="invite-page">
+              <div class="status-bar status-bar-dark">
+                <span>9:41</span>
+                <div class="status-icons">
+                  <svg viewBox="0 0 16 16" fill="currentColor"><path d="M1 10h2v4H1zm4-3h2v7H5zm4-3h2v10H9zm4-3h2v13h-2z"/></svg>
+                  <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 2a6 6 0 016 6h-2a4 4 0 00-8 0H2a6 6 0 016-6zm0 4a2 2 0 012 2H6a2 2 0 012-2z"/></svg>
+                  <svg viewBox="0 0 16 16" fill="currentColor"><path d="M2 5h12v6H2zm-1 0a1 1 0 011-1h12a1 1 0 011 1v6a1 1 0 01-1 1H2a1 1 0 01-1-1V5zm14 2h1v2h-1V7z"/></svg>
+                </div>
+              </div>
+
+              <div class="invite-cover">
+                <div class="invite-cover-overlay">
+                  <div class="invite-date-badge">
+                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="12" height="11" rx="1.5"/><path d="M2 6.5h12M5.5 1.5v3M10.5 1.5v3"/></svg>
+                    Sat, Feb 15
+                  </div>
+                </div>
+              </div>
+
+              <div class="invite-content">
+                <h1 class="invite-title">Dinner at<br>the Parlour</h1>
+
+                <div class="invite-meta">
+                  <div class="invite-meta-row">
+                    <div class="invite-meta-icon">
+                      <svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 4.5V8l2.5 1.5"/></svg>
+                    </div>
+                    Saturday, February 15 &middot; 7:30 PM
+                  </div>
+                  <div class="invite-meta-row">
+                    <div class="invite-meta-icon">
+                      <svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 1.5a4.5 4.5 0 014.5 4.5c0 3.5-4.5 8.5-4.5 8.5S3.5 9.5 3.5 6A4.5 4.5 0 018 1.5z"/><circle cx="8" cy="6" r="1.5"/></svg>
+                    </div>
+                    The Parlour, 241 Smith St, Brooklyn
+                  </div>
+                </div>
+
+                <p class="invite-description">An evening of good food and even better company. We have a reservation for 8 — come hungry. Dress code is whatever makes you feel great.</p>
+
+                <div class="invite-host">
+                  <div class="avatar avatar-lg" style="background: var(--cream);">M</div>
+                  <div>
+                    <div class="invite-host-label">Hosted by</div>
+                    <div class="invite-host-name">Maya Chen</div>
+                  </div>
+                </div>
+
+                <div class="invite-guests">
+                  <div class="invite-guests-header">
+                    <span class="small-caps">Going</span>
+                    <span class="invite-guests-count">4 of 8</span>
+                  </div>
+                  <div class="invite-guest-list">
+                    <div class="invite-guest">
+                      <div class="avatar" style="background: #D4CFC4;">J</div>
+                      <span class="invite-guest-name">James</span>
+                    </div>
+                    <div class="invite-guest">
+                      <div class="avatar" style="background: #C4B5A5;">S</div>
+                      <span class="invite-guest-name">Sofia</span>
+                    </div>
+                    <div class="invite-guest">
+                      <div class="avatar" style="background: #B8ADA0;">R</div>
+                      <span class="invite-guest-name">Raj</span>
+                    </div>
+                    <div class="invite-guest">
+                      <div class="avatar" style="background: #CCC5B8;">L</div>
+                      <span class="invite-guest-name">Lena</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="rsvp-options">
+                  <button class="rsvp-option selected">Going</button>
+                  <button class="rsvp-option">Interested</button>
+                  <button class="rsvp-option">Can't Make It</button>
+                </div>
+
+                <p class="invite-powered">on <span>PeoplePeople</span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="screen-divider"></div>
+
+  <!-- ============================================
+       SCREEN 2: QUICK PLAN CREATION
+       ============================================ -->
+  <div class="screen-section">
+    <div class="screen-header">
+      <div class="screen-label">Screen 02</div>
+      <h2 class="screen-name">Quick Plan Creation</h2>
+      <p class="screen-desc">A radically simple, single-screen bottom sheet for spontaneous plans. Under 10 seconds from tap to send.</p>
+    </div>
+
+    <div class="phone-row">
+      <!-- Empty State -->
+      <div class="phone-wrapper">
+        <div class="phone-state-label">Empty</div>
+        <div class="phone-frame">
+          <div class="phone-frame-scroll">
+            <div class="quick-plan-sheet">
+              <div class="status-bar">
+                <span>9:41</span>
+                <div class="status-icons">
+                  <svg viewBox="0 0 16 16" fill="currentColor"><path d="M1 10h2v4H1zm4-3h2v7H5zm4-3h2v10H9zm4-3h2v13h-2z"/></svg>
+                  <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 2a6 6 0 016 6h-2a4 4 0 00-8 0H2a6 6 0 016-6zm0 4a2 2 0 012 2H6a2 2 0 012-2z"/></svg>
+                  <svg viewBox="0 0 16 16" fill="currentColor"><path d="M2 5h12v6H2zm-1 0a1 1 0 011-1h12a1 1 0 011 1v6a1 1 0 01-1 1H2a1 1 0 01-1-1V5zm14 2h1v2h-1V7z"/></svg>
+                </div>
+              </div>
+
+              <div class="sheet-handle"></div>
+
+              <div class="sheet-header">
+                <h2 class="sheet-title">Quick Plan</h2>
+                <button class="sheet-close">&times;</button>
+              </div>
+
+              <div class="sheet-body">
+                <div class="field-group">
+                  <label class="field-label">What</label>
+                  <input type="text" class="field-input" placeholder="What's the plan?">
+                </div>
+
+                <div class="field-group">
+                  <label class="field-label">Where</label>
+                  <div class="place-field">
+                    <div class="place-field-icon">
+                      <svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 1.5a4.5 4.5 0 014.5 4.5c0 3.5-4.5 8.5-4.5 8.5S3.5 9.5 3.5 6A4.5 4.5 0 018 1.5z"/><circle cx="8" cy="6" r="1.5"/></svg>
+                    </div>
+                    <span class="place-field-text">Add a place (optional)</span>
+                  </div>
+                </div>
+
+                <div class="field-group">
+                  <label class="field-label">When</label>
+                  <div class="time-chips">
+                    <button class="time-chip active">Now</button>
+                    <button class="time-chip">30 min</button>
+                    <button class="time-chip">1 hour</button>
+                    <button class="time-chip">2 hours</button>
+                    <button class="time-chip">This evening</button>
+                    <button class="time-chip">Tomorrow</button>
+                  </div>
+                </div>
+
+                <div class="field-group">
+                  <label class="field-label">Who</label>
+                  <div class="distribution-toggle">
+                    <button class="distribution-option active">All Connections</button>
+                    <button class="distribution-option">Select People</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="sheet-footer">
+                <button class="send-btn">Send Quick Plan</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Filled State -->
+      <div class="phone-wrapper">
+        <div class="phone-state-label">Filled</div>
+        <div class="phone-frame">
+          <div class="phone-frame-scroll">
+            <div class="quick-plan-sheet">
+              <div class="status-bar">
+                <span>9:41</span>
+                <div class="status-icons">
+                  <svg viewBox="0 0 16 16" fill="currentColor"><path d="M1 10h2v4H1zm4-3h2v7H5zm4-3h2v10H9zm4-3h2v13h-2z"/></svg>
+                  <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 2a6 6 0 016 6h-2a4 4 0 00-8 0H2a6 6 0 016-6zm0 4a2 2 0 012 2H6a2 2 0 012-2z"/></svg>
+                  <svg viewBox="0 0 16 16" fill="currentColor"><path d="M2 5h12v6H2zm-1 0a1 1 0 011-1h12a1 1 0 011 1v6a1 1 0 01-1 1H2a1 1 0 01-1-1V5zm14 2h1v2h-1V7z"/></svg>
+                </div>
+              </div>
+
+              <div class="sheet-handle"></div>
+
+              <div class="sheet-header">
+                <h2 class="sheet-title">Quick Plan</h2>
+                <button class="sheet-close">&times;</button>
+              </div>
+
+              <div class="sheet-body">
+                <div class="field-group">
+                  <label class="field-label">What</label>
+                  <input type="text" class="field-input" value="Coffee and a walk?">
+                </div>
+
+                <div class="field-group">
+                  <label class="field-label">Where</label>
+                  <div class="place-field place-field-filled">
+                    <div class="place-field-icon" style="color: var(--charcoal-muted);">
+                      <svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 1.5a4.5 4.5 0 014.5 4.5c0 3.5-4.5 8.5-4.5 8.5S3.5 9.5 3.5 6A4.5 4.5 0 018 1.5z"/><circle cx="8" cy="6" r="1.5"/></svg>
+                    </div>
+                    <span class="place-field-text">Devocion, Williamsburg</span>
+                  </div>
+                </div>
+
+                <div class="field-group">
+                  <label class="field-label">When</label>
+                  <div class="time-chips">
+                    <button class="time-chip">Now</button>
+                    <button class="time-chip active">30 min</button>
+                    <button class="time-chip">1 hour</button>
+                    <button class="time-chip">2 hours</button>
+                    <button class="time-chip">This evening</button>
+                    <button class="time-chip">Tomorrow</button>
+                  </div>
+                </div>
+
+                <div class="field-group">
+                  <label class="field-label">Who</label>
+                  <div class="distribution-toggle">
+                    <button class="distribution-option active">All Connections</button>
+                    <button class="distribution-option">Select People</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="sheet-footer">
+                <button class="send-btn">Send Quick Plan</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="screen-divider"></div>
+
+  <!-- ============================================
+       SCREEN 3: QUICK PLAN CARD IN FEED
+       ============================================ -->
+  <div class="screen-section">
+    <div class="screen-header">
+      <div class="screen-label">Screen 03</div>
+      <h2 class="screen-name">Quick Plan Card</h2>
+      <p class="screen-desc">How Quick Plans appear in the Plans tab feed — visually distinct, time-sensitive, with inline response buttons.</p>
+    </div>
+
+    <div class="phone-row">
+      <div class="phone-wrapper">
+        <div class="phone-state-label">Plans Feed</div>
+        <div class="phone-frame">
+          <div class="phone-frame-scroll">
+            <div class="feed-screen">
+              <div class="status-bar">
+                <span>9:41</span>
+                <div class="status-icons">
+                  <svg viewBox="0 0 16 16" fill="currentColor"><path d="M1 10h2v4H1zm4-3h2v7H5zm4-3h2v10H9zm4-3h2v13h-2z"/></svg>
+                  <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 2a6 6 0 016 6h-2a4 4 0 00-8 0H2a6 6 0 016-6zm0 4a2 2 0 012 2H6a2 2 0 012-2z"/></svg>
+                  <svg viewBox="0 0 16 16" fill="currentColor"><path d="M2 5h12v6H2zm-1 0a1 1 0 011-1h12a1 1 0 011 1v6a1 1 0 01-1 1H2a1 1 0 01-1-1V5zm14 2h1v2h-1V7z"/></svg>
+                </div>
+              </div>
+
+              <div class="feed-header">
+                <h1 class="feed-title">Plans</h1>
+                <div class="feed-filters">
+                  <button class="chip active">All</button>
+                  <button class="chip">My Plans</button>
+                  <button class="chip">Invites</button>
+                  <button class="chip">This Week</button>
+                </div>
+              </div>
+
+              <div class="feed-body">
+                <div class="feed-section-label">Happening Now</div>
+
+                <div class="quick-card">
+                  <div class="quick-card-header">
+                    <span class="quick-card-type">Quick Plan</span>
+                    <span class="quick-card-timer">
+                      <span class="timer-dot"></span>
+                      in 25 min
+                    </span>
+                  </div>
+
+                  <h3 class="quick-card-title">Coffee and a walk?</h3>
+
+                  <div class="quick-card-meta">
+                    <div class="quick-card-meta-row">
+                      <svg class="quick-card-meta-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 1.5a4.5 4.5 0 014.5 4.5c0 3.5-4.5 8.5-4.5 8.5S3.5 9.5 3.5 6A4.5 4.5 0 018 1.5z"/><circle cx="8" cy="6" r="1.5"/></svg>
+                      Devocion, Williamsburg
+                    </div>
+                  </div>
+
+                  <div class="quick-card-organizer">
+                    <div class="avatar avatar-sm" style="background: var(--cream);">M</div>
+                    <div>
+                      <div class="quick-card-organizer-name">Maya Chen</div>
+                    </div>
+                  </div>
+
+                  <div class="quick-card-actions">
+                    <button class="quick-card-btn quick-card-btn-primary">I'm Down</button>
+                    <button class="quick-card-btn quick-card-btn-secondary">Can't</button>
+                  </div>
+                </div>
+
+                <div class="quick-card">
+                  <div class="quick-card-header">
+                    <span class="quick-card-type">Quick Plan</span>
+                    <span class="quick-card-timer">
+                      <span class="timer-dot"></span>
+                      this evening
+                    </span>
+                  </div>
+
+                  <h3 class="quick-card-title">Pickup basketball at McCarren</h3>
+
+                  <div class="quick-card-meta">
+                    <div class="quick-card-meta-row">
+                      <svg class="quick-card-meta-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 1.5a4.5 4.5 0 014.5 4.5c0 3.5-4.5 8.5-4.5 8.5S3.5 9.5 3.5 6A4.5 4.5 0 018 1.5z"/><circle cx="8" cy="6" r="1.5"/></svg>
+                      McCarren Park
+                    </div>
+                    <div class="quick-card-meta-row">
+                      <svg class="quick-card-meta-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 8a4 4 0 11-8 0 4 4 0 018 0z"/><path d="M8 5v3l2 1"/></svg>
+                      3 people are down
+                    </div>
+                  </div>
+
+                  <div class="quick-card-organizer">
+                    <div class="avatar avatar-sm" style="background: #C4B5A5;">R</div>
+                    <div>
+                      <div class="quick-card-organizer-name">Raj Patel</div>
+                    </div>
+                  </div>
+
+                  <div class="quick-card-actions">
+                    <button class="quick-card-btn quick-card-btn-primary">I'm Down</button>
+                    <button class="quick-card-btn quick-card-btn-secondary">Can't</button>
+                  </div>
+                </div>
+
+                <div style="margin-top: 24px;">
+                  <div class="feed-section-label" style="color: var(--charcoal-muted);">Upcoming</div>
+
+                  <div class="plan-card">
+                    <div class="plan-card-date">Sat, Feb 15</div>
+                    <h3 class="plan-card-title">Dinner at the Parlour</h3>
+                    <div class="plan-card-location">241 Smith St, Brooklyn</div>
+                    <div class="plan-card-footer">
+                      <div class="avatar-stack">
+                        <div class="avatar avatar-sm" style="background: #D4CFC4;">M</div>
+                        <div class="avatar avatar-sm" style="background: #C4B5A5;">J</div>
+                        <div class="avatar avatar-sm" style="background: #B8ADA0;">S</div>
+                      </div>
+                      <span class="plan-card-attendees">4 going</span>
+                    </div>
+                  </div>
+
+                  <div class="plan-card">
+                    <div class="plan-card-date">Sun, Feb 16</div>
+                    <h3 class="plan-card-title">Gallery Opening — Pace</h3>
+                    <div class="plan-card-location">540 W 25th St, Manhattan</div>
+                    <div class="plan-card-footer">
+                      <div class="avatar-stack">
+                        <div class="avatar avatar-sm" style="background: #CCC5B8;">L</div>
+                        <div class="avatar avatar-sm" style="background: #D4CFC4;">A</div>
+                      </div>
+                      <span class="plan-card-attendees">2 going</span>
+                    </div>
+                  </div>
+
+                  <div class="plan-card">
+                    <div class="plan-card-date">Tue, Feb 18</div>
+                    <h3 class="plan-card-title">Wine Tasting at Brooklyn Winery</h3>
+                    <div class="plan-card-location">213 N 8th St, Brooklyn</div>
+                    <div class="plan-card-footer">
+                      <div class="avatar-stack">
+                        <div class="avatar avatar-sm" style="background: #B8ADA0;">R</div>
+                        <div class="avatar avatar-sm" style="background: #C4B5A5;">M</div>
+                        <div class="avatar avatar-sm" style="background: #D4CFC4;">K</div>
+                        <div class="avatar avatar-sm" style="background: #CCC5B8;">J</div>
+                      </div>
+                      <span class="plan-card-attendees">6 going</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tab-bar">
+                <div class="tab-item active">
+                  <svg class="tab-icon" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="16" height="14" rx="2"/><path d="M3 8h16M7 2v4M15 2v4"/></svg>
+                  Plans
+                </div>
+                <div class="tab-item">
+                  <svg class="tab-icon" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="4"/><circle cx="16" cy="8" r="4"/><path d="M1 19c0-3 3-5 7-5s7 2 7 5"/></svg>
+                  People
+                </div>
+                <div class="tab-item">
+                  <svg class="tab-icon" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="M11 7v8M7 11h8"/></svg>
+                </div>
+                <div class="tab-item">
+                  <div class="tab-badge">
+                    <svg class="tab-icon" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13.73 21a2 2 0 01-3.46 0M18 8A7 7 0 004 8c0 7-3 9-3 9h20s-3-2-3-9z"/></svg>
+                  </div>
+                  Alerts
+                </div>
+                <div class="tab-item">
+                  <svg class="tab-icon" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+                  Chats
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="screen-divider"></div>
+
+  <!-- ============================================
+       SCREEN 4: PLACES LIST
+       ============================================ -->
+  <div class="screen-section">
+    <div class="screen-header">
+      <div class="screen-label">Screen 04</div>
+      <h2 class="screen-name">Places List</h2>
+      <p class="screen-desc">Personal culture map — places grouped by city and neighborhood, with connection-scoped reviews and ratings.</p>
+    </div>
+
+    <div class="phone-row">
+      <!-- My Places -->
+      <div class="phone-wrapper">
+        <div class="phone-state-label">My Places</div>
+        <div class="phone-frame">
+          <div class="phone-frame-scroll">
+            <div class="places-screen">
+              <div class="status-bar">
+                <span>9:41</span>
+                <div class="status-icons">
+                  <svg viewBox="0 0 16 16" fill="currentColor"><path d="M1 10h2v4H1zm4-3h2v7H5zm4-3h2v10H9zm4-3h2v13h-2z"/></svg>
+                  <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 2a6 6 0 016 6h-2a4 4 0 00-8 0H2a6 6 0 016-6zm0 4a2 2 0 012 2H6a2 2 0 012-2z"/></svg>
+                  <svg viewBox="0 0 16 16" fill="currentColor"><path d="M2 5h12v6H2zm-1 0a1 1 0 011-1h12a1 1 0 011 1v6a1 1 0 01-1 1H2a1 1 0 01-1-1V5zm14 2h1v2h-1V7z"/></svg>
+                </div>
+              </div>
+
+              <div class="places-header">
+                <h1 class="places-title">Places</h1>
+                <div class="places-tabs">
+                  <button class="places-tab active">My Places</button>
+                  <button class="places-tab">Near Me</button>
+                  <button class="places-tab">Network</button>
+                </div>
+              </div>
+
+              <div class="places-categories">
+                <button class="chip active">All</button>
+                <button class="chip">Restaurant</button>
+                <button class="chip">Cafe</button>
+                <button class="chip">Bar</button>
+                <button class="chip">Gallery</button>
+                <button class="chip">Park</button>
+              </div>
+
+              <div class="places-body">
+                <h3 class="places-city-header">Brooklyn</h3>
+                <div class="places-neighborhood-header">Williamsburg</div>
+
+                <div class="place-entry">
+                  <div class="place-entry-top">
+                    <div>
+                      <div class="place-entry-name">Devocion</div>
+                      <div class="place-entry-category">Cafe</div>
+                    </div>
+                    <div class="dots">
+                      <div class="dot filled"></div>
+                      <div class="dot filled"></div>
+                      <div class="dot filled"></div>
+                    </div>
+                  </div>
+                  <div class="place-entry-details">
+                    <span class="tag tag-rose">Favorite</span>
+                  </div>
+                  <div class="place-entry-note">"Best cortado in the city. The atrium is unreal."</div>
+                  <div class="place-entry-connections">
+                    <div class="avatar-stack">
+                      <div class="avatar avatar-sm" style="background: #D4CFC4; font-size: 10px;">J</div>
+                      <div class="avatar avatar-sm" style="background: #C4B5A5; font-size: 10px;">S</div>
+                    </div>
+                    2 connections saved this
+                  </div>
+                </div>
+
+                <div class="place-entry">
+                  <div class="place-entry-top">
+                    <div>
+                      <div class="place-entry-name">Lilia</div>
+                      <div class="place-entry-category">Restaurant</div>
+                    </div>
+                    <div class="dots">
+                      <div class="dot filled"></div>
+                      <div class="dot filled"></div>
+                      <div class="dot filled"></div>
+                    </div>
+                  </div>
+                  <div class="place-entry-details">
+                    <span class="tag tag-green">Been Here</span>
+                  </div>
+                  <div class="place-entry-note">"Mafaldini is life-changing. Book 2 weeks out."</div>
+                  <div class="place-entry-connections">
+                    <div class="avatar-stack">
+                      <div class="avatar avatar-sm" style="background: #B8ADA0; font-size: 10px;">R</div>
+                      <div class="avatar avatar-sm" style="background: #CCC5B8; font-size: 10px;">L</div>
+                      <div class="avatar avatar-sm" style="background: #D4CFC4; font-size: 10px;">M</div>
+                    </div>
+                    3 connections saved this
+                  </div>
+                </div>
+
+                <div class="place-entry">
+                  <div class="place-entry-top">
+                    <div>
+                      <div class="place-entry-name">Sunday in Brooklyn</div>
+                      <div class="place-entry-category">Restaurant</div>
+                    </div>
+                    <div class="dots">
+                      <div class="dot filled"></div>
+                      <div class="dot filled"></div>
+                      <div class="dot"></div>
+                    </div>
+                  </div>
+                  <div class="place-entry-details">
+                    <span class="tag tag-green">Been Here</span>
+                  </div>
+                  <div class="place-entry-note">"Great brunch but not worth a 2 hour wait."</div>
+                </div>
+
+                <div class="places-neighborhood-header" style="margin-top: 24px;">Cobble Hill</div>
+
+                <div class="place-entry">
+                  <div class="place-entry-top">
+                    <div>
+                      <div class="place-entry-name">The Parlour</div>
+                      <div class="place-entry-category">Restaurant</div>
+                    </div>
+                    <div class="dots">
+                      <div class="dot filled"></div>
+                      <div class="dot filled"></div>
+                      <div class="dot filled"></div>
+                    </div>
+                  </div>
+                  <div class="place-entry-details">
+                    <span class="tag tag-rose">Favorite</span>
+                  </div>
+                  <div class="place-entry-note">"Perfect for groups of 6-8. Get the tasting menu."</div>
+                </div>
+
+                <div class="place-entry">
+                  <div class="place-entry-top">
+                    <div>
+                      <div class="place-entry-name">Clover Club</div>
+                      <div class="place-entry-category">Bar</div>
+                    </div>
+                  </div>
+                  <div class="place-entry-details">
+                    <span class="tag tag-amber">Want to Go</span>
+                  </div>
+                </div>
+
+                <h3 class="places-city-header" style="margin-top: 32px;">Manhattan</h3>
+                <div class="places-neighborhood-header">Chelsea</div>
+
+                <div class="place-entry">
+                  <div class="place-entry-top">
+                    <div>
+                      <div class="place-entry-name">Pace Gallery</div>
+                      <div class="place-entry-category">Gallery</div>
+                    </div>
+                    <div class="dots">
+                      <div class="dot filled"></div>
+                      <div class="dot filled"></div>
+                      <div class="dot filled"></div>
+                    </div>
+                  </div>
+                  <div class="place-entry-details">
+                    <span class="tag tag-green">Been Here</span>
+                  </div>
+                  <div class="place-entry-note">"Always worth a visit. Free admission."</div>
+                  <div class="place-entry-connections">
+                    <div class="avatar-stack">
+                      <div class="avatar avatar-sm" style="background: #CCC5B8; font-size: 10px;">L</div>
+                    </div>
+                    1 connection saved this
+                  </div>
+                </div>
+              </div>
+
+              <div class="tab-bar">
+                <div class="tab-item">
+                  <svg class="tab-icon" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="16" height="14" rx="2"/><path d="M3 8h16M7 2v4M15 2v4"/></svg>
+                  Plans
+                </div>
+                <div class="tab-item">
+                  <svg class="tab-icon" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="4"/><circle cx="16" cy="8" r="4"/><path d="M1 19c0-3 3-5 7-5s7 2 7 5"/></svg>
+                  People
+                </div>
+                <div class="tab-item">
+                  <svg class="tab-icon" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="M11 7v8M7 11h8"/></svg>
+                </div>
+                <div class="tab-item">
+                  <svg class="tab-icon" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13.73 21a2 2 0 01-3.46 0M18 8A7 7 0 004 8c0 7-3 9-3 9h20s-3-2-3-9z"/></svg>
+                  Alerts
+                </div>
+                <div class="tab-item active">
+                  <svg class="tab-icon" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="9" r="6"/><path d="M11 3v1M11 15v1M5 9h1M16 9h1"/></svg>
+                  Profile
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Near Me -->
+      <div class="phone-wrapper">
+        <div class="phone-state-label">Near Me</div>
+        <div class="phone-frame">
+          <div class="phone-frame-scroll">
+            <div class="places-screen">
+              <div class="status-bar">
+                <span>9:41</span>
+                <div class="status-icons">
+                  <svg viewBox="0 0 16 16" fill="currentColor"><path d="M1 10h2v4H1zm4-3h2v7H5zm4-3h2v10H9zm4-3h2v13h-2z"/></svg>
+                  <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 2a6 6 0 016 6h-2a4 4 0 00-8 0H2a6 6 0 016-6zm0 4a2 2 0 012 2H6a2 2 0 012-2z"/></svg>
+                  <svg viewBox="0 0 16 16" fill="currentColor"><path d="M2 5h12v6H2zm-1 0a1 1 0 011-1h12a1 1 0 011 1v6a1 1 0 01-1 1H2a1 1 0 01-1-1V5zm14 2h1v2h-1V7z"/></svg>
+                </div>
+              </div>
+
+              <div class="places-header">
+                <h1 class="places-title">Places</h1>
+                <div class="places-tabs">
+                  <button class="places-tab">My Places</button>
+                  <button class="places-tab active">Near Me</button>
+                  <button class="places-tab">Network</button>
+                </div>
+              </div>
+
+              <div class="places-categories">
+                <button class="chip active">All</button>
+                <button class="chip">Restaurant</button>
+                <button class="chip">Cafe</button>
+                <button class="chip">Bar</button>
+                <button class="chip">Gallery</button>
+              </div>
+
+              <div class="places-body">
+                <div class="place-entry">
+                  <div class="place-entry-top">
+                    <div>
+                      <div class="place-entry-name">Devocion</div>
+                      <div class="place-entry-category">Cafe &middot; 0.2 mi</div>
+                    </div>
+                    <div class="dots">
+                      <div class="dot filled"></div>
+                      <div class="dot filled"></div>
+                      <div class="dot filled"></div>
+                    </div>
+                  </div>
+                  <div class="place-entry-details">
+                    <span class="tag tag-rose">Favorite</span>
+                  </div>
+                  <div class="place-entry-note">"Best cortado in the city. The atrium is unreal."</div>
+                  <div class="place-entry-connections">
+                    <div class="avatar-stack">
+                      <div class="avatar avatar-sm" style="background: #D4CFC4; font-size: 10px;">J</div>
+                      <div class="avatar avatar-sm" style="background: #C4B5A5; font-size: 10px;">S</div>
+                    </div>
+                    2 connections saved this
+                  </div>
+                </div>
+
+                <div class="place-entry">
+                  <div class="place-entry-top">
+                    <div>
+                      <div class="place-entry-name">Lilia</div>
+                      <div class="place-entry-category">Restaurant &middot; 0.4 mi</div>
+                    </div>
+                    <div class="dots">
+                      <div class="dot filled"></div>
+                      <div class="dot filled"></div>
+                      <div class="dot filled"></div>
+                    </div>
+                  </div>
+                  <div class="place-entry-details">
+                    <span class="tag tag-green">Been Here</span>
+                  </div>
+                  <div class="place-entry-note">"Mafaldini is life-changing. Book 2 weeks out."</div>
+                  <div class="place-entry-connections">
+                    <div class="avatar-stack">
+                      <div class="avatar avatar-sm" style="background: #B8ADA0; font-size: 10px;">R</div>
+                      <div class="avatar avatar-sm" style="background: #CCC5B8; font-size: 10px;">L</div>
+                      <div class="avatar avatar-sm" style="background: #D4CFC4; font-size: 10px;">M</div>
+                    </div>
+                    3 connections saved this
+                  </div>
+                </div>
+
+                <div class="place-entry">
+                  <div class="place-entry-top">
+                    <div>
+                      <div class="place-entry-name">Maison Premiere</div>
+                      <div class="place-entry-category">Bar &middot; 0.5 mi</div>
+                    </div>
+                    <div class="dots">
+                      <div class="dot filled"></div>
+                      <div class="dot filled"></div>
+                      <div class="dot"></div>
+                    </div>
+                  </div>
+                  <div class="place-entry-details">
+                    <span class="tag tag-green">Been Here</span>
+                  </div>
+                  <div class="place-entry-note">"Beautiful garden, slightly overpriced cocktails."</div>
+                  <div class="place-entry-connections">
+                    <div class="avatar-stack">
+                      <div class="avatar avatar-sm" style="background: #C4B5A5; font-size: 10px;">S</div>
+                    </div>
+                    1 connection saved this
+                  </div>
+                </div>
+
+                <div class="place-entry">
+                  <div class="place-entry-top">
+                    <div>
+                      <div class="place-entry-name">McCarren Park</div>
+                      <div class="place-entry-category">Park &middot; 0.6 mi</div>
+                    </div>
+                  </div>
+                  <div class="place-entry-details">
+                    <span class="tag tag-green">Been Here</span>
+                  </div>
+                  <div class="place-entry-note">"Saturday farmers market is the move."</div>
+                  <div class="place-entry-connections">
+                    <div class="avatar-stack">
+                      <div class="avatar avatar-sm" style="background: #B8ADA0; font-size: 10px;">R</div>
+                      <div class="avatar avatar-sm" style="background: #D4CFC4; font-size: 10px;">J</div>
+                      <div class="avatar avatar-sm" style="background: #CCC5B8; font-size: 10px;">L</div>
+                      <div class="avatar avatar-sm" style="background: #C4B5A5; font-size: 10px;">A</div>
+                    </div>
+                    4 connections saved this
+                  </div>
+                </div>
+
+                <div class="place-entry">
+                  <div class="place-entry-top">
+                    <div>
+                      <div class="place-entry-name">Sunday in Brooklyn</div>
+                      <div class="place-entry-category">Restaurant &middot; 0.7 mi</div>
+                    </div>
+                    <div class="dots">
+                      <div class="dot filled"></div>
+                      <div class="dot filled"></div>
+                      <div class="dot"></div>
+                    </div>
+                  </div>
+                  <div class="place-entry-details">
+                    <span class="tag tag-green">Been Here</span>
+                  </div>
+                  <div class="place-entry-note">"Great brunch but not worth a 2 hour wait."</div>
+                </div>
+              </div>
+
+              <div class="tab-bar">
+                <div class="tab-item">
+                  <svg class="tab-icon" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="16" height="14" rx="2"/><path d="M3 8h16M7 2v4M15 2v4"/></svg>
+                  Plans
+                </div>
+                <div class="tab-item">
+                  <svg class="tab-icon" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="4"/><circle cx="16" cy="8" r="4"/><path d="M1 19c0-3 3-5 7-5s7 2 7 5"/></svg>
+                  People
+                </div>
+                <div class="tab-item">
+                  <svg class="tab-icon" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="M11 7v8M7 11h8"/></svg>
+                </div>
+                <div class="tab-item">
+                  <svg class="tab-icon" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13.73 21a2 2 0 01-3.46 0M18 8A7 7 0 004 8c0 7-3 9-3 9h20s-3-2-3-9z"/></svg>
+                  Alerts
+                </div>
+                <div class="tab-item active">
+                  <svg class="tab-icon" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="9" r="6"/><path d="M11 3v1M11 15v1M5 9h1M16 9h1"/></svg>
+                  Profile
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="screen-divider"></div>
+
+  <!-- ============================================
+       SCREEN 5: PLACE DETAIL
+       ============================================ -->
+  <div class="screen-section">
+    <div class="screen-header">
+      <div class="screen-label">Screen 05</div>
+      <h2 class="screen-name">Place Detail</h2>
+      <p class="screen-desc">Full place view with your entry, connection reviews, and threaded comments. The bridge between discovery and planning.</p>
+    </div>
+
+    <div class="phone-row">
+      <div class="phone-wrapper">
+        <div class="phone-state-label">Detail View</div>
+        <div class="phone-frame">
+          <div class="phone-frame-scroll">
+            <div class="detail-screen">
+              <div class="status-bar">
+                <span>9:41</span>
+                <div class="status-icons">
+                  <svg viewBox="0 0 16 16" fill="currentColor"><path d="M1 10h2v4H1zm4-3h2v7H5zm4-3h2v10H9zm4-3h2v13h-2z"/></svg>
+                  <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 2a6 6 0 016 6h-2a4 4 0 00-8 0H2a6 6 0 016-6zm0 4a2 2 0 012 2H6a2 2 0 012-2z"/></svg>
+                  <svg viewBox="0 0 16 16" fill="currentColor"><path d="M2 5h12v6H2zm-1 0a1 1 0 011-1h12a1 1 0 011 1v6a1 1 0 01-1 1H2a1 1 0 01-1-1V5zm14 2h1v2h-1V7z"/></svg>
+                </div>
+              </div>
+
+              <div class="detail-nav">
+                <button class="detail-back">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 3L5 8l5 5"/></svg>
+                  Places
+                </button>
+                <button class="detail-action">Edit</button>
+              </div>
+
+              <div class="detail-map">Map View</div>
+
+              <div class="detail-content">
+                <div class="detail-category">Cafe</div>
+                <h1 class="detail-name">Devocion</h1>
+                <p class="detail-address">69 Grand St<br>Williamsburg, Brooklyn</p>
+
+                <!-- Your Entry -->
+                <div class="detail-section">
+                  <div class="detail-section-header">
+                    <span class="detail-section-title">Your Entry</span>
+                    <span class="detail-section-action">Edit</span>
+                  </div>
+                  <div class="your-entry">
+                    <div class="your-entry-row">
+                      <span class="tag tag-rose">Favorite</span>
+                      <div class="dots">
+                        <div class="dot filled"></div>
+                        <div class="dot filled"></div>
+                        <div class="dot filled"></div>
+                      </div>
+                    </div>
+                    <div class="your-entry-note">"Best cortado in the city. The atrium is unreal — feels like you're in a greenhouse in Colombia."</div>
+                  </div>
+                </div>
+
+                <!-- Connections -->
+                <div class="detail-section">
+                  <div class="detail-section-header">
+                    <span class="detail-section-title">From Your Connections</span>
+                    <span style="font-size: 13px; color: var(--stone);">2 people</span>
+                  </div>
+
+                  <div class="connection-entry">
+                    <div class="connection-header">
+                      <div class="avatar" style="background: #D4CFC4;">J</div>
+                      <div class="connection-info">
+                        <div class="connection-name">James Park</div>
+                        <div class="connection-meta">
+                          <span class="tag tag-green" style="font-size: 10px; padding: 2px 8px;">Been Here</span>
+                          <div class="dots">
+                            <div class="dot filled" style="width: 6px; height: 6px;"></div>
+                            <div class="dot filled" style="width: 6px; height: 6px;"></div>
+                            <div class="dot" style="width: 6px; height: 6px;"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="connection-note">"Solid coffee, great workspace. Can get loud after 3pm on weekdays."</div>
+
+                    <div class="connection-comment">
+                      <div class="connection-comment-header">
+                        <div class="avatar avatar-sm" style="background: var(--cream); font-size: 10px; width: 22px; height: 22px;">Y</div>
+                        <span class="connection-comment-name">You</span>
+                        <span class="connection-comment-time">2d ago</span>
+                      </div>
+                      <div class="connection-comment-text">Go before noon — it's perfect then.</div>
+                    </div>
+
+                    <div class="add-comment">
+                      <div class="avatar avatar-sm" style="background: var(--cream); font-size: 10px; width: 22px; height: 22px;">Y</div>
+                      <input class="add-comment-input" placeholder="Add a comment...">
+                    </div>
+                  </div>
+
+                  <div class="connection-entry">
+                    <div class="connection-header">
+                      <div class="avatar" style="background: #C4B5A5;">S</div>
+                      <div class="connection-info">
+                        <div class="connection-name">Sofia Rivera</div>
+                        <div class="connection-meta">
+                          <span class="tag tag-rose" style="font-size: 10px; padding: 2px 8px;">Favorite</span>
+                          <div class="dots">
+                            <div class="dot filled" style="width: 6px; height: 6px;"></div>
+                            <div class="dot filled" style="width: 6px; height: 6px;"></div>
+                            <div class="dot filled" style="width: 6px; height: 6px;"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="connection-note">"My go-to. The single origin pour-over is worth the wait. Also try their pastries — the guava danish is incredible."</div>
+
+                    <div class="add-comment">
+                      <div class="avatar avatar-sm" style="background: var(--cream); font-size: 10px; width: 22px; height: 22px;">Y</div>
+                      <input class="add-comment-input" placeholder="Add a comment...">
+                    </div>
+                  </div>
+                </div>
+
+                <button class="detail-use-btn">Use for a Plan</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
