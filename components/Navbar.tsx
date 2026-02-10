@@ -108,7 +108,7 @@ export default function Navbar() {
               <a
                 key={link.label}
                 href={link.href}
-                className="link-underline text-sm tracking-wide text-foreground/70 transition-colors hover:text-foreground"
+                className="text-sm tracking-wide text-foreground/70 transition-colors hover:text-foreground hover:underline"
                 {...(link.href.startsWith("http")
                   ? { target: "_blank", rel: "noopener noreferrer" }
                   : {})}
