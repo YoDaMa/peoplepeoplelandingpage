@@ -1,7 +1,7 @@
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
 import AppShowcase from "../components/AppShowcase";
-import ContactForm from "../components/ContactForm";
+import ContactCTA from "../components/ContactCTA";
 import Footer from "../components/Footer";
 
 export default function Home() {
@@ -11,7 +11,7 @@ export default function Home() {
       <main>
         <Hero />
         <AppShowcase />
-        <ContactForm />
+        <ContactCTA />
       </main>
       <Footer />
     </>

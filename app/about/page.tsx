@@ -1,7 +1,8 @@
 "use client";
 
+import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 
@@ -27,6 +28,19 @@ const fadeImage = {
 };
 
 export default function About() {
+  const [dlOpen, setDlOpen] = useState(false);
+  const dlRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClick = (e: MouseEvent) => {
+      if (dlRef.current && !dlRef.current.contains(e.target as Node)) {
+        setDlOpen(false);
+      }
+    };
+    if (dlOpen) document.addEventListener("click", handleClick);
+    return () => document.removeEventListener("click", handleClick);
+  }, [dlOpen]);
+
   return (
     <>
       <Navbar />
@@ -119,19 +133,61 @@ export default function About() {
               {...fadeDelay(0.2)}
               className="mt-16 flex flex-col items-center gap-4 sm:flex-row sm:justify-center"
             >
-              <a
-                href="https://apps.apple.com/us/app/people-people/id6747403675"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-foreground px-8 py-3.5 text-sm font-medium tracking-wide text-white transition-colors hover:bg-foreground/80"
-              >
-                Download the app
-              </a>
+              <div className="relative" ref={dlRef}>
+                <button
+                  onClick={() => setDlOpen(!dlOpen)}
+                  className="flex cursor-pointer items-center gap-2 rounded-full border-2 border-foreground px-6 py-3 text-sm font-medium tracking-wide text-foreground transition-colors hover:bg-accent hover:border-accent"
+                >
+                  Download the app
+                  <svg
+                    width="10"
+                    height="6"
+                    viewBox="0 0 10 6"
+                    fill="none"
+                    className={`transition-transform duration-200 ${dlOpen ? "rotate-180" : ""}`}
+                  >
+                    <path d="M1 1L5 5L9 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </button>
+
+                <AnimatePresence>
+                  {dlOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -4, scale: 0.95 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: -4, scale: 0.95 }}
+                      transition={{ duration: 0.15, ease: "easeOut" }}
+                      className="absolute left-1/2 mt-2 w-56 -translate-x-1/2 overflow-hidden rounded-2xl bg-white shadow-lg ring-1 ring-foreground/5"
+                    >
+                      <a
+                        href="https://apps.apple.com/us/app/people-people/id6747403675"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={() => setDlOpen(false)}
+                        className="flex items-center gap-3 px-4 py-3 text-sm text-foreground transition-colors hover:bg-accent/20"
+                      >
+                        <svg width="16" height="19" viewBox="0 0 20 24" fill="none"><path d="M16.498 12.795c-.03-2.882 2.354-4.27 2.461-4.34-1.342-1.96-3.43-2.229-4.17-2.261-1.773-.18-3.467 1.047-4.369 1.047-.902 0-2.297-1.023-3.775-.994-1.942.029-3.735 1.131-4.735 2.872-2.023 3.508-.517 8.697 1.452 11.543.965 1.395 2.113 2.961 3.622 2.906 1.454-.058 2.005-.94 3.764-.94 1.76 0 2.254.94 3.793.91 1.565-.026 2.558-1.42 3.513-2.82 1.11-1.617 1.565-3.183 1.591-3.264-.035-.015-3.05-1.17-3.081-4.64l.034-.019zM13.635 4.043C14.435 3.07 14.973 1.73 14.826.37c-1.145.047-2.538.764-3.36 1.72-.737.856-1.384 2.225-1.21 3.537 1.278.1 2.583-.648 3.379-1.584z" fill="currentColor"/></svg>
+                        Download for iOS
+                      </a>
+                      <a
+                        href="https://play.google.com/store/apps/details?id=app.peoplepeople"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={() => setDlOpen(false)}
+                        className="flex items-center gap-3 px-4 py-3 text-sm text-foreground transition-colors hover:bg-accent/20"
+                      >
+                        <svg width="14" height="16" viewBox="0 0 20 22" fill="none"><path d="M0.654 0.474C0.39 0.752 0.238 1.192 0.238 1.774v18.452c0 0.582 0.152 1.022 0.416 1.3l0.068 0.066 10.34-10.34v-0.244L0.722 0.408 0.654 0.474z" fill="currentColor"/><path d="M14.508 14.698L11.062 11.252v-0.244l3.446-3.446 0.078 0.044 4.084 2.32c1.166 0.662 1.166 1.748 0 2.412l-4.084 2.32-0.078 0.04z" fill="currentColor"/><path d="M14.586 14.658L11.062 11.13 0.654 21.538c0.384 0.408 1.02 0.458 1.742 0.054l12.19-6.934" fill="currentColor"/><path d="M14.586 7.606L2.396 0.668C1.674 0.264 1.038 0.316 0.654 0.724l10.408 10.408 3.524-3.526z" fill="currentColor"/></svg>
+                        Download for Android
+                      </a>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
               <a
                 href="https://donate.mazloweb.com/donate/GYxQSvmhTRp8d9QkwUcoGS"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="border border-foreground/15 px-8 py-3.5 text-sm tracking-wide text-foreground transition-colors hover:border-foreground/40"
+                className="rounded-full border-2 border-foreground px-6 py-3 text-sm font-medium tracking-wide text-foreground transition-colors hover:bg-accent hover:border-accent"
               >
                 Support our mission
               </a>

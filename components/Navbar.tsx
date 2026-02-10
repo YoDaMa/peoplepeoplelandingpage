@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 
 const navLinks = [
   { label: "About", href: "/about" },
+  { label: "Contact", href: "/contact" },
   { label: "Login", href: "https://app.peoplepeople.app" },
   { label: "Shop", href: "https://peoplepeople.printify.me/category/all/1?sort=price-desc" },
   { label: "Donate", href: "https://donate.mazloweb.com/donate/GYxQSvmhTRp8d9QkwUcoGS" },
@@ -120,7 +121,7 @@ export default function Navbar() {
             <div className="relative" ref={downloadRef}>
               <button
                 onClick={() => setDownloadOpen(!downloadOpen)}
-                className="flex items-center gap-1.5 rounded-full bg-foreground px-5 py-2 text-sm font-medium text-white transition-colors hover:bg-foreground/80"
+                className="flex cursor-pointer items-center gap-1.5 rounded-full bg-foreground px-5 py-2 text-sm font-medium text-white transition-colors hover:bg-foreground/80"
               >
                 Download
                 <svg
@@ -165,17 +166,17 @@ export default function Navbar() {
           {/* Mobile Hamburger */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="relative z-50 flex h-8 w-8 flex-col items-center justify-center gap-1.5 md:hidden"
+            className="relative z-50 flex h-8 w-8 cursor-pointer flex-col items-center justify-center gap-[7px] md:hidden"
             aria-label="Toggle menu"
           >
             <span
-              className={`h-[1.5px] w-5 bg-foreground transition-all duration-300 ${
-                mobileOpen ? "translate-y-[4.5px] rotate-45" : ""
+              className={`block h-[1.5px] w-5 bg-foreground transition-all duration-300 origin-center ${
+                mobileOpen ? "translate-y-[4.25px] rotate-45" : ""
               }`}
             />
             <span
-              className={`h-[1.5px] w-5 bg-foreground transition-all duration-300 ${
-                mobileOpen ? "-translate-y-[1.5px] -rotate-45" : ""
+              className={`block h-[1.5px] w-5 bg-foreground transition-all duration-300 origin-center ${
+                mobileOpen ? "-translate-y-[4.25px] -rotate-45" : ""
               }`}
             />
           </button>
@@ -192,7 +193,7 @@ export default function Navbar() {
             transition={{ duration: 0.3 }}
             className="fixed inset-0 z-40 flex flex-col items-center justify-center bg-white md:hidden"
           >
-            <div className="flex flex-col items-center gap-8">
+            <div className="flex flex-col items-center gap-6">
               {navLinks.map((link, i) => (
                 <motion.a
                   key={link.label}
@@ -201,7 +202,7 @@ export default function Navbar() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.05, duration: 0.3 }}
                   onClick={() => setMobileOpen(false)}
-                  className="text-2xl font-light tracking-tight"
+                  className="rounded-full px-6 py-2 text-2xl font-light tracking-tight text-foreground/70 transition-all duration-200 hover:bg-accent/20 hover:text-foreground"
                   {...(link.href.startsWith("http")
                     ? { target: "_blank", rel: "noopener noreferrer" }
                     : {})}
@@ -209,22 +210,24 @@ export default function Navbar() {
                   {link.label}
                 </motion.a>
               ))}
-              {downloadLinks.map((dl, i) => (
-                <motion.a
-                  key={dl.label}
-                  href={dl.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: (navLinks.length + i) * 0.05, duration: 0.3 }}
-                  onClick={() => setMobileOpen(false)}
-                  className="flex items-center gap-3 rounded-full bg-foreground px-8 py-3 text-lg font-medium text-white"
-                >
-                  {dl.icon}
-                  <span>{dl.label}</span>
-                </motion.a>
-              ))}
+              <div className="mt-4 flex flex-col items-center gap-3">
+                {downloadLinks.map((dl, i) => (
+                  <motion.a
+                    key={dl.label}
+                    href={dl.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: (navLinks.length + i) * 0.05, duration: 0.3 }}
+                    onClick={() => setMobileOpen(false)}
+                    className="flex items-center gap-3 rounded-full border-2 border-foreground px-8 py-3 text-base font-medium text-foreground transition-all duration-200 hover:border-accent hover:bg-accent"
+                  >
+                    {dl.icon}
+                    <span>{dl.label}</span>
+                  </motion.a>
+                ))}
+              </div>
             </div>
           </motion.div>
         )}

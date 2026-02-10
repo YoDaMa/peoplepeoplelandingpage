@@ -88,9 +88,10 @@ export default function Hero() {
             transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
             className="fluid-hero font-normal"
           >
+            
             hey there,
             <br />
-            <em className="italic text-accent">people person</em>! 💛
+            <em className="italic text-accent">people person</em>! 
           </motion.h1>
 
           <motion.p
@@ -104,7 +105,7 @@ export default function Hero() {
             className="fluid-body mt-6 max-w-xl text-muted"
           >
             we&apos;re a social app for{" "}
-            <em className="italic">actually being social.</em>
+            <em className="italic">actually being social. </em> 💛
           </motion.p>
 
           <motion.p
