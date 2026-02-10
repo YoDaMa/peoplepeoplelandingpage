@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const footerLinks = [
   { label: "Home", href: "#" },
   { label: "About", href: "/about" },
@@ -14,11 +16,20 @@ const footerLinks = [
 
 export default function Footer() {
   return (
-    <footer className="border-t border-foreground/5 px-6 py-16 md:px-10 md:py-20">
+    <footer className="border-t border-foreground/5 px-6 py-12 md:px-10 md:py-16">
       <div className="mx-auto max-w-[1400px]">
         <div className="flex flex-col gap-12 md:flex-row md:items-start md:justify-between">
-          {/* Left: Legal */}
+          {/* Left: Logo + Legal */}
           <div className="max-w-md">
+            <a href="/" className="mb-6 inline-block">
+              <Image
+                src="/images/logos/wordmark-320x132.png"
+                alt="People People"
+                width={320}
+                height={132}
+                className="h-7 w-auto"
+              />
+            </a>
             <p className="text-[11px] uppercase leading-relaxed tracking-wider text-muted">
               People People is a U.S. tax-exempt non-profit organization under
               section 501(c)(3) of the IRS code (EIN: 33-1672806).
@@ -94,7 +105,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-16 flex items-center justify-between border-t border-foreground/5 pt-8">
+        <div className="mt-10 flex items-center justify-between border-t border-foreground/5 pt-8">
           <span className="text-xs text-muted">
             &copy; {new Date().getFullYear()} People People
           </span>

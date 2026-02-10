@@ -12,7 +12,7 @@ export default function ContactForm() {
   };
 
   return (
-    <section id="contact" className="px-6 py-32 md:px-10 md:py-40">
+    <section id="contact" className="px-6 py-16 md:px-10 md:py-24">
       <div className="mx-auto max-w-[600px]">
         <motion.h2
           initial={{ opacity: 0, y: 40 }}
@@ -37,7 +37,7 @@ export default function ContactForm() {
             delay: 0.2,
             ease: [0.25, 0.1, 0.25, 1],
           }}
-          className="mt-16"
+          className="mt-10"
         >
           {submitted ? (
             <div className="text-center">
@@ -47,22 +47,20 @@ export default function ContactForm() {
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
+              <div className="grid gap-6 sm:grid-cols-2">
                 <input
                   type="text"
                   name="name"
                   placeholder="name"
                   required
-                  className="w-full border-b border-foreground/15 bg-transparent px-0 py-4 text-base placeholder:text-foreground/40 focus:border-foreground/50 focus:outline-none transition-colors"
+                  className="w-full border-b border-foreground/15 bg-transparent px-0 py-3 text-base placeholder:text-foreground/40 focus:border-foreground/50 focus:outline-none transition-colors"
                 />
-              </div>
-              <div>
                 <input
                   type="email"
                   name="email"
                   placeholder="email"
                   required
-                  className="w-full border-b border-foreground/15 bg-transparent px-0 py-4 text-base placeholder:text-foreground/40 focus:border-foreground/50 focus:outline-none transition-colors"
+                  className="w-full border-b border-foreground/15 bg-transparent px-0 py-3 text-base placeholder:text-foreground/40 focus:border-foreground/50 focus:outline-none transition-colors"
                 />
               </div>
               <div>
@@ -71,7 +69,7 @@ export default function ContactForm() {
                   placeholder="message"
                   rows={4}
                   required
-                  className="w-full resize-none border-b border-foreground/15 bg-transparent px-0 py-4 text-base placeholder:text-foreground/40 focus:border-foreground/50 focus:outline-none transition-colors"
+                  className="w-full resize-none border-b border-foreground/15 bg-transparent px-0 py-3 text-base placeholder:text-foreground/40 focus:border-foreground/50 focus:outline-none transition-colors"
                 />
               </div>
               <div className="pt-4">

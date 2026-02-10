@@ -1,20 +1,43 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 
 export default function AppShowcase() {
   return (
-    <section className="px-6 py-32 md:px-10 md:py-40">
-      <div className="mx-auto max-w-[1200px]">
+    <section className="px-6 py-16 md:px-10 md:py-24">
+      <div className="mx-auto grid max-w-[1200px] gap-10 md:grid-cols-2 md:items-center md:gap-16">
+        {/* Left: Community Photo */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-          className="flex items-center justify-center"
+          className="overflow-hidden"
+        >
+          <Image
+            src="/images/landing_page_1.jpg"
+            alt="The People People community wearing Be A People Person merchandise"
+            width={1200}
+            height={500}
+            className="h-auto w-full object-cover"
+          />
+        </motion.div>
+
+        {/* Right: Phone Mockup + Text */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{
+            duration: 0.8,
+            delay: 0.1,
+            ease: [0.25, 0.1, 0.25, 1],
+          }}
+          className="flex flex-col items-center"
         >
           {/* Phone Mockup */}
-          <div className="relative mx-auto w-full max-w-[320px]">
+          <div className="relative w-full max-w-[260px]">
             {/* Phone Frame */}
             <div className="relative aspect-[9/19.5] w-full overflow-hidden rounded-[2.5rem] border-[8px] border-foreground/90 bg-foreground/5">
               {/* Status Bar */}
@@ -75,21 +98,11 @@ export default function AppShowcase() {
               <div className="absolute top-0 left-1/2 h-6 w-28 -translate-x-1/2 rounded-b-2xl bg-foreground/90" />
             </div>
           </div>
-        </motion.div>
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{
-            duration: 0.6,
-            delay: 0.2,
-            ease: [0.25, 0.1, 0.25, 1],
-          }}
-          className="mt-16 text-center text-sm tracking-wide text-muted"
-        >
-          available now on iOS and Android
-        </motion.p>
+          <p className="mt-8 text-center text-sm tracking-wide text-muted">
+            available now on iOS and Android
+          </p>
+        </motion.div>
       </div>
     </section>
   );
