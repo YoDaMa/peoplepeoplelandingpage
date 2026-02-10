@@ -1,6 +1,6 @@
 const footerLinks = [
   { label: "Home", href: "#" },
-  { label: "About", href: "#mission" },
+  { label: "About", href: "/about" },
   { label: "Login", href: "https://app.peoplepeople.app" },
   {
     label: "Shop",
