@@ -112,8 +112,14 @@ export default function BrandGuidelines() {
           ============================================ */}
       <aside className="sidebar">
         <div className="sidebar-header">
+          <a href="/" className="sidebar-back">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M8 2L3 7L8 12" />
+            </svg>
+            Home
+          </a>
           <div className="sidebar-brand">
-            People<span>People</span>
+            people people
           </div>
           <div className="sidebar-meta">
             Brand Guidelines
@@ -167,8 +173,13 @@ export default function BrandGuidelines() {
           MOBILE NAV
           ============================================ */}
       <div className="mobile-nav">
+        <a href="/" className="mobile-nav-back">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M8 2L3 7L8 12" />
+          </svg>
+        </a>
         <div className="mobile-nav-brand">
-          People<span>People</span>
+          people people
         </div>
         <button
           className="mobile-nav-toggle"
