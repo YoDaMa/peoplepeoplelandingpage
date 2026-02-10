@@ -1,7 +1,64 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+
+function MiniCaterpillarText({
+  children,
+  hovering,
+}: {
+  children: string;
+  hovering: boolean;
+}) {
+  return (
+    <span className="inline-flex">
+      {children.split("").map((char, i) => (
+        <motion.span
+          key={i}
+          animate={
+            hovering
+              ? {
+                  y: [0, -2, 0],
+                  transition: { delay: i * 0.02, duration: 0.25, ease: "easeInOut" },
+                }
+              : { y: 0 }
+          }
+          className={char === " " ? "inline-block w-[0.25em]" : "inline-block"}
+        >
+          {char === " " ? "\u00A0" : char}
+        </motion.span>
+      ))}
+    </span>
+  );
+}
+
+function MiniStoreButton({
+  href,
+  icon,
+  label,
+}: {
+  href: string;
+  icon: React.ReactNode;
+  label: string;
+}) {
+  const [hovering, setHovering] = useState(false);
+
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="flex w-full items-center justify-center gap-1.5 rounded-full border border-foreground/80 bg-white py-2 text-[10px] font-medium text-foreground transition-colors hover:bg-accent hover:border-accent"
+      onMouseEnter={() => setHovering(true)}
+      onMouseLeave={() => setHovering(false)}
+    >
+      {icon}
+      <MiniCaterpillarText hovering={hovering}>{label}</MiniCaterpillarText>
+      <span className="sr-only">{label}</span>
+    </a>
+  );
+}
 
 export default function AppShowcase() {
   return (
@@ -69,25 +126,17 @@ export default function AppShowcase() {
                 </div>
 
                 {/* Download Buttons */}
-                <div className="mt-8 w-full space-y-3">
-                  <a
+                <div className="mt-8 w-full space-y-2.5">
+                  <MiniStoreButton
                     href="https://apps.apple.com/us/app/people-people/id6747403675"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex w-full items-center justify-center gap-2 rounded-lg bg-accent py-2.5 text-[11px] font-medium text-foreground transition-colors hover:bg-accent-hover"
-                  >
-                    <svg width="12" height="14" viewBox="0 0 20 24" fill="none"><path d="M16.498 12.795c-.03-2.882 2.354-4.27 2.461-4.34-1.342-1.96-3.43-2.229-4.17-2.261-1.773-.18-3.467 1.047-4.369 1.047-.902 0-2.297-1.023-3.775-.994-1.942.029-3.735 1.131-4.735 2.872-2.023 3.508-.517 8.697 1.452 11.543.965 1.395 2.113 2.961 3.622 2.906 1.454-.058 2.005-.94 3.764-.94 1.76 0 2.254.94 3.793.91 1.565-.026 2.558-1.42 3.513-2.82 1.11-1.617 1.565-3.183 1.591-3.264-.035-.015-3.05-1.17-3.081-4.64l.034-.019zM13.635 4.043C14.435 3.07 14.973 1.73 14.826.37c-1.145.047-2.538.764-3.36 1.72-.737.856-1.384 2.225-1.21 3.537 1.278.1 2.583-.648 3.379-1.584z" fill="currentColor"/></svg>
-                    Download for iOS
-                  </a>
-                  <a
+                    label="Download for iOS"
+                    icon={<svg width="10" height="12" viewBox="0 0 20 24" fill="none"><path d="M16.498 12.795c-.03-2.882 2.354-4.27 2.461-4.34-1.342-1.96-3.43-2.229-4.17-2.261-1.773-.18-3.467 1.047-4.369 1.047-.902 0-2.297-1.023-3.775-.994-1.942.029-3.735 1.131-4.735 2.872-2.023 3.508-.517 8.697 1.452 11.543.965 1.395 2.113 2.961 3.622 2.906 1.454-.058 2.005-.94 3.764-.94 1.76 0 2.254.94 3.793.91 1.565-.026 2.558-1.42 3.513-2.82 1.11-1.617 1.565-3.183 1.591-3.264-.035-.015-3.05-1.17-3.081-4.64l.034-.019zM13.635 4.043C14.435 3.07 14.973 1.73 14.826.37c-1.145.047-2.538.764-3.36 1.72-.737.856-1.384 2.225-1.21 3.537 1.278.1 2.583-.648 3.379-1.584z" fill="currentColor"/></svg>}
+                  />
+                  <MiniStoreButton
                     href="https://play.google.com/store/apps/details?id=app.peoplepeople"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex w-full items-center justify-center gap-2 rounded-lg bg-foreground/5 py-2.5 text-[11px] font-medium text-foreground transition-colors hover:bg-foreground/10"
-                  >
-                    <svg width="10" height="12" viewBox="0 0 20 22" fill="none"><path d="M0.654 0.474C0.39 0.752 0.238 1.192 0.238 1.774v18.452c0 0.582 0.152 1.022 0.416 1.3l0.068 0.066 10.34-10.34v-0.244L0.722 0.408 0.654 0.474z" fill="currentColor"/><path d="M14.508 14.698L11.062 11.252v-0.244l3.446-3.446 0.078 0.044 4.084 2.32c1.166 0.662 1.166 1.748 0 2.412l-4.084 2.32-0.078 0.04z" fill="currentColor"/><path d="M14.586 14.658L11.062 11.13 0.654 21.538c0.384 0.408 1.02 0.458 1.742 0.054l12.19-6.934" fill="currentColor"/><path d="M14.586 7.606L2.396 0.668C1.674 0.264 1.038 0.316 0.654 0.724l10.408 10.408 3.524-3.526z" fill="currentColor"/></svg>
-                    Download for Android
-                  </a>
+                    label="Download for Android"
+                    icon={<svg width="9" height="10" viewBox="0 0 20 22" fill="none"><path d="M0.654 0.474C0.39 0.752 0.238 1.192 0.238 1.774v18.452c0 0.582 0.152 1.022 0.416 1.3l0.068 0.066 10.34-10.34v-0.244L0.722 0.408 0.654 0.474z" fill="currentColor"/><path d="M14.508 14.698L11.062 11.252v-0.244l3.446-3.446 0.078 0.044 4.084 2.32c1.166 0.662 1.166 1.748 0 2.412l-4.084 2.32-0.078 0.04z" fill="currentColor"/><path d="M14.586 14.658L11.062 11.13 0.654 21.538c0.384 0.408 1.02 0.458 1.742 0.054l12.19-6.934" fill="currentColor"/><path d="M14.586 7.606L2.396 0.668C1.674 0.264 1.038 0.316 0.654 0.724l10.408 10.408 3.524-3.526z" fill="currentColor"/></svg>}
+                  />
                 </div>
 
                 <div className="mt-8 w-full space-y-2">
