@@ -20,8 +20,9 @@ const SECTIONS = [
   { id: "layout", label: "Layout", number: "05" },
   { id: "photography", label: "Photography", number: "06" },
   { id: "iconography", label: "Iconography", number: "07" },
-  { id: "cobranding", label: "Co-Branding", number: "08" },
-  { id: "applications", label: "Applications", number: "09" },
+  { id: "buttons", label: "Buttons", number: "08" },
+  { id: "cobranding", label: "Co-Branding", number: "09" },
+  { id: "applications", label: "Applications", number: "10" },
 ];
 
 const SUB_SECTIONS: Record<string, { id: string; label: string }[]> = {
@@ -63,6 +64,11 @@ const SUB_SECTIONS: Record<string, { id: string; label: string }[]> = {
   iconography: [
     { id: "icon-set", label: "Core Set" },
     { id: "icon-specs", label: "Specifications" },
+  ],
+  buttons: [
+    { id: "btn-styles", label: "Primary Styles" },
+    { id: "btn-anatomy", label: "Anatomy" },
+    { id: "btn-misuse", label: "Misuse" },
   ],
   cobranding: [
     { id: "cobrand-lockups", label: "Lockups" },
@@ -227,7 +233,7 @@ export default function BrandGuidelines() {
             SECTION DIVIDER
             ============================================ */}
         <div className="section-divider">
-          <span className="section-divider-text">PeoplePeople</span>
+          <span className="section-divider-text">people people</span>
         </div>
 
         {/* ============================================
@@ -238,9 +244,9 @@ export default function BrandGuidelines() {
             <span className="section-number">01 — Logo</span>
             <h2 className="section-title">Logo</h2>
             <p className="section-subtitle">
-              The PeoplePeople wordmark is our primary brand identifier. It uses
+              The people people wordmark is our primary brand identifier. It uses
               Albert Sans in Extra Bold weight with tight tracking. The name is
-              always written as one word: PeoplePeople.
+              always written in lowercase as two words: people people.
             </p>
           </div>
 
@@ -555,7 +561,7 @@ export default function BrandGuidelines() {
                         letterSpacing: "-0.03em",
                       }}
                     >
-                      PeoplePeople
+                      people people
                     </span>
                     <span className="min-size-label">Print: 24px</span>
                   </div>
@@ -567,7 +573,7 @@ export default function BrandGuidelines() {
                         letterSpacing: "-0.02em",
                       }}
                     >
-                      PeoplePeople
+                      people people
                     </span>
                     <span className="min-size-label">Digital: 16px</span>
                   </div>
@@ -610,30 +616,60 @@ export default function BrandGuidelines() {
                         className="logo-text"
                         style={{ fontSize: "32px", color: "var(--black)" }}
                       >
-                        PeoplePeople
+                        people people
                       </span>
                     </div>
                     <div className="dd-label">
-                      <div className="dd-check">{"\u2713"}</div> Use the logo as
-                      provided
+                      <div className="dd-check">{"\u2713"}</div> Always use
+                      lowercase
                     </div>
                   </div>
                   <div className="dont-card">
                     <div className="dd-preview">
                       <span
                         className="logo-text"
-                        style={{
-                          fontSize: "32px",
-                          color: "var(--black)",
-                          letterSpacing: "0.15em",
-                        }}
+                        style={{ fontSize: "32px", color: "var(--black)" }}
+                      >
+                        People People
+                      </span>
+                    </div>
+                    <div className="dd-label">
+                      <div className="dd-check">{"\u2715"}</div> Don&apos;t use
+                      title case
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  className="do-dont"
+                  style={{ marginBottom: "20px" }}
+                >
+                  <div className="do-card">
+                    <div className="dd-preview">
+                      <span
+                        className="logo-text"
+                        style={{ fontSize: "32px", color: "var(--black)" }}
+                      >
+                        people people
+                      </span>
+                    </div>
+                    <div className="dd-label">
+                      <div className="dd-check">{"\u2713"}</div> Always write as
+                      two words
+                    </div>
+                  </div>
+                  <div className="dont-card">
+                    <div className="dd-preview">
+                      <span
+                        className="logo-text"
+                        style={{ fontSize: "32px", color: "var(--black)" }}
                       >
                         PeoplePeople
                       </span>
                     </div>
                     <div className="dd-label">
-                      <div className="dd-check">{"\u2715"}</div> Don&apos;t add extra
-                      letter spacing
+                      <div className="dd-check">{"\u2715"}</div> Don&apos;t combine
+                      into one word
                     </div>
                   </div>
                 </div>
@@ -654,7 +690,7 @@ export default function BrandGuidelines() {
                           borderRadius: "8px",
                         }}
                       >
-                        PeoplePeople
+                        people people
                       </span>
                     </div>
                     <div className="dd-label">
@@ -668,7 +704,7 @@ export default function BrandGuidelines() {
                         className="logo-text"
                         style={{ fontSize: "32px", color: "#FF6B9D" }}
                       >
-                        PeoplePeople
+                        people people
                       </span>
                     </div>
                     <div className="dd-label">
@@ -685,26 +721,30 @@ export default function BrandGuidelines() {
                         className="logo-text"
                         style={{ fontSize: "32px", color: "var(--black)" }}
                       >
-                        PeoplePeople
+                        people people
                       </span>
                     </div>
                     <div className="dd-label">
-                      <div className="dd-check">{"\u2713"}</div> Always write as one
-                      word, camelCase
+                      <div className="dd-check">{"\u2713"}</div> Use the logo as
+                      provided
                     </div>
                   </div>
                   <div className="dont-card">
                     <div className="dd-preview">
                       <span
                         className="logo-text"
-                        style={{ fontSize: "32px", color: "var(--black)" }}
+                        style={{
+                          fontSize: "32px",
+                          color: "var(--black)",
+                          letterSpacing: "0.15em",
+                        }}
                       >
-                        People People
+                        people people
                       </span>
                     </div>
                     <div className="dd-label">
-                      <div className="dd-check">{"\u2715"}</div> Don&apos;t separate
-                      into two words
+                      <div className="dd-check">{"\u2715"}</div> Don&apos;t add extra
+                      letter spacing
                     </div>
                   </div>
                 </div>
@@ -715,7 +755,7 @@ export default function BrandGuidelines() {
 
         {/* Section Divider */}
         <div className="section-divider section-divider-dark">
-          <span className="section-divider-text">PeoplePeople</span>
+          <span className="section-divider-text">people people</span>
         </div>
 
         {/* ============================================
@@ -1024,7 +1064,7 @@ export default function BrandGuidelines() {
 
         {/* Section Divider */}
         <div className="section-divider">
-          <span className="section-divider-text">PeoplePeople</span>
+          <span className="section-divider-text">people people</span>
         </div>
 
         {/* ============================================
@@ -1112,7 +1152,7 @@ export default function BrandGuidelines() {
                       className="type-weight-sample"
                       style={{ fontWeight: 300 }}
                     >
-                      PeoplePeople makes plans simple.
+                      people people makes plans simple.
                     </span>
                     <span className="type-weight-value">300</span>
                   </div>
@@ -1122,7 +1162,7 @@ export default function BrandGuidelines() {
                       className="type-weight-sample"
                       style={{ fontWeight: 400 }}
                     >
-                      PeoplePeople makes plans simple.
+                      people people makes plans simple.
                     </span>
                     <span className="type-weight-value">400</span>
                   </div>
@@ -1132,7 +1172,7 @@ export default function BrandGuidelines() {
                       className="type-weight-sample"
                       style={{ fontWeight: 500 }}
                     >
-                      PeoplePeople makes plans simple.
+                      people people makes plans simple.
                     </span>
                     <span className="type-weight-value">500</span>
                   </div>
@@ -1142,7 +1182,7 @@ export default function BrandGuidelines() {
                       className="type-weight-sample"
                       style={{ fontWeight: 600 }}
                     >
-                      PeoplePeople makes plans simple.
+                      people people makes plans simple.
                     </span>
                     <span className="type-weight-value">600</span>
                   </div>
@@ -1152,7 +1192,7 @@ export default function BrandGuidelines() {
                       className="type-weight-sample"
                       style={{ fontWeight: 700 }}
                     >
-                      PeoplePeople makes plans simple.
+                      people people makes plans simple.
                     </span>
                     <span className="type-weight-value">700</span>
                   </div>
@@ -1165,7 +1205,7 @@ export default function BrandGuidelines() {
                       className="type-weight-sample"
                       style={{ fontWeight: 800 }}
                     >
-                      PeoplePeople makes plans simple.
+                      people people makes plans simple.
                     </span>
                     <span className="type-weight-value">800</span>
                   </div>
@@ -1245,7 +1285,7 @@ export default function BrandGuidelines() {
                           lineHeight: 1.6,
                         }}
                       >
-                        Plans made simple. Community made real. PeoplePeople helps you
+                        Plans made simple. Community made real. people people helps you
                         coordinate with the people who matter most.
                       </td>
                       <td className="type-spec">16px / Regular</td>
@@ -1421,7 +1461,7 @@ export default function BrandGuidelines() {
 
         {/* Section Divider */}
         <div className="section-divider">
-          <span className="section-divider-text">PeoplePeople</span>
+          <span className="section-divider-text">people people</span>
         </div>
 
         {/* ============================================
@@ -1432,7 +1472,7 @@ export default function BrandGuidelines() {
             <span className="section-number">04 — Voice</span>
             <h2 className="section-title">Tone of Voice</h2>
             <p className="section-subtitle">
-              PeoplePeople speaks like a reliable friend who happens to have good
+              people people speaks like a reliable friend who happens to have good
               taste. Warm but not cheesy. Helpful but not overbearing. Direct but
               never cold.
             </p>
@@ -1628,7 +1668,7 @@ export default function BrandGuidelines() {
 
         {/* Section Divider */}
         <div className="section-divider section-divider-dark">
-          <span className="section-divider-text">PeoplePeople</span>
+          <span className="section-divider-text">people people</span>
         </div>
 
         {/* ============================================
@@ -1950,7 +1990,7 @@ export default function BrandGuidelines() {
 
         {/* Section Divider */}
         <div className="section-divider">
-          <span className="section-divider-text">PeoplePeople</span>
+          <span className="section-divider-text">people people</span>
         </div>
 
         {/* ============================================
@@ -2207,7 +2247,7 @@ export default function BrandGuidelines() {
 
         {/* Section Divider */}
         <div className="section-divider section-divider-dark">
-          <span className="section-divider-text">PeoplePeople</span>
+          <span className="section-divider-text">people people</span>
         </div>
 
         {/* ============================================
@@ -2551,18 +2591,324 @@ export default function BrandGuidelines() {
 
         {/* Section Divider */}
         <div className="section-divider">
-          <span className="section-divider-text">PeoplePeople</span>
+          <span className="section-divider-text">people people</span>
         </div>
 
         {/* ============================================
-            08. CO-BRANDING
+            08. BUTTONS
+            ============================================ */}
+        <section className="section" id="buttons">
+          <div className="section-intro">
+            <span className="section-number">08 — Buttons</span>
+            <h2 className="section-title">Buttons</h2>
+            <p className="section-subtitle">
+              Pill-shaped buttons are a core element of the people people interface.
+              Every button maintains high contrast and readability through
+              deliberate color pairings and clear hover state transitions.
+            </p>
+          </div>
+
+          <div className="section-body">
+            {/* Primary Styles */}
+            <div className="subsection" id="btn-styles">
+              <div className="subsection-header">
+                <h4 className="subsection-title">Primary Styles</h4>
+                <p className="subsection-desc">
+                  Two standard button styles cover most use cases. Both use a
+                  full-radius (pill) shape and swap foreground/background on hover
+                  to signal interactivity while preserving contrast.
+                </p>
+              </div>
+              <div className="subsection-content">
+                {/* Outline Button */}
+                <div style={{ marginBottom: "var(--space-lg)" }}>
+                  <p className="spec-label" style={{ marginBottom: "var(--space-sm)" }}>Outline Button</p>
+                  <p style={{ fontSize: "13px", color: "var(--grey-dark)", marginBottom: "var(--space-md)", maxWidth: "480px", lineHeight: 1.6 }}>
+                    White background, black text, black border. On hover, the
+                    background fills yellow and the border is removed. Use for
+                    secondary actions and navigation.
+                  </p>
+                  <div className="grid-2">
+                    <div className="btn-demo-card">
+                      <span className="btn-demo-state-label">Default</span>
+                      <div className="btn-demo-area">
+                        <button
+                          className="btn-pill btn-pill-outline"
+                          style={{ cursor: "default" }}
+                        >
+                          Get Started
+                        </button>
+                      </div>
+                      <div className="btn-demo-specs">
+                        <span>Background: <strong>#FFFFFF</strong></span>
+                        <span>Text: <strong>#1A1A1A</strong></span>
+                        <span>Border: <strong>1px #1A1A1A</strong></span>
+                      </div>
+                    </div>
+                    <div className="btn-demo-card">
+                      <span className="btn-demo-state-label">Hover</span>
+                      <div className="btn-demo-area">
+                        <button
+                          className="btn-pill btn-pill-outline-hover"
+                          style={{ cursor: "default" }}
+                        >
+                          Get Started
+                        </button>
+                      </div>
+                      <div className="btn-demo-specs">
+                        <span>Background: <strong>#EFBF04</strong></span>
+                        <span>Text: <strong>#1A1A1A</strong></span>
+                        <span>Border: <strong>none</strong></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Solid Button */}
+                <div>
+                  <p className="spec-label" style={{ marginBottom: "var(--space-sm)" }}>Solid Button</p>
+                  <p style={{ fontSize: "13px", color: "var(--grey-dark)", marginBottom: "var(--space-md)", maxWidth: "480px", lineHeight: 1.6 }}>
+                    Black background, white text. On hover, flips to white
+                    background with black text and a black border. Use for
+                    primary calls-to-action.
+                  </p>
+                  <div className="grid-2">
+                    <div className="btn-demo-card">
+                      <span className="btn-demo-state-label">Default</span>
+                      <div className="btn-demo-area">
+                        <button
+                          className="btn-pill btn-pill-solid"
+                          style={{ cursor: "default" }}
+                        >
+                          Download
+                        </button>
+                      </div>
+                      <div className="btn-demo-specs">
+                        <span>Background: <strong>#1A1A1A</strong></span>
+                        <span>Text: <strong>#FFFFFF</strong></span>
+                        <span>Border: <strong>none</strong></span>
+                      </div>
+                    </div>
+                    <div className="btn-demo-card">
+                      <span className="btn-demo-state-label">Hover</span>
+                      <div className="btn-demo-area">
+                        <button
+                          className="btn-pill btn-pill-solid-hover"
+                          style={{ cursor: "default" }}
+                        >
+                          Download
+                        </button>
+                      </div>
+                      <div className="btn-demo-specs">
+                        <span>Background: <strong>#FFFFFF</strong></span>
+                        <span>Text: <strong>#1A1A1A</strong></span>
+                        <span>Border: <strong>1px #1A1A1A</strong></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Anatomy */}
+            <div className="subsection" id="btn-anatomy">
+              <div className="subsection-header">
+                <h4 className="subsection-title">Anatomy</h4>
+                <p className="subsection-desc">
+                  Consistent sizing and spacing across all button instances.
+                </p>
+              </div>
+              <div className="subsection-content">
+                <div style={{ display: "flex", flexWrap: "wrap", gap: "var(--space-md)" }}>
+                  <div style={{ flex: "1 1 260px", maxWidth: "340px" }}>
+                    <div className="btn-anatomy-card">
+                      <div className="btn-anatomy-visual">
+                        <button className="btn-pill btn-pill-outline" style={{ cursor: "default" }}>
+                          Button Label
+                        </button>
+                      </div>
+                      <div className="btn-anatomy-specs">
+                        <div className="btn-anatomy-row">
+                          <span>Shape</span><span>Full radius (pill)</span>
+                        </div>
+                        <div className="btn-anatomy-row">
+                          <span>Height</span><span>40–48px</span>
+                        </div>
+                        <div className="btn-anatomy-row">
+                          <span>Padding</span><span>12px 24px</span>
+                        </div>
+                        <div className="btn-anatomy-row">
+                          <span>Font size</span><span>14px</span>
+                        </div>
+                        <div className="btn-anatomy-row">
+                          <span>Font weight</span><span>500 (Medium)</span>
+                        </div>
+                        <div className="btn-anatomy-row">
+                          <span>Tracking</span><span>0.02em</span>
+                        </div>
+                        <div className="btn-anatomy-row" style={{ borderBottom: "none" }}>
+                          <span>Transition</span><span>200ms ease</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div style={{ flex: "1 1 260px", maxWidth: "340px" }}>
+                    <p className="spec-label" style={{ marginBottom: "var(--space-sm)" }}>Size Variants</p>
+                    <div style={{ display: "flex", flexDirection: "column", gap: "16px", alignItems: "flex-start" }}>
+                      <div>
+                        <button className="btn-pill btn-pill-outline" style={{ cursor: "default", fontSize: "12px", padding: "8px 20px" }}>
+                          Small
+                        </button>
+                        <span style={{ display: "block", fontSize: "11px", color: "var(--grey)", marginTop: "6px" }}>12px / 8px 20px</span>
+                      </div>
+                      <div>
+                        <button className="btn-pill btn-pill-outline" style={{ cursor: "default" }}>
+                          Default
+                        </button>
+                        <span style={{ display: "block", fontSize: "11px", color: "var(--grey)", marginTop: "6px" }}>14px / 12px 24px</span>
+                      </div>
+                      <div>
+                        <button className="btn-pill btn-pill-outline" style={{ cursor: "default", fontSize: "16px", padding: "16px 32px" }}>
+                          Large
+                        </button>
+                        <span style={{ display: "block", fontSize: "11px", color: "var(--grey)", marginTop: "6px" }}>16px / 16px 32px</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Misuse */}
+            <div className="subsection" id="btn-misuse">
+              <div className="subsection-header">
+                <h4 className="subsection-title">Misuse</h4>
+              </div>
+              <div className="subsection-content">
+                <div className="do-dont" style={{ marginBottom: "20px" }}>
+                  <div className="do-card">
+                    <div className="dd-preview">
+                      <button className="btn-pill btn-pill-outline" style={{ cursor: "default" }}>
+                        Get Started
+                      </button>
+                    </div>
+                    <div className="dd-label">
+                      <div className="dd-check">{"\u2713"}</div> Use pill shape
+                      with high-contrast pairing
+                    </div>
+                  </div>
+                  <div className="dont-card">
+                    <div className="dd-preview">
+                      <button style={{
+                        cursor: "default",
+                        background: "var(--white)",
+                        color: "var(--black)",
+                        border: "1px solid var(--black)",
+                        borderRadius: "4px",
+                        padding: "12px 24px",
+                        fontSize: "14px",
+                        fontWeight: 500,
+                        fontFamily: "var(--font)",
+                      }}>
+                        Get Started
+                      </button>
+                    </div>
+                    <div className="dd-label">
+                      <div className="dd-check">{"\u2715"}</div> Don&apos;t use
+                      sharp or squared corners
+                    </div>
+                  </div>
+                </div>
+
+                <div className="do-dont" style={{ marginBottom: "20px" }}>
+                  <div className="do-card">
+                    <div className="dd-preview">
+                      <button className="btn-pill btn-pill-solid" style={{ cursor: "default" }}>
+                        Download
+                      </button>
+                    </div>
+                    <div className="dd-label">
+                      <div className="dd-check">{"\u2713"}</div> Black/white
+                      or outline/yellow — always high contrast
+                    </div>
+                  </div>
+                  <div className="dont-card">
+                    <div className="dd-preview">
+                      <button style={{
+                        cursor: "default",
+                        background: "#E8E8E8",
+                        color: "#999",
+                        border: "none",
+                        borderRadius: "9999px",
+                        padding: "12px 24px",
+                        fontSize: "14px",
+                        fontWeight: 500,
+                        fontFamily: "var(--font)",
+                      }}>
+                        Download
+                      </button>
+                    </div>
+                    <div className="dd-label">
+                      <div className="dd-check">{"\u2715"}</div> Don&apos;t use
+                      low-contrast color combinations
+                    </div>
+                  </div>
+                </div>
+
+                <div className="do-dont">
+                  <div className="do-card">
+                    <div className="dd-preview">
+                      <button className="btn-pill btn-pill-outline-hover" style={{ cursor: "default" }}>
+                        Hover State
+                      </button>
+                    </div>
+                    <div className="dd-label">
+                      <div className="dd-check">{"\u2713"}</div> Hover states
+                      should clearly swap fills
+                    </div>
+                  </div>
+                  <div className="dont-card">
+                    <div className="dd-preview">
+                      <button style={{
+                        cursor: "default",
+                        background: "var(--white)",
+                        color: "var(--black)",
+                        border: "1px solid var(--black)",
+                        borderRadius: "9999px",
+                        padding: "12px 24px",
+                        fontSize: "14px",
+                        fontWeight: 500,
+                        fontFamily: "var(--font)",
+                        opacity: 0.5,
+                      }}>
+                        Hover State
+                      </button>
+                    </div>
+                    <div className="dd-label">
+                      <div className="dd-check">{"\u2715"}</div> Don&apos;t rely
+                      on opacity alone for hover feedback
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Section Divider */}
+        <div className="section-divider">
+          <span className="section-divider-text">people people</span>
+        </div>
+
+        {/* ============================================
+            09. CO-BRANDING
             ============================================ */}
         <section className="section" id="cobranding">
           <div className="section-intro">
-            <span className="section-number">08 — Co-Branding</span>
+            <span className="section-number">09 — Co-Branding</span>
             <h2 className="section-title">Co-Branding</h2>
             <p className="section-subtitle">
-              When PeoplePeople appears alongside partner brands, maintain clear
+              When people people appears alongside partner brands, maintain clear
               hierarchy. Our wordmark comes first (or has equal weight) and always
               retains proper clear space.
             </p>
@@ -2629,10 +2975,10 @@ export default function BrandGuidelines() {
                     </div>
                     <div>
                       <div className="voice-principle-title">
-                        PeoplePeople leads
+                        people people leads
                       </div>
                       <div className="voice-principle-desc">
-                        In co-branded materials where PeoplePeople is the primary
+                        In co-branded materials where people people is the primary
                         platform, our logo appears first (left or top).
                       </div>
                     </div>
@@ -2679,7 +3025,7 @@ export default function BrandGuidelines() {
                         className="logo-text"
                         style={{ fontSize: "24px", color: "var(--black)" }}
                       >
-                        PeoplePeople
+                        people people
                       </span>
                       <div
                         style={{
@@ -2703,7 +3049,7 @@ export default function BrandGuidelines() {
                         className="logo-text"
                         style={{ fontSize: "20px", color: "var(--black)" }}
                       >
-                        PeoplePeople
+                        people people
                       </span>
                       <span
                         style={{
@@ -2729,18 +3075,18 @@ export default function BrandGuidelines() {
 
         {/* Section Divider */}
         <div className="section-divider section-divider-dark">
-          <span className="section-divider-text">PeoplePeople</span>
+          <span className="section-divider-text">people people</span>
         </div>
 
         {/* ============================================
-            09. APPLICATIONS
+            10. APPLICATIONS
             ============================================ */}
         <section className="section section-dark" id="applications">
           <div className="section-intro">
-            <span className="section-number">09 — Applications</span>
+            <span className="section-number">10 — Applications</span>
             <h2 className="section-title">Applications</h2>
             <p className="section-subtitle">
-              The brand in context. These examples show how PeoplePeople&apos;s
+              The brand in context. These examples show how people people&apos;s
               visual identity works across touchpoints — from screens to print to
               physical spaces.
             </p>
@@ -2759,14 +3105,14 @@ export default function BrandGuidelines() {
                       <div className="mockup-social-avatar" style={{ overflow: "hidden", padding: 0 }}>
                         <Image
                           src="/images/logos/icon-132.png"
-                          alt="PeoplePeople avatar"
+                          alt="people people avatar"
                           width={132}
                           height={132}
                           style={{ width: "100%", height: "100%", objectFit: "cover" }}
                         />
                       </div>
                       <div>
-                        <div className="mockup-social-name">PeoplePeople</div>
+                        <div className="mockup-social-name">people people</div>
                         <div className="mockup-social-handle">@peoplepeople</div>
                       </div>
                     </div>
@@ -2807,14 +3153,14 @@ export default function BrandGuidelines() {
                       <div className="mockup-social-avatar" style={{ overflow: "hidden", padding: 0 }}>
                         <Image
                           src="/images/logos/icon-132.png"
-                          alt="PeoplePeople avatar"
+                          alt="people people avatar"
                           width={132}
                           height={132}
                           style={{ width: "100%", height: "100%", objectFit: "cover" }}
                         />
                       </div>
                       <div>
-                        <div className="mockup-social-name">PeoplePeople</div>
+                        <div className="mockup-social-name">people people</div>
                         <div className="mockup-social-handle">@peoplepeople</div>
                       </div>
                     </div>
@@ -2960,9 +3306,9 @@ export default function BrandGuidelines() {
               </div>
               <div className="subsection-content">
                 <div className="mockup-signage">
-                  <div className="mockup-signage-bg">PeoplePeople</div>
+                  <div className="mockup-signage-bg">people people</div>
                   <div className="mockup-signage-text">
-                    People<span>People</span>
+                    people<span> people</span>
                   </div>
                 </div>
               </div>
