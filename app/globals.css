@@ -65,3 +65,15 @@ body {
 .link-underline:hover::after {
   width: 100%;
 }
+
+/* Mobile dropdown drip animation */
+@keyframes drip-in {
+  0% {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}

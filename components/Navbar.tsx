@@ -159,16 +159,16 @@ export default function Navbar() {
             {({ open }) => (
               <>
                 <Headless.MenuButton
-                  className="relative z-[60] flex h-8 w-8 cursor-pointer flex-col items-center justify-center gap-[7px]"
+                  className="relative z-[60] flex h-8 w-8 cursor-pointer flex-col items-center justify-center gap-[7px] outline-none focus:outline-none"
                   aria-label="Toggle menu"
                 >
                   <span
-                    className={`block h-[1.5px] w-5 bg-foreground transition-all duration-300 origin-center ${
+                    className={`block h-0.5 w-5 bg-foreground transition-all duration-300 origin-center ${
                       open ? "translate-y-[4.25px] rotate-45" : ""
                     }`}
                   />
                   <span
-                    className={`block h-[1.5px] w-5 bg-foreground transition-all duration-300 origin-center ${
+                    className={`block h-0.5 w-5 bg-foreground transition-all duration-300 origin-center ${
                       open ? "-translate-y-[4.25px] -rotate-45" : ""
                     }`}
                   />
@@ -176,34 +176,41 @@ export default function Navbar() {
 
                 <Headless.MenuItems
                   transition
-                  anchor="bottom end"
                   className={clsx(
-                    // Anchor positioning
-                    "[--anchor-gap:12px] [--anchor-padding:8px]",
-                    // Base styles
-                    "w-64 rounded-2xl p-2",
-                    // Invisible border for forced-colors accessibility
+                    // Position: right edge flush with navbar edge, start at nav midpoint
+                    "absolute -right-6 top-1/2 z-[-1]",
+                    "flex w-[min(15rem,calc(100vw-2rem))] flex-col gap-2 bg-accent px-3 pb-5",
+                    // Top padding pushes items below the navbar overlap zone
+                    "pt-10",
+                    // Flat top, rounded bottom-left only (right stays flush)
+                    "rounded-b-[28px]",
                     "outline outline-transparent focus:outline-hidden",
-                    // Handle scrolling
-                    "overflow-y-auto",
-                    // Background
-                    "bg-white/80 backdrop-blur-xl",
-                    // Shadows & ring
-                    "shadow-lg ring-1 ring-foreground/10",
-                    // Transitions
-                    "transition duration-100 ease-out data-closed:scale-95 data-closed:opacity-0"
+                    "shadow-[0_16px_40px_-8px_rgba(239,191,4,0.45)]",
+                    // Ooze down from top
+                    "origin-top transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)]",
+                    "data-closed:scale-y-0 data-closed:opacity-0",
+                    // Staggered drip-in
+                    "[&>*]:animate-[drip-in_0.35s_ease-out_both]",
+                    "[&>*:nth-child(1)]:animation-delay-[60ms]",
+                    "[&>*:nth-child(2)]:animation-delay-[100ms]",
+                    "[&>*:nth-child(3)]:animation-delay-[140ms]",
+                    "[&>*:nth-child(4)]:animation-delay-[180ms]",
+                    "[&>*:nth-child(5)]:animation-delay-[220ms]",
+                    "[&>*:nth-child(6)]:animation-delay-[260ms]",
+                    "[&>*:nth-child(7)]:animation-delay-[300ms]",
+                    "[&>*:nth-child(8)]:animation-delay-[340ms]",
+                    "[&>*:nth-child(9)]:animation-delay-[380ms]",
                   )}
                 >
-                  {/* Nav links */}
                   {navLinks.map((link) => (
                     <Headless.MenuItem key={link.label}>
                       {({ focus }) => (
                         <a
                           href={link.href}
                           className={clsx(
-                            "block rounded-xl px-4 py-3 text-base/6 font-medium transition-colors",
+                            "block rounded-full px-5 py-2.5 text-center text-sm font-medium tracking-wide transition-all duration-200",
                             focus
-                              ? "bg-accent text-foreground"
+                              ? "bg-white text-foreground ring-1 ring-foreground"
                               : "text-foreground/70"
                           )}
                           {...(link.href.startsWith("http")
@@ -216,10 +223,8 @@ export default function Navbar() {
                     </Headless.MenuItem>
                   ))}
 
-                  {/* Divider */}
-                  <Headless.MenuSeparator className="mx-3 my-1.5 h-px border-0 bg-foreground/10" />
+                  <div className="mx-2 my-1 h-px bg-foreground/[0.08]" />
 
-                  {/* Download links */}
                   {downloadLinks.map((dl) => (
                     <Headless.MenuItem key={dl.label}>
                       {({ focus }) => (
@@ -228,9 +233,9 @@ export default function Navbar() {
                           target="_blank"
                           rel="noopener noreferrer"
                           className={clsx(
-                            "flex items-center gap-3 rounded-xl px-4 py-3 text-base/6 font-medium transition-colors",
+                            "flex items-center justify-center gap-2.5 rounded-full px-5 py-2.5 text-sm font-medium tracking-wide transition-all duration-200",
                             focus
-                              ? "bg-accent text-foreground"
+                              ? "bg-white text-foreground ring-1 ring-foreground"
                               : "text-foreground/70"
                           )}
                         >
