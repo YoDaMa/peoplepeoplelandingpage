@@ -3,6 +3,7 @@ import Image from "next/image";
 const footerLinks = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
+  { label: "Community", href: "/community" },
   { label: "Contact", href: "/contact" },
   { label: "Login", href: "https://app.peoplepeople.app" },
   {
