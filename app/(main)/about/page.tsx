@@ -67,6 +67,21 @@ export default function About() {
               a social app for <em className="italic">actually being social.</em>
             </motion.p>
           </div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.5, ease }}
+            className="mt-16"
+          >
+            <Image
+              src="/images/logos/wordmark-320x132.png"
+              alt="People People"
+              width={320}
+              height={132}
+              className="mx-auto h-8 w-auto"
+            />
+          </motion.div>
         </section>
 
         {/* About People People */}
