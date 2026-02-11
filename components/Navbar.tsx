@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 
 const navLinks = [
   { label: "About", href: "/about" },
+  { label: "Community", href: "/community" },
   { label: "Contact", href: "/contact" },
   { label: "Login", href: "https://app.peoplepeople.app" },
   { label: "Shop", href: "https://peoplepeople.printify.me/category/all/1?sort=price-desc" },
