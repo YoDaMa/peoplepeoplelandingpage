@@ -87,15 +87,15 @@ function CommunitySection({
   return (
     <motion.div {...fadeDelay(delay)}>
       {/* Tag */}
-      <span className="inline-block rounded-full border border-accent bg-accent/10 px-3 py-1 text-[11px] font-medium uppercase tracking-widest text-accent-hover">
+      <span className="mx-auto block w-fit rounded-full border border-accent bg-accent/10 px-3 py-1 text-[11px] font-medium uppercase tracking-widest text-accent-hover">
         {tag}
       </span>
 
-      <h3 className="mt-4 text-xl font-normal tracking-tight text-foreground md:text-2xl">
+      <h3 className="mt-4 text-center text-2xl font-semibold tracking-tight text-foreground md:text-3xl">
         {title}
       </h3>
 
-      <p className="mt-2 text-sm leading-relaxed text-muted">
+      <p className="mt-3 text-center text-sm leading-relaxed text-muted">
         {description}
       </p>
 
