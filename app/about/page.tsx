@@ -3,8 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import Navbar from "../../components/Navbar";
-import Footer from "../../components/Footer";
+
 
 const ease = [0.25, 0.1, 0.25, 1] as const;
 
@@ -43,8 +42,6 @@ export default function About() {
 
   return (
     <>
-      <Navbar />
-      <main>
         {/* Hero */}
         <section className="flex min-h-[70vh] flex-col items-center justify-center px-6 pt-32 pb-20 md:px-10">
           <div className="mx-auto max-w-[900px] text-center">
@@ -342,8 +339,6 @@ export default function About() {
             </motion.div>
           </div>
         </section>
-      </main>
-      <Footer />
     </>
   );
 }

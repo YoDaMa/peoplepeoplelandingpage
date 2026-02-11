@@ -38,7 +38,7 @@ export default function Footer() {
             <a
               key={link.label}
               href={link.href}
-              className="text-sm tracking-wide text-foreground/40 transition-colors hover:text-foreground"
+              className="rounded-full px-4 py-1.5 text-sm tracking-wide text-foreground/40 transition-all duration-200 hover:bg-accent hover:text-foreground"
               {...(link.href.startsWith("http")
                 ? { target: "_blank", rel: "noopener noreferrer" }
                 : {})}

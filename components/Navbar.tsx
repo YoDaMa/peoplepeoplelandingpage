@@ -97,18 +97,18 @@ export default function Navbar() {
           <a
             href="/"
             onClick={handleLogoClick}
-            className="text-lg font-medium tracking-tight text-foreground"
+            className="whitespace-nowrap text-lg font-medium tracking-tight text-foreground"
           >
             people people
           </a>
 
           {/* Desktop Links */}
-          <div className="hidden items-center gap-8 md:flex">
+          <div className="hidden items-center gap-4 lg:flex lg:gap-6">
             {navLinks.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
-                className="text-sm tracking-wide text-foreground/70 transition-colors hover:text-foreground hover:underline"
+                className="rounded-full px-4 py-1.5 text-sm tracking-wide text-foreground/70 transition-all duration-200 hover:bg-white hover:text-foreground hover:ring-1 hover:ring-foreground"
                 {...(link.href.startsWith("http")
                   ? { target: "_blank", rel: "noopener noreferrer" }
                   : {})}
@@ -166,7 +166,7 @@ export default function Navbar() {
           {/* Mobile Hamburger */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="relative z-[60] flex h-8 w-8 cursor-pointer flex-col items-center justify-center gap-[7px] md:hidden"
+            className="relative z-[60] flex h-8 w-8 cursor-pointer flex-col items-center justify-center gap-[7px] lg:hidden"
             aria-label="Toggle menu"
           >
             <span
@@ -184,54 +184,40 @@ export default function Navbar() {
       </nav>
 
       {/* Mobile Menu */}
-      <AnimatePresence mode="wait">
-        {mobileOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-white md:hidden"
-          >
-            <div className="flex flex-col items-center gap-6">
-              {navLinks.map((link, i) => (
-                <motion.a
-                  key={link.label}
-                  href={link.href}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.05, duration: 0.3 }}
+      {mobileOpen && (
+        <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-white lg:hidden">
+          <div className="flex flex-col items-center gap-6">
+            {navLinks.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                onClick={() => setMobileOpen(false)}
+                className="rounded-full px-6 py-2 text-2xl font-light tracking-tight text-foreground/70 transition-colors duration-200 hover:bg-accent/20 hover:text-foreground"
+                {...(link.href.startsWith("http")
+                  ? { target: "_blank", rel: "noopener noreferrer" }
+                  : {})}
+              >
+                {link.label}
+              </a>
+            ))}
+            <div className="mt-4 flex flex-col items-center gap-3">
+              {downloadLinks.map((dl) => (
+                <a
+                  key={dl.label}
+                  href={dl.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   onClick={() => setMobileOpen(false)}
-                  className="rounded-full px-6 py-2 text-2xl font-light tracking-tight text-foreground/70 transition-all duration-200 hover:bg-accent/20 hover:text-foreground"
-                  {...(link.href.startsWith("http")
-                    ? { target: "_blank", rel: "noopener noreferrer" }
-                    : {})}
+                  className="flex items-center gap-3 rounded-full border-2 border-foreground px-8 py-3 text-base font-medium text-foreground transition-colors duration-200 hover:border-accent hover:bg-accent"
                 >
-                  {link.label}
-                </motion.a>
+                  {dl.icon}
+                  <span>{dl.label}</span>
+                </a>
               ))}
-              <div className="mt-4 flex flex-col items-center gap-3">
-                {downloadLinks.map((dl, i) => (
-                  <motion.a
-                    key={dl.label}
-                    href={dl.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: (navLinks.length + i) * 0.05, duration: 0.3 }}
-                    onClick={() => setMobileOpen(false)}
-                    className="flex items-center gap-3 rounded-full border-2 border-foreground px-8 py-3 text-base font-medium text-foreground transition-all duration-200 hover:border-accent hover:bg-accent"
-                  >
-                    {dl.icon}
-                    <span>{dl.label}</span>
-                  </motion.a>
-                ))}
-              </div>
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          </div>
+        </div>
+      )}
     </header>
   );
 }

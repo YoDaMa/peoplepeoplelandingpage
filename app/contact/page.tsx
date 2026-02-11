@@ -3,8 +3,7 @@
 import { useState, useRef, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import Navbar from "../../components/Navbar";
-import Footer from "../../components/Footer";
+
 
 const ease = [0.25, 0.1, 0.25, 1] as const;
 
@@ -190,8 +189,6 @@ function ContactForm() {
 export default function Contact() {
   return (
     <>
-      <Navbar />
-      <main>
         <section className="px-6 pt-28 pb-8 md:px-10 md:pt-32 md:pb-10">
           <div className="mx-auto max-w-[600px] text-center">
             <motion.h1
@@ -228,8 +225,6 @@ export default function Contact() {
             </Suspense>
           </motion.div>
         </section>
-      </main>
-      <Footer />
     </>
   );
 }
