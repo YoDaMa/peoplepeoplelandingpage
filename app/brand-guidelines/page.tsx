@@ -91,13 +91,13 @@ export default function BrandGuidelines() {
     const sections = document.querySelectorAll(".section, .hero");
     const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
+        const visible = entries.filter(e => e.isIntersecting);
+        if (visible.length > 0) {
+          visible.sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+          setActiveSection(visible[0].target.id);
+        }
       },
-      { threshold: 0.2, rootMargin: "-10% 0px -60% 0px" }
+      { threshold: 0.15, rootMargin: "0px 0px -50% 0px" }
     );
     sections.forEach((section) => observer.observe(section));
     return () => observer.disconnect();
@@ -224,9 +224,13 @@ export default function BrandGuidelines() {
             <div className="hero-word">Joyful</div>
             <div className="hero-word">Together.</div>
           </div>
+          <div className="hero-rule" />
           <p className="hero-tagline">
             Plans made simple. Community made real.
           </p>
+          <div className="hero-scroll-indicator" aria-hidden="true">
+            <div className="hero-scroll-line" />
+          </div>
         </section>
 
         {/* ============================================
@@ -1901,7 +1905,7 @@ export default function BrandGuidelines() {
                         color: "rgba(255,255,255,0.4)",
                       }}
                     >
-                      8px — Buttons, inputs
+                      8px — Inputs, fields
                     </span>
                   </div>
                   <div
@@ -1979,7 +1983,7 @@ export default function BrandGuidelines() {
                         color: "rgba(255,255,255,0.4)",
                       }}
                     >
-                      Full — Pills, avatars
+                      Full — Buttons, pills, avatars
                     </span>
                   </div>
                 </div>
@@ -2016,11 +2020,11 @@ export default function BrandGuidelines() {
                 <div className="grid-4">
                   <div
                     className="photo-card"
-                    style={{ background: "var(--cream)" }}
+                    style={{ background: "linear-gradient(160deg, #F5DDD3 0%, #E8C4B8 50%, #D4A494 100%)" }}
                   >
                     <div
                       className="photo-placeholder"
-                      style={{ color: "var(--grey-light)" }}
+                      style={{ color: "rgba(26,26,26,0.35)" }}
                     >
                       People Together
                     </div>
@@ -2036,11 +2040,11 @@ export default function BrandGuidelines() {
                   </div>
                   <div
                     className="photo-card"
-                    style={{ background: "var(--sand)" }}
+                    style={{ background: "linear-gradient(160deg, #F5EDD8 0%, #E8D9B4 50%, #D4C08A 100%)" }}
                   >
                     <div
                       className="photo-placeholder"
-                      style={{ color: "var(--grey)" }}
+                      style={{ color: "rgba(26,26,26,0.35)" }}
                     >
                       Food & Drinks
                     </div>
@@ -2056,11 +2060,11 @@ export default function BrandGuidelines() {
                   </div>
                   <div
                     className="photo-card"
-                    style={{ background: "var(--cream)" }}
+                    style={{ background: "linear-gradient(160deg, #F0EBE0 0%, #DDD5C4 50%, #C9BFA8 100%)" }}
                   >
                     <div
                       className="photo-placeholder"
-                      style={{ color: "var(--grey-light)" }}
+                      style={{ color: "rgba(26,26,26,0.35)" }}
                     >
                       Interiors
                     </div>
@@ -2076,11 +2080,11 @@ export default function BrandGuidelines() {
                   </div>
                   <div
                     className="photo-card"
-                    style={{ background: "var(--sand)" }}
+                    style={{ background: "linear-gradient(160deg, #E0ECDA 0%, #C4D9B8 50%, #A8C494 100%)" }}
                   >
                     <div
                       className="photo-placeholder"
-                      style={{ color: "var(--grey)" }}
+                      style={{ color: "rgba(26,26,26,0.35)" }}
                     >
                       Outdoors
                     </div>
@@ -2112,8 +2116,8 @@ export default function BrandGuidelines() {
                     <div
                       className="treatment-demo"
                       style={{
-                        background: "var(--warm-white)",
-                        color: "var(--grey)",
+                        background: "linear-gradient(135deg, #F5EDD8 0%, #E8D9B4 60%, #DCCFA0 100%)",
+                        color: "rgba(26,26,26,0.4)",
                         borderRadius: "12px",
                         marginBottom: "12px",
                       }}
@@ -2142,8 +2146,8 @@ export default function BrandGuidelines() {
                     <div
                       className="treatment-demo"
                       style={{
-                        background: "var(--cream)",
-                        color: "var(--grey)",
+                        background: "linear-gradient(135deg, #F0EBE0 0%, #DDD5C4 60%, #CEC5AD 100%)",
+                        color: "rgba(26,26,26,0.4)",
                         borderRadius: "12px",
                         marginBottom: "12px",
                       }}
@@ -2172,8 +2176,8 @@ export default function BrandGuidelines() {
                     <div
                       className="treatment-demo"
                       style={{
-                        background: "var(--warm-white)",
-                        color: "var(--grey)",
+                        background: "linear-gradient(135deg, #F5DDD3 0%, #E8C8BA 60%, #DBBAA8 100%)",
+                        color: "rgba(26,26,26,0.4)",
                         borderRadius: "12px",
                         marginBottom: "12px",
                       }}
@@ -3443,6 +3447,15 @@ export default function BrandGuidelines() {
             FOOTER
             ============================================ */}
         <footer className="brand-footer">
+          <button
+            className="brand-footer-back-to-top"
+            onClick={() => scrollTo("hero")}
+          >
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M8 12V4M4 7l4-4 4 4" />
+            </svg>
+            Back to top
+          </button>
           <div className="brand-footer-logo">
             <Image
               src="/images/logos/wordmark-320x132.png"
