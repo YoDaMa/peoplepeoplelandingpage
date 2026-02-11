@@ -3,6 +3,8 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { usePathname } from "next/navigation";
+import * as Headless from "@headlessui/react";
+import clsx from "clsx";
 
 const navLinks = [
   { label: "About", href: "/about" },
@@ -42,7 +44,6 @@ const downloadLinks = [
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
   const [downloadOpen, setDownloadOpen] = useState(false);
   const downloadRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
@@ -52,31 +53,6 @@ export default function Navbar() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-
-  useEffect(() => {
-    if (mobileOpen) {
-      const scrollY = window.scrollY;
-      document.body.style.position = "fixed";
-      document.body.style.top = `-${scrollY}px`;
-      document.body.style.left = "0";
-      document.body.style.right = "0";
-    } else {
-      const top = document.body.style.top;
-      document.body.style.position = "";
-      document.body.style.top = "";
-      document.body.style.left = "";
-      document.body.style.right = "";
-      if (top) {
-        window.scrollTo(0, parseInt(top, 10) * -1);
-      }
-    }
-    return () => {
-      document.body.style.position = "";
-      document.body.style.top = "";
-      document.body.style.left = "";
-      document.body.style.right = "";
-    };
-  }, [mobileOpen]);
 
   // Close download dropdown on outside click
   useEffect(() => {
@@ -178,61 +154,98 @@ export default function Navbar() {
             </div>
           </div>
 
-          {/* Mobile Hamburger */}
-          <button
-            onClick={() => setMobileOpen(!mobileOpen)}
-            className="relative z-[60] flex h-8 w-8 cursor-pointer flex-col items-center justify-center gap-[7px] lg:hidden"
-            aria-label="Toggle menu"
-          >
-            <span
-              className={`block h-[1.5px] w-5 bg-foreground transition-all duration-300 origin-center ${
-                mobileOpen ? "translate-y-[4.25px] rotate-45" : ""
-              }`}
-            />
-            <span
-              className={`block h-[1.5px] w-5 bg-foreground transition-all duration-300 origin-center ${
-                mobileOpen ? "-translate-y-[4.25px] -rotate-45" : ""
-              }`}
-            />
-          </button>
+          {/* Mobile Menu (Headless UI Dropdown) */}
+          <Headless.Menu as="div" className="relative lg:hidden">
+            {({ open }) => (
+              <>
+                <Headless.MenuButton
+                  className="relative z-[60] flex h-8 w-8 cursor-pointer flex-col items-center justify-center gap-[7px]"
+                  aria-label="Toggle menu"
+                >
+                  <span
+                    className={`block h-[1.5px] w-5 bg-foreground transition-all duration-300 origin-center ${
+                      open ? "translate-y-[4.25px] rotate-45" : ""
+                    }`}
+                  />
+                  <span
+                    className={`block h-[1.5px] w-5 bg-foreground transition-all duration-300 origin-center ${
+                      open ? "-translate-y-[4.25px] -rotate-45" : ""
+                    }`}
+                  />
+                </Headless.MenuButton>
+
+                <Headless.MenuItems
+                  transition
+                  anchor="bottom end"
+                  className={clsx(
+                    // Anchor positioning
+                    "[--anchor-gap:12px] [--anchor-padding:8px]",
+                    // Base styles
+                    "w-64 rounded-2xl p-2",
+                    // Invisible border for forced-colors accessibility
+                    "outline outline-transparent focus:outline-hidden",
+                    // Handle scrolling
+                    "overflow-y-auto",
+                    // Background
+                    "bg-white/80 backdrop-blur-xl",
+                    // Shadows & ring
+                    "shadow-lg ring-1 ring-foreground/10",
+                    // Transitions
+                    "transition duration-100 ease-out data-closed:scale-95 data-closed:opacity-0"
+                  )}
+                >
+                  {/* Nav links */}
+                  {navLinks.map((link) => (
+                    <Headless.MenuItem key={link.label}>
+                      {({ focus }) => (
+                        <a
+                          href={link.href}
+                          className={clsx(
+                            "block rounded-xl px-4 py-3 text-base/6 font-medium transition-colors",
+                            focus
+                              ? "bg-accent text-foreground"
+                              : "text-foreground/70"
+                          )}
+                          {...(link.href.startsWith("http")
+                            ? { target: "_blank", rel: "noopener noreferrer" }
+                            : {})}
+                        >
+                          {link.label}
+                        </a>
+                      )}
+                    </Headless.MenuItem>
+                  ))}
+
+                  {/* Divider */}
+                  <Headless.MenuSeparator className="mx-3 my-1.5 h-px border-0 bg-foreground/10" />
+
+                  {/* Download links */}
+                  {downloadLinks.map((dl) => (
+                    <Headless.MenuItem key={dl.label}>
+                      {({ focus }) => (
+                        <a
+                          href={dl.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={clsx(
+                            "flex items-center gap-3 rounded-xl px-4 py-3 text-base/6 font-medium transition-colors",
+                            focus
+                              ? "bg-accent text-foreground"
+                              : "text-foreground/70"
+                          )}
+                        >
+                          {dl.icon}
+                          {dl.label}
+                        </a>
+                      )}
+                    </Headless.MenuItem>
+                  ))}
+                </Headless.MenuItems>
+              </>
+            )}
+          </Headless.Menu>
         </div>
       </nav>
-
-      {/* Mobile Menu */}
-      {mobileOpen && (
-        <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-white lg:hidden">
-          <div className="flex flex-col items-center gap-6">
-            {navLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                onClick={() => setMobileOpen(false)}
-                className="rounded-full px-6 py-2 text-2xl font-light tracking-tight text-foreground/70 transition-colors duration-200 hover:bg-accent/20 hover:text-foreground"
-                {...(link.href.startsWith("http")
-                  ? { target: "_blank", rel: "noopener noreferrer" }
-                  : {})}
-              >
-                {link.label}
-              </a>
-            ))}
-            <div className="mt-4 flex flex-col items-center gap-3">
-              {downloadLinks.map((dl) => (
-                <a
-                  key={dl.label}
-                  href={dl.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => setMobileOpen(false)}
-                  className="flex items-center gap-3 rounded-full border-2 border-foreground px-8 py-3 text-base font-medium text-foreground transition-colors duration-200 hover:border-accent hover:bg-accent"
-                >
-                  {dl.icon}
-                  <span>{dl.label}</span>
-                </a>
-              ))}
-            </div>
-          </div>
-        </div>
-      )}
     </header>
   );
 }
