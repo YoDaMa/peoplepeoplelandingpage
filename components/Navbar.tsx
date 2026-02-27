@@ -79,36 +79,27 @@ export default function Navbar() {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 px-4 pt-4 md:px-6 md:pt-5">
+    <header className="fixed top-0 left-0 right-0 z-50 pointer-events-none">
+      {/* Full navbar — visible when not scrolled */}
       <nav
-        className={`mx-auto rounded-full transition-all duration-500 ${
+        className={`mx-auto rounded-full transition-all duration-500 mx-4 mt-4 md:mx-6 md:mt-5 pointer-events-auto ${
           scrolled
-            ? "max-w-[280px] bg-accent/95 shadow-lg shadow-accent/10 backdrop-blur-sm"
-            : "max-w-[1400px] bg-accent"
+            ? "pointer-events-none max-w-[1400px] scale-95 opacity-0"
+            : "max-w-[1400px] scale-100 bg-accent opacity-100"
         }`}
       >
-        <div className={`flex items-center justify-between transition-all duration-500 ${
-          scrolled ? "px-3 py-2" : "px-6 py-3 md:px-8"
-        }`}>
+        <div className="flex items-center justify-between px-6 py-3 md:px-8">
           {/* Logo */}
           <a
             href="/"
             onClick={handleLogoClick}
-            className={`whitespace-nowrap text-lg font-medium tracking-tight text-foreground transition-all duration-500 ${
-              scrolled
-                ? "rounded-full bg-accent px-4 py-1.5"
-                : "bg-transparent px-0 py-0"
-            }`}
+            className="whitespace-nowrap text-lg font-medium tracking-tight text-foreground"
           >
             People People
           </a>
 
           {/* Desktop Links */}
-          <div className={`hidden items-center gap-4 lg:flex transition-all duration-500 ${
-            scrolled
-              ? "lg:max-w-0 lg:opacity-0 lg:overflow-hidden lg:gap-0 lg:pointer-events-none"
-              : "lg:gap-6"
-          }`}>
+          <div className="hidden items-center lg:flex lg:gap-6">
             {navLinks.map((link) => (
               <a
                 key={link.label}
@@ -168,12 +159,15 @@ export default function Navbar() {
             </div>
           </div>
 
-          {/* Mobile Menu (Headless UI Dropdown) */}
-          <Headless.Menu as="div" className={`relative ${scrolled ? "" : "lg:hidden"}`}>
+          {/* Mobile hamburger — inside full bar */}
+          <Headless.Menu as="div" className="relative lg:hidden">
             {({ open }) => (
               <>
                 <Headless.MenuButton
-                  className="relative z-[60] flex h-8 w-8 cursor-pointer flex-col items-center justify-center gap-[7px] outline-none focus:outline-none"
+                  className={clsx(
+                    "relative z-[60] flex h-10 w-10 cursor-pointer flex-col items-center justify-center gap-[7px] rounded-full outline-none transition-all duration-300 focus:outline-none",
+                    open ? "bg-accent" : "bg-transparent"
+                  )}
                   aria-label="Toggle menu"
                 >
                   <span
@@ -191,19 +185,14 @@ export default function Navbar() {
                 <Headless.MenuItems
                   transition
                   className={clsx(
-                    // Position: right edge flush with navbar edge, start at nav midpoint
-                    "absolute -right-6 top-1/2 z-[-1]",
+                    "absolute -right-3 top-0 z-[-1]",
                     "flex w-[min(15rem,calc(100vw-2rem))] flex-col gap-2 bg-accent px-3 pb-5",
-                    // Top padding pushes items below the navbar overlap zone
-                    "pt-10",
-                    // Flat top, rounded bottom-left only (right stays flush)
-                    "rounded-b-[28px]",
+                    "pt-14",
+                    "rounded-b-[28px] rounded-tr-[20px]",
                     "outline outline-transparent focus:outline-hidden",
                     "shadow-[0_16px_40px_-8px_rgba(239,191,4,0.45)]",
-                    // Ooze down from top
                     "origin-top transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)]",
                     "data-closed:scale-y-0 data-closed:opacity-0",
-                    // Staggered drip-in
                     "[&>*]:animate-[drip-in_0.35s_ease-out_both]",
                     "[&>*:nth-child(1)]:animation-delay-[60ms]",
                     "[&>*:nth-child(2)]:animation-delay-[100ms]",
@@ -265,6 +254,124 @@ export default function Navbar() {
           </Headless.Menu>
         </div>
       </nav>
+
+      {/* Scrolled state — two separate pills */}
+      <div
+        className={`absolute top-4 left-4 right-4 md:top-5 md:left-6 md:right-6 mx-auto flex max-w-[1400px] items-start justify-between transition-all duration-500 ${
+          scrolled
+            ? "pointer-events-auto translate-y-0 opacity-100"
+            : "pointer-events-none -translate-y-2 opacity-0"
+        }`}
+      >
+        {/* Left pill — Logo */}
+        <a
+          href="/"
+          onClick={handleLogoClick}
+          className="rounded-full bg-accent/95 px-5 py-2.5 text-[15px] font-medium tracking-tight text-foreground shadow-lg shadow-accent/10 backdrop-blur-sm transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98]"
+        >
+          People People
+        </a>
+
+        {/* Right pill — Hamburger + connected dropdown */}
+        <Headless.Menu as="div" className="relative">
+          {({ open }) => (
+            <>
+              <Headless.MenuButton
+                className={clsx(
+                  "relative z-[60] flex h-10 w-10 cursor-pointer flex-col items-center justify-center gap-[7px] bg-accent/95 shadow-lg shadow-accent/10 backdrop-blur-sm outline-none transition-all duration-300 focus:outline-none",
+                  open
+                    ? "rounded-t-full rounded-b-none"
+                    : "rounded-full"
+                )}
+                aria-label="Toggle menu"
+              >
+                <span
+                  className={`block h-0.5 w-5 bg-foreground transition-all duration-300 origin-center ${
+                    open ? "translate-y-[4.25px] rotate-45" : ""
+                  }`}
+                />
+                <span
+                  className={`block h-0.5 w-5 bg-foreground transition-all duration-300 origin-center ${
+                    open ? "-translate-y-[4.25px] -rotate-45" : ""
+                  }`}
+                />
+              </Headless.MenuButton>
+
+              <Headless.MenuItems
+                transition
+                className={clsx(
+                  // Flush directly below the button, right-aligned
+                  "absolute right-0 top-full z-[59]",
+                  "flex w-[min(15rem,calc(100vw-2rem))] flex-col gap-2 bg-accent/95 px-3 pb-5 backdrop-blur-sm",
+                  "pt-4",
+                  // Connected shape: no top-right rounding (flush with button), rounded everywhere else
+                  "rounded-b-[28px] rounded-tl-[28px]",
+                  "outline outline-transparent focus:outline-hidden",
+                  "shadow-lg shadow-accent/10",
+                  // Ooze down from top
+                  "origin-top transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)]",
+                  "data-closed:scale-y-0 data-closed:opacity-0",
+                  // Staggered drip-in
+                  "[&>*]:animate-[drip-in_0.35s_ease-out_both]",
+                  "[&>*:nth-child(1)]:animation-delay-[60ms]",
+                  "[&>*:nth-child(2)]:animation-delay-[100ms]",
+                  "[&>*:nth-child(3)]:animation-delay-[140ms]",
+                  "[&>*:nth-child(4)]:animation-delay-[180ms]",
+                  "[&>*:nth-child(5)]:animation-delay-[220ms]",
+                  "[&>*:nth-child(6)]:animation-delay-[260ms]",
+                  "[&>*:nth-child(7)]:animation-delay-[300ms]",
+                  "[&>*:nth-child(8)]:animation-delay-[340ms]",
+                  "[&>*:nth-child(9)]:animation-delay-[380ms]",
+                )}
+              >
+                {navLinks.map((link) => (
+                  <Headless.MenuItem key={link.label}>
+                    {({ focus }) => (
+                      <a
+                        href={link.href}
+                        className={clsx(
+                          "block rounded-full px-5 py-2.5 text-center text-sm font-medium tracking-wide transition-all duration-200",
+                          focus
+                            ? "bg-white text-foreground ring-1 ring-foreground"
+                            : "text-foreground/70"
+                        )}
+                        {...(link.href.startsWith("http")
+                          ? { target: "_blank", rel: "noopener noreferrer" }
+                          : {})}
+                      >
+                        {link.label}
+                      </a>
+                    )}
+                  </Headless.MenuItem>
+                ))}
+
+                <div className="mx-2 my-1 h-px bg-foreground/[0.08]" />
+
+                {downloadLinks.map((dl) => (
+                  <Headless.MenuItem key={dl.label}>
+                    {({ focus }) => (
+                      <a
+                        href={dl.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={clsx(
+                          "flex items-center justify-center gap-2.5 rounded-full px-5 py-2.5 text-sm font-medium tracking-wide transition-all duration-200",
+                          focus
+                            ? "bg-white text-foreground ring-1 ring-foreground"
+                            : "text-foreground/70"
+                        )}
+                      >
+                        {dl.icon}
+                        {dl.label}
+                      </a>
+                    )}
+                  </Headless.MenuItem>
+                ))}
+              </Headless.MenuItems>
+            </>
+          )}
+        </Headless.Menu>
+      </div>
     </header>
   );
 }
