@@ -90,7 +90,7 @@ export default function Navbar() {
             onClick={handleLogoClick}
             className="whitespace-nowrap text-lg font-medium tracking-tight text-foreground"
           >
-            people people
+            People People
           </a>
 
           {/* Desktop Links */}
